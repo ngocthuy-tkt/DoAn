@@ -10,7 +10,7 @@ class Category extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'name', 'slug', 'avtive', 'parent_id'
+        'name', 'slug1', 'avtive', 'parent_id'
     ];
 
     public function child() {
