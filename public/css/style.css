@@ -1,0 +1,502 @@
+@font-face {
+    font-family: Roboto;
+    src: url(../fonts/Roboto-Regular.ttf);
+}
+
+/*reset css*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: Roboto, serif;
+    font-size: 14px;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    width: 100%;
+    height: 100%;
+}
+
+.max-width-content {
+    width: -moz-max-content;
+    width: -webkit-max-content;
+    width: max-content;
+}
+#with-200px{
+    width: 200px !important;
+}
+.text-red {
+    color: red;
+}
+/*header*/
+.header {
+    margin-bottom: 70px;
+}
+
+.header .navbar-custom {
+    background-color: #6cafc6;
+    border: none;
+    border-radius: 0;
+}
+
+.header .navbar-custom .navbar-nav > li > a {
+    color: #fff;
+}
+
+.header .navbar-custom .navbar-nav > li > a:hover,
+.header .navbar-custom .navbar-nav > li > a:focus,
+.header .navbar-custom .navbar-nav > li.active {
+    text-decoration: none;
+    color: #fff;
+    background-color: #408ca5;
+}
+.header .nav .open > a,
+.header .nav .open > a:focus,
+.header .nav .open > a:hover {
+    background-color: #408ca5;
+}
+.header .navbar-nav > li > .dropdown-menu {
+    width: 250px;
+}
+.header .navbar-nav > li > .dropdown-menu > li > a {
+    padding: 10px 20px;
+}
+.header .navbar-nav > li > .dropdown-menu > li > a:hover {
+    background-color: #c8e1ea;
+}
+.header .form-inline .input-group-addon {
+    box-shadow: none;
+    border-radius: 2px 0 0 2px;
+    background: #f5f5f5;
+    border-color: #dfe3e8;
+    font-size: 16px;
+}
+.header .form-inline i {
+    font-size: 16px;
+}
+.header .form-inline .btn {
+    border-radius: 2px;
+    color: #fff;
+    border-color: #29c68c;
+    background: #29c68c;
+    outline: none;
+}
+.header .form-inline .btn:hover, .header .form-inline .btn:focus {
+    border-color: #26bb84;
+    background: #26bb84;
+}
+.header .login-form .input-group {
+    margin-right: 4px;
+    float: left;
+}
+.header .login-form .form-control {
+    max-width: 158px;
+    border-radius: 0 2px 2px 0;
+}
+.header .navbar-right .dropdown-toggle::after {
+    display: none;
+}
+.header .navbar-right .dropdown-menu {
+    width: 505px !important;
+    padding: 20px;
+    left: auto;
+    right: 0;
+    font-size: 14px;
+}
+.header .navbar-left .dropdown-submenu {
+    position: relative;
+}
+
+.header .navbar-left .dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+    width: 250px;
+    border-radius: 0;
+}
+.header .navbar-left .dropdown-submenu .dropdown-menu > li > a:hover {
+    background-color: #c8e1ea;
+}
+.header .navbar-left .dropdown-submenu .dropdown-menu > li > a {
+    padding: 10px 20px;
+}
+/*css trang index*/
+.banner {
+    overflow: hidden;
+    width: 60%;
+    margin: 0 auto;
+    height: auto;
+}
+.banner img {
+    width: 100%;
+    padding-bottom: 15px;
+    height: 300px;
+}
+.banner .carousel-control.left, .banner .carousel-control.right {
+    background: none;
+    height: 60px;
+    top: 37%;
+}
+.banner span.fa.fa-angle-left:active, .banner span.fa.fa-angle-right:active {
+    padding: 0 8px;
+    outline: 0;
+    -webkit-box-shadow: inset 0 2px 5px rgba(0, 0, 0, .125);
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, .125);
+}
+.banner .carousel-control.left {
+    left: -4%;
+    font-size: 30px;
+    color: #000;
+}
+.banner .carousel-control.right {
+    right: -4%;
+    font-size: 30px;
+    color: #000;
+}
+
+.main {
+    margin-top: 40px;
+    margin-bottom: 50px;
+}
+
+/*main product*/
+.main .product-item {}
+.main .product-item:hover {
+    -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+    box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+}
+.main .product-item .image {
+    overflow: hidden;
+    display: block;
+    position: relative;
+    margin: 15px auto 0;
+    text-align: center;
+    background: #fff;
+    height: 200px;
+    white-space: nowrap;
+}
+.main .product-item .image img {
+    width: auto;
+    height: 100%;
+    margin: auto;
+}
+.main .product-item a:hover {
+    text-decoration: none;
+}
+.main .product-item .caption {
+    text-align: center;
+}
+.main .product-item .caption p {
+    margin: 0;
+}
+.main .product-item .caption .title {
+    height: 3em;
+    line-height: 1.5em;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    font-size: 16px;
+    margin-top: 5px;
+}
+.main .product-item .caption .author {
+    padding: 5px 0 0;
+    color: #777;
+    font-size: 12px;
+}
+.main .product-item .caption .price-sale {
+    font-size: 13px;
+    color: #242424;
+    font-weight: bold;
+    padding: 10px 0 0;
+}
+.main .product-item .caption .price-sale .price-regular {
+    font-size: 11px;
+    color: #a2a2a2;
+    text-decoration: line-through;
+    text-align: left;
+    font-weight: 300;
+}
+.main .product-item .caption .price-sale .sale-tag {
+    color: #FF3B26;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 500;
+    margin-left: 2px;
+}
+
+/* footer */
+
+.footer {
+    background: #fff;
+    padding-bottom: 30px;
+    margin-top: 60px;
+    font-size: 12px;
+    color: #333;
+}
+.footer p.title {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.footer a.link_ft {
+    color: #333;
+    cursor: pointer;
+}
+.footer a.link_ft:hover {
+    text-decoration: underline;
+}
+.footer .social-conn {
+    overflow: hidden;
+}
+.footer .social-conn a {
+    display: inline-block;
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 7px;
+}
+.footer .social-conn a[title="Youtube"] {
+    color: #ff483f;
+}
+.footer .social-conn a[title="Youtube"]:hover {
+    color: #ff0000;
+}
+.footer .social-conn a i {
+    font-size: 30px;
+    display: inline-block;
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 7px;
+}
+
+.table>tbody>tr>td, .table>tfoot>tr>td{
+    vertical-align: middle;
+}
+
+/* phần tổn tiền*/
+span.mtext-101.cl2 {
+    padding-right: 80px;
+    padding-left: 100px;
+    font-size: 16px;
+    font-weight: bold;
+}
+span.mtext-110.cl2 {
+    padding-right: 80px;
+}
+
+
+
+/*CSS PHẦN DETAIL */
+.main .row  button.add-to-cart.is-css {
+    width: 186px;
+    height: 40px;
+}
+
+.main .row button.add-to-cart.is-css, .tiki-product .wrap .item-box .add-cart-action button.pre-order.is-css {
+    border: none;
+    color: #fff;
+    white-space: nowrap;
+    cursor: pointer;
+    vertical-align: top;
+    font-size: 13px;
+    padding: 0 0 0 40px;
+    line-height: 40px;
+    border-radius: 5px;
+    background: url(../img/icon/ic-cart@2x.png) 42px center no-repeat #ff3945;
+    font-weight: 400;
+    letter-spacing: .5px;
+    background-size: 26px;
+    display: inline-block;
+    text-align: center;
+}
+
+
+
+/* phần css checkout*/
+.payment_content_li {
+    overflow: hidden;
+    margin-bottom: 24px;
+}
+.payment_content_li img {
+    width: 88px;
+    height: 130px;
+    border: 1px solid #dddddd;
+    float: left;
+    margin-right: 15px;
+    object-fit: cover;
+    object-position: center center;
+}
+
+
+
+
+/*phần css personal*/
+.main .wrap {
+    min-height: 500px;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+}
+.main .container-full {
+    width: 1270px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
+}
+.main .wrap .row-style-1 {
+    background: 0 0;
+    box-shadow: none!important;
+}
+.main .menu-left {
+    width: 250px;
+    padding-right: 0;
+    padding-left: 0;
+    float: left;
+    margin-right: 10px;
+    padding-bottom: 20px;
+}
+.main .wrap .profiles {
+    background: 0 0;
+    color: #fff;
+    padding: 10px 5px 5px;
+}
+.main .wrap .profiles .image {
+    width: 45px;
+    height: 45px;
+    overflow: hidden;
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 0;
+}
+.main .wrap .profiles .name {
+    font-size: 13px;
+    margin-bottom: 5px;
+    color: #242424;
+    margin-top: 5px;
+    font-family: Roboto;
+    font-weight: 300;
+}
+.main .wrap .profiles h5 {
+    margin: 0;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    color: #242424;
+}
+.main .wrap .menu {
+    margin-top: 0;
+}
+.main .wrap .menu ul li.active a, .main .wrap .menu ul li:hover a {
+    color: #000;
+    text-decoration: none;
+    background: #ececec;
+    border-radius: 2px;
+}
+.main.wrap .menu ul li a {
+    white-space: nowrap;
+    font-family: Roboto;
+    font-size: 13px;
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    text-align: left;
+    color: #4a4a4a;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 60px;
+    position: relative;
+}
+.main .wrap .menu ul li a i {
+    font-size: 18px;
+    height: 30px;
+   /*  text-align: center; */
+    width: 30px;
+    position: absolute;
+    top: 0;
+    left: 7px;
+    bottom: 0;
+    margin: auto;
+    line-height: 30px;
+    color: #999;
+}
+i.ico {
+    font-family: icomoon!important;
+}
+ .dropdown-menu>li>a {
+    display: block;
+    padding: 3px 20px;
+    /* line-height: 1.42857;
+    white-space: nowrap; */
+}
+.main .wrap .menu ul {
+    list-style: none;
+    display: block;
+    background: 0 0;
+    border: none;
+    width: 100%;
+    position: relative;
+    margin: 0;
+    z-index: 1;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.main .content-right {
+    width: 975px;
+    float: left;
+    margin-left: 5px;
+    position: relative;
+}
+.main .wrap .account-profile {
+    display: block;
+    margin-bottom: 20px;
+    width: 100%!important;
+    padding: 30px 20px 20px!important;
+    background: #fff;
+    border-radius: 4px;
+}
+.main .wrap .account-profile form {
+    width: 60%;
+}
+.main .wrap .account-profile {
+    display: block;
+    margin-bottom: 20px;
+    width: 100%!important;
+    padding: 30px 20px 20px!important;
+    background: #fff;
+    border-radius: 4px;
+}
+.main .wrap .account-profile .form-group {
+    margin-bottom: 15px;
+    position: relative;
+}
+.main .wrap .account-profile .form-group .control-label {
+    float: left;
+    width: 20%;
+    font-size: 13px;
+    margin-bottom: 0;
+}
+.main .wrap .account-profile .form-group .input-wrap {
+    float: left;
+    width: 405px;
+}
+.main .wrap .account-profile .form-group .input-wrap.margin {
+    margin-left: 20%;
+}
+.main .wrap .account-profile .form-group .input-wrap {
+    float: left;
+    width: 405px;
+}
+.main .wrap .account-profile .form-group .input-wrap .checkbox {
+    display: inline-block;
+    cursor: pointer;
+    font-size: 13px;
+}
+.main .wrap .account-profile .form-group .input-wrap {
+    float: left;
+    width: 405px;
+}
