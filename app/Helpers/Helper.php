@@ -4,15 +4,15 @@ if (!function_exists('multiple_lever_category')) {
     function multiple_lever_category($categories, $parent_id = 0, $char = '', $cat_parent_id = 0)
     {
         foreach ($categories as $key => $item) {
-            if ($item->parent_id == $parent_id) {
-                echo "<option value=\"" . $item->id . "\"";
-                echo ($cat_parent_id == $item->id) ? 'selected' : '';
+            if ($item->Id_NhomSp_Cha == $parent_id) {
+                echo "<option value=\"" . $item->Id_DanhMucSp . "\"";
+                echo ($cat_parent_id == $item->Id_DanhMucSp) ? 'selected' : '';
                 echo ">";
-                echo $char . $item->name;
+                echo $char . $item->TieuDe;
                 echo '</option>';
                 $categories->forget($key);
 
-                multiple_lever_category($categories, $item->id, $char . '|---', $cat_parent_id);
+                multiple_lever_category($categories, $item->Id_DanhMucSp, $char . '|---', $cat_parent_id);
             }
         }
     }
@@ -22,36 +22,30 @@ if (!function_exists('table_category')) {
     function table_category($categories, $parent_id = 0, $char = '')
     {
         foreach ($categories as $key => $item) {
-            if ($item->parent_id == $parent_id) {
+            if ($item->Id_NhomSp_Cha == $parent_id) {
 
                 echo '<tr>';
                 echo '<td>';
-                echo $item->id;
+                echo $item->Id_DanhMucSp;
                 echo '</td>';
                 echo '<td>';
-                echo $char . $item->name;
+                echo $char . $item->TieuDe;
                 echo '</td>';
                 echo '<td>';
-                echo $item->slug;
-                echo '</td>';
-                echo '<td>';
-                echo $item->product()->count();
-                echo '</td>';
-                echo '<td>';
-                if ($item->active == 1) {
+                if ($item->TrangThai == 1) {
                     echo '<label class="label label-success">Active</label>';
                 } else {
                     echo ' <label class="label label-danger">Ban</label>';
                 }
                 echo '</td>';
                 echo '<td>';
-                if (Auth::guard('admin')->user()->edit == 1) {
-                    echo "<a href =\"" . route('category.edit', ['id' => $item->id]) . "\" class=\"btn btn-action label label-success\">";
+                if (Auth::guard('admin')->user()->quyen == 1) {
+                    echo "<a href =\"" . route('category.edit', ['id' => $item->Id_DanhMucSp]) . "\" class=\"btn btn-action label label-success\">";
                     echo "<i class=\"fa fa-pencil\"></i></a>";
                 }
 
-                if (Auth::guard('admin')->user()->delete == 1 && $item->child()->count() == 0 && $item->product()->count() == 0) {
-                    echo "<form action=" . route('category.destroy', ['id' => $item->id]) . " method='post' class = 'inline' >";
+                if (Auth::guard('admin')->user()->quyen == 1 && $item->child()->count() == 0) {
+                    echo "<form action=" . route('category.destroy', ['id' => $item->Id_DanhMucSp]) . " method='post' class = 'inline' >";
                     echo csrf_field();
                     echo method_field('DELETE');
                     echo " <button type=\"submit\" onclick=\"return confirm('Bạn có chắc muốn xóa')\"
@@ -65,7 +59,7 @@ if (!function_exists('table_category')) {
 
                 $categories->forget($key);
 
-                table_category($categories, $item->id, $char . '|---');
+                table_category($categories, $item->Id_DanhMucSp, $char . '|---');
             }
         }
     }

@@ -29,7 +29,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Thông tin danh mục</label>
-                                <select class="form-control select2" style="width: 100%;" name="parent_id">
+                                <select class="form-control select2" style="width: 100%;" name="Id_NhomSp_Cha">
                                     <option value="0" selected="selected">Danh mục cha</option>
                                     @php multiple_lever_category($categories) @endphp;
                                 </select>
@@ -37,25 +37,25 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon">@</span>
-                                    <input type="text" class="form-control" placeholder="Nhập tên danh mục" name="name"
-                                           id="name" value="{{ old('name') }}">
+                                    <input type="text" class="form-control" placeholder="Nhập tên danh mục" name="TieuDe"
+                                           id="TieuDe" value="{{ old('TieuDe') }}">
                                 </div>
                             </div>
-                            @if($errors->has('name'))
+                            @if($errors->has('TieuDe'))
                                 <div class="help-block text-red">
-                                    * {!! $errors->first('name') !!}
+                                    * {!! $errors->first('TieuDe') !!}
                                 </div>
                             @endif
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                    <input type="text" readonly class="form-control" placeholder="Slug" name="slug" id="slug"
-                                           value="{{ old('slug') }}">
+                                    <input type="text" readonly class="form-control" placeholder="Slug" name="Slug" id="Slug"
+                                           value="{{ old('Slug') }}">
                                 </div>
                             </div>
-                            @if($errors->has('slug'))
+                            @if($errors->has('Slug'))
                                 <div class="help-block text-red">
-                                    * {!! $errors->first('slug') !!}
+                                    * {!! $errors->first('Slug') !!}
                                 </div>
                             @endif
                         </div>
@@ -64,11 +64,11 @@
                                 <label>Trạng thái</label>
                                 <div class="radio">
                                     <label>
-                                        <input type="radio" name="active" value="0">
+                                        <input type="radio" name="TrangThai" value="0">
                                         <span class="label label-danger">Ban</span>
                                     </label>
                                     <label>
-                                        <input checked type="radio" name="active" value="1">
+                                        <input checked type="radio" name="TrangThai" value="1">
                                         <span class="label label-success">Active</span>
                                     </label>
                                 </div>

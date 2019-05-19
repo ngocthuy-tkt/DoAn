@@ -17,7 +17,4 @@ class DanhMucSp extends Model
         return $this->hasMany(static::class,'Id_NhomSp_Cha','Id_DanhMucSp');
     }
 
-    public function categories() {
-        return $this->hasMany(Product::class,'Id_DanhMucSp','Id_SanPham');
-    }
 }

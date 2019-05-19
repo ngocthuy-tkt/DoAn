@@ -11,22 +11,22 @@ class CategoryController extends BackendController
 
     public function index()
     {
-        $categories = DanhMucSp::all();
-        $categories = $this->categoryRepository->all();
+        $categories = DanhMucSp::with('child')->orderBy('Id_DanhMucSp', 'desc')->get();
         $columns = [
-            'ID', 'Tiêu đề', 'mô tả','Slug', 'Id_NhomSp_Cha', 'trạng thái', 'Hành động'
+            'ID', 'Tiêu đề', 'Trạng thái', 'Hành động'
         ];
         return view('backend.category.index', compact('categories', 'columns'));
     }
 
     public function create()
     {
-        $categories = $this->categoryRepository->all();
+        $categories = DanhMucSp::with('child')->orderBy('Id_DanhMucSp', 'desc')->get();
         return view('backend.category.add', compact('categories'));
     }
 
     public function store(Request $request)
     {
+
         $this->validate($request, [
             'TieuDe' => 'required|unique:categories,TieuDe',
             'Slug' => 'required|unique:categories,Slug',
@@ -36,6 +36,7 @@ class CategoryController extends BackendController
             'Slug.required' => 'Slug danh mục không được để trống',
             'Slug.unique' => 'Slug danh mục đã tồn tại',
         ]);
+        dd($request);
         $request->offsetunset('_token');
         if (DanhMucSp::create($request->all())) {
             return redirect()->back()->with('success', 'Thêm mới danh mục thành công');
