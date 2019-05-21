@@ -1,0 +1,282 @@
+/* reset css*/
+*{margin: 0; padding:0}
+
+.wrapper{
+	width: 1200px;
+	margin: 0 auto;
+}
+
+#header{
+	width:100%;
+	height:200px;
+	float:left;
+}
+
+#header #header_p1{
+	width:100%;
+	height:100px;
+	float:left;
+}
+
+#header #header_p1 #logo{
+	width:153px;
+	height:100px;
+	float:left;
+}
+
+#header #header_p1 #logo img{
+	width:100%;
+}
+
+#header #header_p1 #chamngon{
+	width:700px; 
+	height:100px;
+	float:left;
+}
+
+#header #header_p1 #chamngon p{
+	font-family:Amazone;
+	font-size:24px;
+	text-align:center;
+	color:#6C2989;
+	margin: 30px 0px;
+}
+
+#header #header_p1 #phone{
+	float:left;
+	
+}
+
+#header #search {
+	width:100%;
+	height:50px;
+	background:#C3C7F7;
+	float:left;
+	position: relative;
+}
+
+#header #search #timkiem{
+	width: 800px;
+	height:50px;
+	float:left;
+}
+
+#header #search #timkiem #txtSearch{
+    font-size: 17px;
+    text-indent: 15px;
+    padding: 7px 20px;
+    border-radius: 10px;
+    border: solid 1px gray;
+    margin: 7px 72px;
+}
+
+#header #search #timkiem img{
+	width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 16px;
+    left: 782px;
+}
+
+#header #search #canhan{
+	float:left;
+	width:200px;
+	height:50px;
+}
+
+#header #search #canhan ul{
+	float:left;
+	width:200px;
+	height:50px;
+	list-style-type:none;
+}
+
+#header #search #canhan ul li{
+	width:60px;
+	height:50px;
+	float:left;
+}
+
+#header #search #canhan ul li img{
+	width:50%;
+	margin: 11px 15px;
+}
+
+#header #header_p2{
+	width:100%;
+	height:60px;
+	background:#BCAFFE;
+	float:left;
+}
+
+#header #header_p2 #menu{
+	float:left;
+	width:1200px;
+	height:60px;
+}
+
+#header #header_p2 #menu ul{
+	list-style-type:none;
+	float:left;
+	width:1200px;
+	height:60px;
+}
+
+#header #header_p2 #menu ul li{
+	width:145px;
+	height:60px;
+	float:left;
+	text-transform: uppercase;
+	font-size:18px;
+	text-align:center;
+	color:#ffffff;
+}
+
+#header #header_p2 #menu ul li p{
+	margin: 19px 0px;
+}
+
+#header #header_p2 #menu ul li p:hover{
+	text-decoration:underline #ffffff;
+}
+
+/*----------nội dung----------------------*/
+
+#content{
+	min-height:900px;
+}
+#content #danhmuc{
+	width:300px;
+	height:500px;
+	float:left;
+	margin-top:10px;
+}
+
+#content #danhmuc ul{
+	list-style-type:none;
+	width:300px;
+	height:500px;
+	float:left;
+}
+
+#content #danhmuc ul li{
+	width: 250px;
+	height:35px;
+}
+
+#content #danhmuc ul li:hover{
+	color:#0F5CAA;
+	text-decoration: underline;
+}
+
+
+#content #danhmuc h3{
+	margin-bottom:20px;
+	font-size:25px;
+}
+/*nội dung*/
+#content .sanpham{
+	width:685px;
+	height:570px;
+	float:left;
+	margin-left:20px;
+}
+
+#content .sanpham table{
+	width:685px;
+	border-collapse: collapse;
+}
+
+#content .sanpham td{
+	text-align:center;
+	font-size:18px;
+	height:60px
+}
+
+#content .sanpham td#anhsp{
+	width:160px;
+}
+
+#content .sanpham td#anhsp img{
+	width:80%;
+	margin: 10px 0px;
+}
+
+#content .sanpham td#ten{
+	color:#BCAFFE;
+}
+
+#content .sanpham select#size{
+	width:65px;
+	height:30px;
+	margin:5px 0px 20px 0px;
+}
+
+#content .sanpham label.soluong{
+	border: solid 1px gray;
+	padding: 8px 10px 8px 10px;
+}
+
+#content .sanpham td#icon_xoa img{
+	width:15%;
+}
+/*----------footer----------------------*/
+
+#footer {
+	width:100%;
+	height:161px;
+	float:left;
+}
+
+#footer #ketnoi{
+	width:100%;
+	height:40px;
+	border-top: solid 1px gray;
+}
+
+#footer #ketnoi ul{
+	width: 450px;
+    height: 40px;
+    list-style-type: none;
+    float: left;
+    margin: 10px 374px;
+}
+
+#footer #ketnoi ul li{
+	width:150px;
+	height:40px;
+	float:left;
+}
+
+#footer #ketnoi ul li img#icon_fb{
+	width:28%;
+}
+
+#footer #ketnoi ul li img#icon_int{
+	width:45%;
+}
+
+#footer #ketnoi ul li img#icon_tv{
+	width:26%;
+}
+
+#footer #kt{
+	width:100%;
+	height:80px;
+	margin-top:25px;
+	background:#B8BCEC;
+	text-align:center;
+}
+#footer #kt p{
+	padding-top:22px;
+}
+
+
+
+
+
+
+
+
+
+

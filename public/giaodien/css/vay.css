@@ -1,0 +1,66 @@
+/* reset css*/
+*{margin: 0; padding:0}
+
+.wrapper{
+	width: 1200px;
+	margin: 0 auto;
+}
+
+/*-------nội dung--------------------------------*/
+
+#content{
+	min-height:1200px;
+}
+
+#content .product{
+	width:100%;
+	min-height:500px;
+	float:left;
+	margin-top:50px;
+}
+
+#content .product .ds_sanpham{
+	width:1200px;
+	min-height:800px;
+}
+
+#content .product .ds_sanpham ul{
+	list-style-type:none;
+	width:1200px;
+	min-height:500px;
+}
+
+#content .product .ds_sanpham ul li{
+	width:280px;
+	height:420px;
+	float:left;
+	margin-right:20px;
+	position:relative;
+}
+
+#content .product .ds_sanpham ul li img{
+	width:100%;
+}
+
+#content .product .ds_sanpham ul li .khuyenmai{
+	left: 10px;
+    right: auto;
+    bottom: 384px;
+    background: #f28902;
+    color: #FFF;
+    padding: 5px 3px;
+    border-radius: 5px;
+    position: absolute;
+}
+
+#content .product .ds_sanpham ul li h4{
+	margin:10px 0px 5px 0px;
+	font-size:17px;
+}
+
+#content .product .ds_sanpham ul li p.gia{
+	color:#B3603C;
+	font-size:17px;
+}
+
+

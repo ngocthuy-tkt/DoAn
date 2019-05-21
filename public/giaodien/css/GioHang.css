@@ -1,0 +1,72 @@
+/* reset css*/
+*{margin: 0; padding:0}
+
+.wrapper{
+	width: 1200px;
+	margin: 0 auto;
+}
+
+
+/*----------nội dung----------------------*/
+
+#content{
+	min-height:600px;
+}
+
+#content .product{
+	width:100%;
+	min-height:380px;
+	float:left;
+	margin-top:50px;
+}
+
+#content .sanpham{
+	width:1200px;
+}
+
+#content .sanpham table{
+	width:1200px;
+	border-collapse: collapse;
+}
+
+#content .sanpham td{
+	text-align:center;
+	font-size:18px;
+}
+
+#content .sanpham td#anhsp{
+	width:160px;
+}
+
+#content .sanpham td#anhsp img{
+	width:80%;
+	margin: 10px 0px;
+}
+
+#content .sanpham td#ten{
+	color:#BCAFFE;
+}
+
+#content .sanpham select#size{
+	width:65px;
+	height:30px;
+	margin:5px 0px 20px 0px;
+}
+
+#content .sanpham label.soluong{
+	border: solid 1px gray;
+	padding: 8px 10px 8px 10px;
+}
+
+#content .sanpham td#icon_xoa img{
+	width:15%;
+}
+
+
+
+
+
+
+
+
+
