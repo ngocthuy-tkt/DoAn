@@ -25,32 +25,30 @@ class ProductRequest extends FormRequest
     {
 //        dd($this->get('id'));
         return [
-            'name' => 'required|unique:products,name,' . $this->get('id') . ',id',
-            'slug' => 'required|unique:products,slug,' . $this->get('id') . ',id',
-            'price' => 'required|numeric|min:4',
+            'TenSp' => 'required|unique:sanpham,TenSp,' . $this->get('id') . ',id',
+            'DonGia' => 'required|numeric|min:4',
             'discount_price' => 'numeric|min:0',
-            'quantity' => 'required|numeric|min:0',
-            'category_id' => 'required',
-            'author_id' => 'required',
-            'publishing_house_id' => 'required',
-            'upload_product' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'SoLuong' => 'required|numeric|min:0',
+            'Id_DanhMucSp' => 'required',
+            'MaSP' => 'required',
+            'AnhChinh' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
 
     public function messages()
     {
         return [
-            'name.required' => 'Tên sản phẩm không được để trống',
-            'name.unique' => 'Sản phẩm đã tồn tại',
-            'slug.required' => 'Đường dẫn không được để trống',
-            'slug.unique' => 'Đường dẫn đã tồn tại',
-            'price.required' => 'Không được để trống giá',
-            'price.numeric' => 'Giá phải là số',
+            'TenSp.required' => 'Tên sản phẩm không được để trống',
+            'TenSp.unique' => 'Sản phẩm đã tồn tại',
+            'DonGia.required' => 'Không được để trống giá',
+            'DonGia.numeric' => 'Giá phải là số',
             'discount_price.numeric' => 'Giá phải là số',
-            'quantity.required' => 'Số lượng không được để trống',
-            'quantity.numeric' => 'Số lượng phải là số',
-            'upload_product.image' => 'File phải là ảnh',
-            'upload_product.max' => 'Dung lượng file quá lớn',
+            'SoLuong.required' => 'Số lượng không được để trống',
+            'SoLuong.numeric' => 'Số lượng phải là số',
+            'Id_DanhMucSp.required' => 'Danh mục không được để trống',
+            'MaSP.required' => 'Mã sản phẩm không được để trống',
+            'AnhChinh.image' => 'File phải là ảnh',
+            'AnhChinh.max' => 'Dung lượng file quá lớn',
         ];
     }
 }

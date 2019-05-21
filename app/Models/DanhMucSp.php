@@ -8,6 +8,7 @@ class DanhMucSp extends Model
 {
     protected $table = 'danhmucsanpham';
     protected $primaryKey = 'Id_DanhMucSp';
+    public $timestamps = false;
 
     protected $fillable = [
         'TieuDe', 'MoTa','Slug', 'Id_NhomSp_Cha', 'TrangThai', 'NgayTao'

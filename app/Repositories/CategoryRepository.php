@@ -16,13 +16,13 @@ class CategoryRepository implements CategoryInterface
 
     public function all()
     {
-        $categories = Category::with(['child', 'product'])->orderBy('id', 'desc')->get();
+        $categories = Category::with(['child', 'product'])->orderBy('Id_DanhMucSp', 'desc')->get();
         return (isset($categories)) ? $categories : false;
     }
 
     public function findById($id)
     {
-        $cat = Category::with(['child', 'product'])->where('id', '=', $id)->first();
+        $cat = Category::with(['child', 'product'])->where('Id_DanhMucSp', '=', $id)->first();
         return (isset($cat)) ? $cat : false;
     }
 
@@ -31,7 +31,7 @@ class CategoryRepository implements CategoryInterface
         $cat = $this->findById($id);
         $categories = $this->all();
         foreach ($categories as $key => $item) {
-            if ($item->parent_id == $cat->id || $item->id == $cat->id) {
+            if ($item->Id_NhomSp_Cha == $cat->id || $item->id == $cat->id) {
                 $categories->forget($key);
             }
         }
@@ -41,8 +41,8 @@ class CategoryRepository implements CategoryInterface
     public function allActive()
     {
         $categories = Category::with('child')
-            ->where('active', '=', 1)
-            ->orderBy('id', 'desc')
+            ->where('TrangThai', '=', 1)
+            ->orderBy('Id_DanhMucSp', 'desc')
             ->get();
         return (isset($categories)) ? $categories : false;
     }

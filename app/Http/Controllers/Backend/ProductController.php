@@ -21,23 +21,23 @@ class ProductController extends BackendController
     public function create()
     {
         $categories = $this->categoryRepository->all();
-        $authors = $this->authorRepository->all();
-        $pubs = $this->publishingHouseRepository->all();
-        return view('backend.product.add', compact('categories', 'authors', 'pubs'));
+        // $authors = $this->authorRepository->all();
+        // $pubs = $this->publishingHouseRepository->all();
+        return view('backend.product.add', compact('categories'));
     }
 
     public function store(ProductRequest $request)
-    {
+    {dd($request->all());
         $request->offsetunset('_token');
         $imgName = '';
-        if ($request->hasFile('upload_product')) {
-            $image = $request->file('upload_product');
+        if ($request->hasFile('AnhChinh')) {
+            $image = $request->file('AnhChinh');
             $imgName = time() . '.' . $image->getClientOriginalExtension();
             Storage::disk('product')->put($imgName, file_get_contents($image));
         }
 
         $request->merge([
-            'image' => $imgName,
+            'AnhChinh' => $imgName,
         ]);
 
         if (Product::create($request->all())) {

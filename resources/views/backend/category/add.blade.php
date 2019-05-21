@@ -49,15 +49,10 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                    <input type="text" readonly class="form-control" placeholder="Slug" name="Slug" id="Slug"
-                                           value="{{ old('Slug') }}">
+                                    <input type="text" class="form-control" placeholder="Mô tả" name="MoTa" id="MoTa"
+                                           value="{{ old('MoTa') }}">
                                 </div>
                             </div>
-                            @if($errors->has('Slug'))
-                                <div class="help-block text-red">
-                                    * {!! $errors->first('Slug') !!}
-                                </div>
-                            @endif
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">

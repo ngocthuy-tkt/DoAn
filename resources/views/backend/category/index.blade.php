@@ -25,6 +25,9 @@
                     <div class="box-header">
                         <h3 class="box-title">Danh sách danh mục (k được xóa danh mục có sản phẩm)</h3>
                     </div>
+                    <div class="box-header">
+                        <a href="{{ route('category.create') }}" class="btn btn-sm btn-success">Thêm mới</a>
+                    </div>
                     <!-- /.box-header -->
                     <div class="box-body table-responsive">
                         <table id="data_table" class="table table-bordered table-striped">

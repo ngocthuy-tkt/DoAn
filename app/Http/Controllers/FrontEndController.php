@@ -22,8 +22,8 @@ class FrontEndController extends Controller
     public function header()
     {
         $categories = Category::with('child')
-            ->where('active', '=', 1)
-            ->orderBy('id', 'desc')
+            ->where('TrangThai', '=', 1)
+            ->orderBy('Id_DanhMucSp', 'desc')
             ->get();
         View::share(compact('categories'));
     }

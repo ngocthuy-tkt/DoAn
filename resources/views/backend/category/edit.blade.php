@@ -18,7 +18,7 @@
     </section>
     <!-- Main content -->
     <section class="content">
-        <form action="{{ route('category.update',['id' => $cat->id]) }}" method="POST">
+        <form action="{{ route('category.update',['id' => $cat->Id_DanhMucSp]) }}" method="POST">
             {{ csrf_field() }}
             {{ method_field('PUT')}}
             <div class="box box-danger">
@@ -30,49 +30,43 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Thông tin danh mục</label>
-                                <select class="form-control select2" style="width: 100%;" name="parent_id">
-
+                                <select class="form-control select2" style="width: 100%;" name="Id_NhomSp_Cha">
                                     <option value="0">Danh mục cha</option>
-                                    @php multiple_lever_category($categories,0,'',$cat->parent_id) @endphp;
+                                    @php multiple_lever_category($categories,0,'',$cat->    Id_NhomSp_Cha) @endphp;
                                 </select>
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon">@</span>
-                                    <input type="text" class="form-control" placeholder="Nhập tên danh mục" name="name"
-                                           id="name" value="{{ $cat->name }}">
+                                    <input type="text" class="form-control" placeholder="Nhập tên danh mục" name="TieuDe"
+                                           id="TieuDe" value="{{ $cat->TieuDe }}">
                                 </div>
                             </div>
-                            @if($errors->has('name'))
+                            @if($errors->has('TieuDe'))
                                 <div class="help-block text-red">
-                                    * {!! $errors->first('name') !!}
+                                    * {!! $errors->first('TieuDe') !!}
                                 </div>
                             @endif
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                    <input type="text" readonly class="form-control" placeholder="Slug" name="slug" id="slug"
-                                           value="{{ $cat->slug }}">
+                                    <input type="text" class="form-control" placeholder="Mô tả" name="MoTa" id="MoTa"
+                                           value="{{ $cat->MoTa }}">
                                 </div>
                             </div>
-                            @if($errors->has('slug'))
-                                <div class="help-block text-red">
-                                    * {!! $errors->first('slug') !!}
-                                </div>
-                            @endif
 
                         </div>
                         <div class="col-md-6">
                             <label>Trạng thái</label>
                             <div class="radio">
                                 <label>
-                                    <input <?php $checked = ($cat->active == 0) ? 'checked' : ''; ?> type="radio"
-                                           name="active" value="0" {{$checked}}>
+                                    <input <?php $checked = ($cat->TrangThai == 0) ? 'checked' : ''; ?> type="radio"
+                                           name="TrangThai" value="0" {{$checked}}>
                                     <span class="label label-danger">Ban</span>
                                 </label>
                                 <label>
-                                    <input <?php $checked = ($cat->active == 1) ? 'checked' : ''; ?> type="radio"
-                                           name="active" value="1" {{$checked}}>
+                                    <input <?php $checked = ($cat->TrangThai == 1) ? 'checked' : ''; ?> type="radio"
+                                           name="TrangThai" value="1" {{$checked}}>
                                     <span class="label label-success">Active</span>
                                 </label>
                             </div>

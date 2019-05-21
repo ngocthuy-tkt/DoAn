@@ -29,7 +29,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Thông tin sản phẩm</label>
-                                <select class="form-control select2" style="width: 100%;" name="category_id">
+                                <select class="form-control select2" style="width: 100%;" name="Id_DanhMucSp">
                                     <option value="">|--- Chọn danh mục ---|</option>
                                     @php multiple_lever_category($categories) @endphp;
                                 </select>
@@ -37,38 +37,37 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon">@</span>
-                                    <input type="text" class="form-control" placeholder="Nhập tên sản phẩm" name="name"
-                                           id="name" value="{{ old('name') }}">
+                                    <input type="text" class="form-control" placeholder="Mã sản phẩm" name="MaSP"
+                                           id="MaSP" value="{{ old('MaSP') }}">
                                 </div>
                             </div>
-                            @if($errors->has('name'))
+                            @if($errors->has('MaSP'))
                                 <div class="help-block text-red">
-                                    * {!! $errors->first('name') !!}
+                                    * {!! $errors->first('MaSP') !!}
                                 </div>
                             @endif
                             <div class="form-group">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                    <input type="text" readonly class="form-control" placeholder="Slug" name="slug"
-                                           id="slug"
-                                           value="{{ old('slug') }}">
+                                    <span class="input-group-addon">@</span>
+                                    <input type="text" class="form-control" placeholder="Nhập tên sản phẩm" name="TenSp"
+                                           id="TenSp" value="{{ old('TenSp') }}">
                                 </div>
                             </div>
-                            @if($errors->has('slug'))
+                            @if($errors->has('TenSp'))
                                 <div class="help-block text-red">
-                                    * {!! $errors->first('slug') !!}
+                                    * {!! $errors->first('TenSp') !!}
                                 </div>
                             @endif
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon">$</span>
-                                    <input type="number" class="form-control" placeholder="Giá sản phẩm" name="price"
-                                           value="{{ old('price') }}">
+                                    <input type="number" class="form-control" placeholder="Giá sản phẩm" name="DonGia"
+                                           value="{{ old('DonGia') }}">
                                 </div>
                             </div>
-                            @if($errors->has('price'))
+                            @if($errors->has('DonGia'))
                                 <div class="help-block text-red">
-                                    * {!! $errors->first('price') !!}
+                                    * {!! $errors->first('DonGia') !!}
                                 </div>
                             @endif
                             <div class="form-group">
@@ -88,56 +87,41 @@
                                 <div class="input-group">
                                     <span class="input-group-addon">$</span>
                                     <input type="number" class="form-control" placeholder="Số sản phẩm hiện có"
-                                           name="quantity"
-                                           value="{{ (empty(old('quantity'))) ? 0 : old('quantity')  }}">
+                                           name="SoLuong"
+                                           value="{{ (empty(old('SoLuong'))) ? 0 : old('SoLuong')  }}">
                                 </div>
                             </div>
-                            @if($errors->has('quantity'))
+                            @if($errors->has('SoLuong'))
                                 <div class="help-block text-red">
-                                    * {!! $errors->first('quantity') !!}
+                                    * {!! $errors->first('SoLuong') !!}
                                 </div>
                             @endif
-                            <div class="form-group">
-                                <label>Tác giả</label>
-                                <select class="form-control select2" style="width: 100%;" name="author_id">
-                                    @foreach($authors as $author)
-                                        <option value="{{$author->id}}">{{$author->name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Nhà xuất bản</label>
-                                <select class="form-control select2" style="width: 100%;" name="publishing_house_id">
-                                    @foreach($pubs as $pub)
-                                        <option value="{{$pub->id}}">{{$pub->name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                            
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Ảnh sản phẩm</label>
                                 <div class="show-avatar show-product-img">
                                     <img src="" alt="" id="img">
-                                    <input type="file" name="upload_product" id="upload_img" style="display: none">
+                                    <input type="file" name="AnhChinh" id="upload_img" style="display: none">
                                     <a id="browse_file" class="btn btn-success"><i class="fa fa-file-image-o"></i> Chọn
                                         ảnh</a>
                                 </div>
                             </div>
-                            @if($errors->has('upload_product'))
+                            @if($errors->has('AnhChinh'))
                                 <div class="help-block text-red">
-                                    * {!! $errors->first('upload_product') !!}
+                                    * {!! $errors->first('AnhChinh') !!}
                                 </div>
                             @endif
                             <div class="form-group">
                                 <label>Trạng thái</label>
                                 <div class="radio">
                                     <label>
-                                        <input type="radio" name="active" value="0">
+                                        <input type="radio" name="TrangThai" value="0">
                                         <span class="label label-warning">Ban</span>
                                     </label>
                                     <label>
-                                        <input checked type="radio" name="active" value="1">
+                                        <input checked type="radio" name="TrangThai" value="1">
                                         <span class="label label-success">Active</span>
                                     </label>
                                 </div>
@@ -146,11 +130,11 @@
                                 <label>Hot</label>
                                 <div class="radio">
                                     <label>
-                                        <input type="radio" name="hot" value="0">
+                                        <input type="radio" name="Sp_Hot" value="0">
                                         <span class="label label-violet">Không</span>
                                     </label>
                                     <label>
-                                        <input checked type="radio" name="hot" value="1">
+                                        <input checked type="radio" name="Sp_Hot" value="1">
                                         <span class="label label-danger">Hot</span>
                                     </label>
                                 </div>

@@ -6,15 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    protected $table = 'products';
-    protected $primaryKey = 'id';
+    protected $table = 'sanpham';
+    protected $primaryKey = 'Id_SanPham';
 
     protected $fillable = [
-        'name', 'slug', 'price', 'discount_price', 'category_id', 'author_id', 'publishing_house_id', 'image', 'quantity', 'hot', 'active'
+        'Id_DanhMucSp', 'MaSP', 'TenSp', 'DonGia', 'Id_KhuyenMai', 'SoLuong', 'NgayTao', 'TrangThai', 'LuotXem', 'AnhChinh', 'Sp_Hot'
     ];
 
     public function category() {
-        return $this->belongsTo(Category::class,'category_id','id');
+        return $this->belongsTo(Category::class,'Id_DanhMucSp','id');
     }
 
     public function author() {

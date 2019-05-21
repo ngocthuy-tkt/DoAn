@@ -19,14 +19,14 @@ class ProductRepository implements ProductInterface
     public function all()
     {
         $products = Product::with(['category', 'author'])
-            ->orderBy('id', 'desc')
+            ->orderBy('Id_SanPham', 'desc')
             ->get();
         return (isset($products)) ? $products : false;
     }
 
     public function findById($id)
     {
-        $product = Product::where('id', '=', $id)
+        $product = Product::where('Id_SanPham', '=', $id)
             ->with(['category', 'author'])
             ->first();
         return (isset($product)) ? $product : false;

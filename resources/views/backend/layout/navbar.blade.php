@@ -25,7 +25,6 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="{{route('category.index')}}"><i class="fa fa-circle-o"></i> Danh sách</a></li>
-                    <li><a href="{{route('category.create')}}"><i class="fa fa-circle-o"></i> Thêm mới</a></li>
                 </ul>
             </li>
 
@@ -35,7 +34,6 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="{{route('products.index')}}"><i class="fa fa-circle-o"></i> Danh sách</a></li>
-                    <li><a href="{{route('products.create')}}"><i class="fa fa-circle-o"></i> Thêm mới</a></li>
                 </ul>
             </li>
 
