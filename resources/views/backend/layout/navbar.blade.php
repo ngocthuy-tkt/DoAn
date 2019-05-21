@@ -20,7 +20,7 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree" data-animation-speed="300">
             <li class="treeview">
-                <a href="javascript:void(0)"><i class="fa fa-navicon"></i><span>Danh mục</span>
+                <a href="javascript:void(0)"><i class="fa fa-navicon"></i><span>Danh mục sản phẩm</span>
                     <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                 </a>
                 <ul class="treeview-menu">
@@ -48,35 +48,6 @@
                 </ul>
             </li>
 
-            <li class="treeview">
-                <a href="javascript:void(0)"><i class="fa fa-image"></i><span>Banner</span>
-                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="{{route('banner.index')}}"><i class="fa fa-circle-o"></i> Danh sách</a></li>
-                    <li><a href="{{route('banner.create')}}"><i class="fa fa-circle-o"></i> Thêm mới</a></li>
-                </ul>
-            </li>
-
-            <li class="treeview">
-                <a href="javascript:void(0)"><i class="fa fa-paint-brush"></i><span>Tác giả</span>
-                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="{{route('author.index')}}"><i class="fa fa-circle-o"></i> Danh sách</a></li>
-                    <li><a href="{{route('author.create')}}"><i class="fa fa-circle-o"></i> Thêm mới</a></li>
-                </ul>
-            </li>
-
-            <li class="treeview">
-                <a href="javascript:void(0)"><i class="fa fa-institution"></i><span>Nhà xuất bản</span>
-                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="{{route('publishing_house.index')}}"><i class="fa fa-circle-o"></i> Danh sách</a></li>
-                    <li><a href="{{route('publishing_house.create')}}"><i class="fa fa-circle-o"></i> Thêm mới</a></li>
-                </ul>
-            </li>
 
             <li class="treeview">
                 <a href="javascript:void(0)"><i class="fa fa-users"></i><span>Tài khoản khách hàng</span>
@@ -89,7 +60,7 @@
             </li>
 
             <li class="treeview">
-                <a href="javascript:void(0)"><i class="fa fa-user"></i><span>Tài khoản quản trị</span>
+                <a href="javascript:void(0)"><i class="fa fa-user"></i><span>nhân viên</span>
                     <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                 </a>
                 <ul class="treeview-menu">
@@ -103,8 +74,17 @@
                     <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{route('administration.index')}}"><i class="fa fa-circle-o"></i> hóa đơn bán</a></li>
-                    <li><a href="{{route('administration.create')}}"><i class="fa fa-circle-o"></i> hóa đơn mua</a></li>
+                    <li><a href=""><i class="fa fa-circle-o"></i> hóa đơn bán</a></li>
+                    <li><a href=""><i class="fa fa-circle-o"></i> hóa đơn mua</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="javascript:void(0)"><i class="fa fa-user"></i><span>Đổi hàng</span>
+                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href=""><i class="fa fa-circle-o"></i> Phiếu nhập</a></li>
+                    <li><a href=""><i class="fa fa-circle-o"></i> Tồn kho</a></li>
                 </ul>
             </li>
         </ul>
