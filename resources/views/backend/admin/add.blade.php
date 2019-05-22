@@ -31,34 +31,34 @@
                                 <label>Thông tin tài khoản</label>
                                 <div class="input-group">
                                     <span class="input-group-addon">@</span>
-                                    <input type="text" class="form-control" placeholder="Nhập họ và tên" name="fullname" id="fullname"  value="{{ old('fullname') }}">
+                                    <input type="text" class="form-control" placeholder="Mã nhân viên" name="MaNV" id="MaNV"  value="{{ old('MaNV') }}">
                                 </div>
                             </div>
-                            @if($errors->has('fullname'))
+                            @if($errors->has('MaNV'))
                                 <div class="help-block text-red">
-                                    * {!! $errors->first('fullname') !!}
+                                    * {!! $errors->first('MaNV') !!}
                                 </div>
                             @endif
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                    <input type="text" class="form-control" placeholder="Tên đăng nhập" name="username" value="{{ old('username') }}">
+                                    <input type="text" class="form-control" placeholder="Tên đăng nhập" name="HoTen" value="{{ old('HoTen') }}">
                                 </div>
                             </div>
-                            @if($errors->has('username'))
+                            @if($errors->has('HoTen'))
                                 <div class="help-block text-red">
-                                    * {!! $errors->first('username') !!}
+                                    * {!! $errors->first('HoTen') !!}
                                 </div>
                             @endif
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-eye-slash"></i></span>
-                                    <input type="password" class="form-control" placeholder="Nhập mật khẩu" name="password">
+                                    <input type="password" class="form-control" placeholder="Nhập mật khẩu" name="MatKhau">
                                 </div>
                             </div>
-                            @if($errors->has('password'))
+                            @if($errors->has('MatKhau'))
                                 <div class="help-block text-red">
-                                    * {!! $errors->first('password') !!}
+                                    * {!! $errors->first('MatKhau') !!}
                                 </div>
                             @endif
                             <div class="form-group">
@@ -72,15 +72,15 @@
                             <!-- Minimal style -->
                             <div class="form-group">
                                 <label>Quyền</label>
-                                <select class="form-control select2" style="width: 100%;" name="role">
+                                <select class="form-control select2" style="width: 100%;" name="quyen">
                                     <option value="1" selected="selected">Super Admin</option>
                                     <option value="2">Nhân viên bán hàng</option>
                                     <option value="3">Nhân viên kho</option>
                                 </select>
                             </div>
-                            @if($errors->has('role'))
+                            @if($errors->has('quyen'))
                                 <div class="help-block text-red">
-                                    * {!! $errors->first('role') !!}
+                                    * {!! $errors->first('quyen') !!}
                                 </div>
                             @endif
                         </div>

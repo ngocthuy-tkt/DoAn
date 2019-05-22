@@ -29,31 +29,34 @@ class AdminController extends BackendController
     {
         $this->validate($request,
             [
-                'fullname' => 'required',
-                'username' => 'required|min:5|max:50|unique:nhanvien,MaNV',
-                'password' => 'required|min:4|confirmed',
-                'role'     => 'required'
+                'MaNV' => 'required',
+                'HoTen' => 'required|min:5|max:50|unique:nhanvien,MaNV',
+                'MatKhau' => 'required|min:4|confirmed',
+                'password_confirmation' => 'required|required_with:MatKhau|same:MatKhau',
+                'quyen'     => 'required'
             ],[
-                'fullname.required' => 'Họ tên không được để trống',
-                'username.required' => 'Tên đăng nhập không được để trống',
-                'username.min' => 'Tên đăng nhập quá ngắn',
-                'username.max' => 'Tên đăng nhập quá dài',
-                'username.unique' => 'Tên đăng nhập đã tồn tại',
-                'password.required' => 'Bạn chưa nhập mật khẩu',
-                'password.confirmed' => 'Mật khẩu không khớp',
-                'password.min' => 'Mật khẩu quá ngắn',
+                'MaNV.required' => 'Mã nhân viên không được để trống',
+                'HoTen.required' => 'Tên đăng nhập không được để trống',
+                'HoTen.min' => 'Tên đăng nhập quá ngắn',
+                'HoTen.max' => 'Tên đăng nhập quá dài',
+                'HoTen.unique' => 'Tên đăng nhập đã tồn tại',
+                'MatKhau.required' => 'Bạn chưa nhập mật khẩu',
+                'MatKhau.confirmed' => 'Mật khẩu không khớp',
+                'MatKhau.min' => 'Mật khẩu quá ngắn',
+                'quyen.required' => 'Mật khẩu quá ngắn',
+                'password_confirmation.required' => 'Bạn chưa nhập lại mật khẩu'
             ]
         );
 
         $request->offsetunset('_token');
 
         $request->merge([
-            'MaNV'    => $request->username,
-            'HoTen'    => $request->fullname,
-            'quyen'    => $request->role,
-            'MatKhau' => bcrypt($request->password)
+            'MaNV'    => $request->MaNV,
+            'HoTen'    => $request->HoTen,
+            'quyen'    => $request->quyen,
+            'MatKhau' => bcrypt($request->MatKhau)
         ]);
-        // create new product
+        // create new nhân viên
         if (NhanVien::create($request->all())) {
             return redirect()->back()->with('success','Thêm mới tài khoản quản trị thành công');
         }else{

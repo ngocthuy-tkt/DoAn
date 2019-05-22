@@ -63,7 +63,6 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="{{route('administration.index')}}"><i class="fa fa-circle-o"></i> Danh sách</a></li>
-                    <li><a href="{{route('administration.create')}}"><i class="fa fa-circle-o"></i> Thêm mới</a></li>
                 </ul>
             </li>
 
