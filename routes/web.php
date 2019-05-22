@@ -18,14 +18,14 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::get('/', 'Backend\DashboardController@index')->name('admin');
 
-    Route::resource('administration', 'backend\AdminController', ['only' => ['index', 'create', 'store', 'edit', 'update', 'destroy']]);
-    Route::resource('users', 'backend\UserController', ['only' => ['index', 'create', 'store', 'edit', 'update', 'destroy']]);
-    Route::resource('category', 'backend\CategoryController', ['only' => ['index', 'create', 'store', 'edit', 'update', 'destroy']]);
-    Route::resource('author', 'backend\AuthorController', ['only' => ['index', 'create', 'store', 'edit', 'update', 'destroy']]);
-    Route::resource('publishing_house', 'backend\PublishingHouseController', ['only' => ['index', 'create', 'store', 'edit', 'update', 'destroy']]);
-    Route::resource('products', 'backend\ProductController', ['only' => ['index', 'create', 'store', 'edit', 'update', 'destroy']]);
-    Route::resource('banner', 'backend\BannerController', ['only' => ['index', 'create', 'store', 'edit', 'update', 'destroy']]);
-    Route::resource('order', 'backend\OrderController', ['only' => ['index', 'edit', 'update']]);
+    Route::resource('administration', 'Backend\AdminController', ['only' => ['index', 'create', 'store', 'edit', 'update', 'destroy']]);
+    Route::resource('users', 'Backend\UserController', ['only' => ['index', 'create', 'store', 'edit', 'update', 'destroy']]);
+    Route::resource('category', 'Backend\CategoryController', ['only' => ['index', 'create', 'store', 'edit', 'update', 'destroy']]);
+    Route::resource('author', 'Backend\AuthorController', ['only' => ['index', 'create', 'store', 'edit', 'update', 'destroy']]);
+    Route::resource('publishing_house', 'Backend\PublishingHouseController', ['only' => ['index', 'create', 'store', 'edit', 'update', 'destroy']]);
+    Route::resource('products', 'Backend\ProductController', ['only' => ['index', 'create', 'store', 'edit', 'update', 'destroy']]);
+    Route::resource('banner', 'Backend\BannerController', ['only' => ['index', 'create', 'store', 'edit', 'update', 'destroy']]);
+    Route::resource('order', 'Backend\OrderController', ['only' => ['index', 'edit', 'update']]);
 
 });
 

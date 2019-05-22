@@ -114,6 +114,20 @@
                                 </div>
                             @endif
                             <div class="form-group">
+                                <label>Ảnh mô tả</label>
+                                <div class="show-avatar show-product-img">
+                                    <img src="" alt="" id="img">
+                                    <input type="file" name="AnhPhu" id="upload_img" style="display: none">
+                                    <a id="browse_file" class="btn btn-success"><i class="fa fa-file-image-o"></i> Chọn
+                                        ảnh</a>
+                                </div>
+                            </div>
+                            @if($errors->has('AnhPhu'))
+                                <div class="help-block text-red">
+                                    * {!! $errors->first('AnhPhu') !!}
+                                </div>
+                            @endif
+                            <div class="form-group">
                                 <label>Trạng thái</label>
                                 <div class="radio">
                                     <label>
