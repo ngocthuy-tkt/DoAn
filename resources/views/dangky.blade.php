@@ -18,7 +18,7 @@
                     <form action="" method="post" class="form" role="form">
                         @csrf
                         <div class="form-group">
-                            <input type="text" class="form-control" name="email" id="" placeholder="Email" value="{{old('email')}}">
+                            <input type="email" class="form-control" name="email" id="" placeholder="Email" value="{{old('email')}}">
                         </div>
                         @if($errors->has('email'))
                             <div class="help-block text-red">
@@ -42,11 +42,39 @@
                             </div>
                         @endif
                         <div class="form-group">
-                            <input class="form-control" name="Sdt" placeholder="Số điện thoại" type="number" value="{{old('phone')}}">
+                            <input class="form-control" name="NgaySinh" placeholder="Số điện thoại" type="date" value="{{old('date')}}">
+                        </div>
+                        @if($errors->has('NgaySinh'))
+                            <div class="help-block text-red">
+                                * {!! $errors->first('NgaySinh') !!}
+                            </div>
+                        @endif
+                        <div class="form-group">
+                            <input class="form-control" name="Sdt" placeholder="Số điện thoại" type="number" value="{{old('Sdt')}}">
                         </div>
                         @if($errors->has('Sdt'))
                             <div class="help-block text-red">
                                 * {!! $errors->first('Sdt') !!}
+                            </div>
+                        @endif
+                        <div class="form-group">
+                            <input class="form-control" name="DiaChi" placeholder="Địa chỉ" type="text" value="{{old('DiaChi')}}">
+                        </div>
+                        @if($errors->has('DiaChi'))
+                            <div class="help-block text-red">
+                                * {!! $errors->first('DiaChi') !!}
+                            </div>
+                        @endif
+                        <div class="form-group">
+                            <select class="form-control" name="GioiTinh">
+                                <option>-- Chọn giới tính --</option>
+                                <option value="1">Nam</option>
+                                <option value="0">Nữ</option>
+                            </select>
+                        </div>
+                        @if($errors->has('GioiTinh'))
+                            <div class="help-block text-red">
+                                * {!! $errors->first('GioiTinh') !!}
                             </div>
                         @endif
                         <div class="form-group">

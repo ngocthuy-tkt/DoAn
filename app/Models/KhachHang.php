@@ -15,7 +15,7 @@ class KhachHang extends Authenticatable
     public $timestamps = false;
 
     protected $fillable = [
-        'HoTen', 'NgaySinh', 'GioiTinh', 'Sdt', 'DiaChi', 'Avatar', 'MatKhau', 'NgayTao', 'TrangThai', 'Xu'
+        'HoTen', 'NgaySinh', 'GioiTinh', 'Sdt', 'DiaChi', 'Avatar', 'MatKhau', 'NgayTao', 'TrangThai', 'email'
     ];
 
     public function getAuthPassword()

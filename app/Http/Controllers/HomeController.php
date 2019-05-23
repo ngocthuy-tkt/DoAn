@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Banner;
 use App\Models\Product;
-use App\Models\User;
+use App\Models\KhachHang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
+use App\Http\Requests\ResgisterRequest;
 
 class HomeController extends FrontEndController
 {
@@ -30,34 +31,15 @@ class HomeController extends FrontEndController
         }
         return view('dangky');
     }
-    public function creat(Request $request)
+    public function creat(ResgisterRequest $request)
     {
-        $this->validate($request,
-            [
-                'name' => 'required',
-                'email' => 'required|email|unique:users,email',
-                'password' => 'required|min:4|confirmed',
-                'phone'  => 'min:9| max:11',
-
-            ],[
-                'name.required' => 'Họ tên không được để trống',
-                'email.required' => 'Email không được để trống',
-                'email.email' => 'Email không đúng',
-                'email.unique' => 'Email đã tồn tại',
-                'password.required' => 'Bạn chưa nhập mật khẩu',
-                'password.confirmed' => 'Mật khẩu không khớp',
-                'password.min' => 'Mật khẩu quá ngắn',
-                'phone.min' => 'Số điện thoại không đúng',
-                'phone.max' => 'Số điện thoại không đúng',
-            ]
-        );
-
         $request->offsetunset('_token');
         $request->merge([
-            'password' => bcrypt($request->password)
+            'MatKhau' => bcrypt($request->MatKhau),
+            'NgayTao' => Carbon::now()
         ]);
 
-        if (User::create($request->all())) {
+        if (KhachHang::create($request->all())) {
             return redirect()->back()->with('success','Đăng ký thành công');
         }else{
             return redirect()->back()->with('error','Đăng ký thất bại, vui lòng thử lại');
