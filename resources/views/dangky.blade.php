@@ -1,4 +1,4 @@
-@extends('layouts.index')
+á@extends('layouts.index')
 
 @section('page_title','Đăng ký')
 
@@ -18,15 +18,7 @@
                     <form action="" method="post" class="form" role="form">
                         @csrf
                         <div class="form-group">
-                            <input type="text" class="form-control" name="name" id="" placeholder="Nhập họ tên" value="{{old('name')}}">
-                        </div>
-                        @if($errors->has('name'))
-                            <div class="help-block text-red">
-                                * {!! $errors->first('name') !!}
-                            </div>
-                        @endif
-                        <div class="form-group">
-                            <input class="form-control" name="email" placeholder="Email" type="email" value="{{old('email')}}">
+                            <input type="text" class="form-control" name="email" id="" placeholder="Email" value="{{old('email')}}">
                         </div>
                         @if($errors->has('email'))
                             <div class="help-block text-red">
@@ -34,27 +26,34 @@
                             </div>
                         @endif
                         <div class="form-group">
-                            <input class="form-control" name="password" placeholder="Mật khẩu" type="password">
+                            <input type="text" class="form-control" name="HoTen" id="" placeholder="Nhập họ tên" value="{{old('HoTen')}}">
                         </div>
-                        @if($errors->has('password'))
+                        @if($errors->has('HoTen'))
                             <div class="help-block text-red">
-                                * {!! $errors->first('password') !!}
+                                * {!! $errors->first('HoTen') !!}
                             </div>
                         @endif
                         <div class="form-group">
-                            <input class="form-control" name="password_confirmation" placeholder="Nhập lại mật khẩu"
-                                   type="password">
+                            <input class="form-control" name="MatKhau" placeholder="Mật khẩu" type="password" value="{{ old('MatKhau') }}">
                         </div>
-                        <div class="form-group">
-                            <input class="form-control" name="phone" placeholder="Số điện thoại" type="number" value="{{old('phone')}}">
-                        </div>
-                        @if($errors->has('phone'))
+                        @if($errors->has('MatKhau'))
                             <div class="help-block text-red">
-                                * {!! $errors->first('phone') !!}
+                                * {!! $errors->first('MatKhau') !!}
+                            </div>
+                        @endif
+                        <div class="form-group">
+                            <input class="form-control" name="Sdt" placeholder="Số điện thoại" type="number" value="{{old('phone')}}">
+                        </div>
+                        @if($errors->has('Sdt'))
+                            <div class="help-block text-red">
+                                * {!! $errors->first('Sdt') !!}
                             </div>
                         @endif
                         <div class="form-group">
                             <button class="btn btn-lg btn-primary btn-block" type="submit"> Đăng ký</button>
+                        </div>
+                        <div class="form-group">
+                            Bạn đã có tài khoản, đăng nhập tại đây <a href="{{route('login.submit')}}">Login</a>
                         </div>
                     </form>
                 </div>

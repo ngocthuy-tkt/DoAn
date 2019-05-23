@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Requests\Product\ProductRequest;
 use App\Models\Product;
-
+use DB;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends BackendController
@@ -13,7 +14,7 @@ class ProductController extends BackendController
     {
         $products = $this->productRepository->all();
         $columns = [
-            'ID', 'Tên sản phẩm', 'Giá', 'Giá khuyến mại', 'Ảnh', 'Số lượng', 'Hot', 'Danh mục', 'Tác giả', 'Active', 'Hành động'
+            'ID', 'Tên sản phẩm', 'Giá', 'Giá khuyến mại', 'Ảnh', 'Số lượng', 'Hot', 'Danh mục', 'Active', 'Hành động'
         ];
         return view('backend.product.index', compact('products', 'columns'));
     }
@@ -27,22 +28,48 @@ class ProductController extends BackendController
     }
 
     public function store(ProductRequest $request)
-    {dd($request->all());
+    {
         $request->offsetunset('_token');
-        $imgName = '';
-        if ($request->hasFile('AnhChinh')) {
-            $image = $request->file('AnhChinh');
-            $imgName = time() . '.' . $image->getClientOriginalExtension();
-            Storage::disk('product')->put($imgName, file_get_contents($image));
-        }
 
-        $request->merge([
-            'AnhChinh' => $imgName,
-        ]);
+        // $photos = $request->file('AnhPhu');
+        // $paths  = [];
 
-        if (Product::create($request->all())) {
-            return redirect()->back()->with('success', 'Thêm mới sản phẩm thành công');
-        } else {
+        // foreach ($photos as $photo) {
+        //     $extension = $photo->getClientOriginalExtension();
+        //     $filename  = 'product-photo-' . time() . '.' . $extension;
+        //     $paths[]   = $photo->storeAs('upload', $filename);
+        // }
+
+        // dd($paths);
+
+
+        // $request->merge([
+        //     'AnhChinh' => $this->getImage('AnhChinh', 'upload/product', $request),
+        //     'AnhPhu'   => json_encode($data), 
+        // ]);
+
+        $dataFormRequest = [
+            'Id_DanhMucSp' => $request->Id_DanhMucSp,
+            'MaSP'         => $request->MaSP,
+            'TenSp'        => $request->TenSp,
+            'DonGia'       => $request->DonGia,
+            'GiaKhuyenMai' => $request->GiaKhuyenMai,
+            'SoLuong'      => $request->SoLuong,
+            'Sp_Hot'       => $request->Sp_Hot,
+            'TrangThai'    => $request->TrangThai,
+            'AnhChinh'     => $this->getImage('AnhChinh', 'upload/product', $request),
+            'NgayTao'      => Carbon::now()
+          ];
+          
+  
+        // insert
+
+        try {
+            if(Product::create($dataFormRequest)) {
+                return redirect()->back()->with('success', 'Thêm mới sản phẩm thành công');
+            }
+        } catch (\Exception $e) {
+            DB::rollBack();
             return redirect()->back()->with('error', 'Thêm mới sản phẩm thất bại, vui lòng thử lại');
         }
     }
@@ -51,14 +78,10 @@ class ProductController extends BackendController
     {
         $product = $this->productRepository->findById($id);
         $categories = $this->categoryRepository->all();
-        $authors = $this->authorRepository->all();
-        $pubs = $this->publishingHouseRepository->all();
 
         return view('backend.product.edit',
             compact('product',
-                'categories',
-                'authors',
-                'pubs'
+                'categories'
             )
         );
     }
@@ -68,40 +91,38 @@ class ProductController extends BackendController
         $product = $this->productRepository->findById($id);
 
         $this->validate($request,[
-            'name' => 'required|unique:products,name,'.$product->id.',id',
-            'slug' => 'required|unique:products,slug,'.$product->id.',id',
+            'TenSp' => 'required|unique:sanpham,TenSp,'.$product->Id_SanPham.',Id_SanPham',
         ],[
-            'name.required' => 'Tên sản phẩm không được để trống',
-            'name.unique' => 'Sản phẩm đã tồn tại',
-            'slug.required' => 'Đường dẫn không được để trống',
-            'slug.unique' => 'Đường dẫn đã tồn tại',
+            'TenSp.required' => 'Tên sản phẩm không được để trống',
+            'TenSp.unique' => 'Sản phẩm đã tồn tại'
         ]);
 
 
         $request->offsetunset('_token');
-        if($request->hasFile('upload_product')){
-            Storage::disk('product')->delete($product->image);
-            $image      = $request->file('upload_product');
-            $imgName   = time() . '.' . $image->getClientOriginalExtension();
-            Storage::disk('product')->put($imgName,file_get_contents($image));
 
-            $product->image = $imgName;
-        }
+        $data = [
+            'Id_DanhMucSp' => $request->Id_DanhMucSp,
+            'MaSP'         => $request->MaSP,
+            'TenSp'        => $request->TenSp,
+            'DonGia'       => $request->DonGia,
+            'GiaKhuyenMai' => $request->GiaKhuyenMai,
+            'SoLuong'      => $request->SoLuong,
+            'Sp_Hot'       => $request->Sp_Hot,
+            'TrangThai'    => $request->TrangThai,
+            'NgayTao'      => Carbon::now()
+        ];
 
-        $product->name = $request->name;
-        $product->slug = $request->slug;
-        $product->price = $request->price;
-        $product->discount_price = $request->discount_price;
-        $product->quantity = $request->quantity;
-        $product->author_id = $request->author_id;
-        $product->publishing_house_id = $request->publishing_house_id;
-        $product->active = $request->active;
-        $product->hot = $request->hot;
-        $check = $product->save();
-        if ($check){
-            return redirect()->route('products.index')->with('success','Sửa thành công');
+        if ($request->hasFile('AnhChinh')) {
+            $data['AnhChinh'] = $this->getImage('AnhChinh', 'upload/product', $request);
         }
-        else{
+        
+        // update product
+        try {
+            if($product->update($data)) {
+                return redirect()->route('products.index')->with('success','Sửa thành công');
+            }
+        } catch (\Exception $e) {
+            DB::rollBack();
             return redirect()->back()->with('error','Sửa thất bại, vui lòng thử lại');
         }
     }
@@ -118,4 +139,27 @@ class ProductController extends BackendController
             return redirect()->back()->with('error','Xóa không thành công');
         }
     }
+
+    public static function uploadFile($image, $uploadPath)
+    {
+        $imageName = uniqid() . '.' . $image->getClientOriginalExtension();
+        if (!is_dir($uploadPath)) {
+            mkdir($uploadPath, 0777, true);
+        }
+        $image->move($uploadPath, $imageName);
+        return '/' . $uploadPath . '/' . $imageName;
+    }
+
+    public function getImage($name, $dir, $request)
+    {
+        if ($request->hasFile($name)) {
+            $image = $request->file($name);
+            // Upload file
+            $uploadPath = $dir;
+            $image = self::uploadFile($image, $uploadPath);
+            return $image;
+        }
+        return '';
+    }
+
 }

@@ -12,7 +12,7 @@
         </h1>
         <ol class="breadcrumb">
             <li><a href="{{route('admin')}}"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="{{route('products.index')}}">Danh mục</a></li>
+            <li><a href="{{route('products.index')}}">Sản phẩm</a></li>
             <li class="active">add</li>
         </ol>
     </section>
@@ -74,21 +74,20 @@
                                 <div class="input-group">
                                     <span class="input-group-addon">$</span>
                                     <input type="number" class="form-control" placeholder="Giá khuyến mãi"
-                                           name="discount_price"
-                                           value="{{ (empty(old('discount_price'))) ? 0 : old('discount_price') }}">
+                                           name="GiaKhuyenMai"
+                                           value="{{ old('GiaKhuyenMai') }}">
                                 </div>
                             </div>
-                            @if($errors->has('discount_price'))
+                            @if($errors->has('GiaKhuyenMai'))
                                 <div class="help-block text-red">
-                                    * {!! $errors->first('discount_price') !!}
+                                    * {!! $errors->first('GiaKhuyenMai') !!}
                                 </div>
                             @endif
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon">$</span>
-                                    <input type="number" class="form-control" placeholder="Số sản phẩm hiện có"
-                                           name="SoLuong"
-                                           value="{{ (empty(old('SoLuong'))) ? 0 : old('SoLuong')  }}">
+                                    <input type="number" class="form-control" placeholder="Số sản phẩm hiện có" name="SoLuong"
+                                           value="{{ old('SoLuong') }}">
                                 </div>
                             </div>
                             @if($errors->has('SoLuong'))
@@ -115,11 +114,8 @@
                             @endif
                             <div class="form-group">
                                 <label>Ảnh mô tả</label>
-                                <div class="show-avatar show-product-img">
-                                    <img src="" alt="" id="img">
-                                    <input type="file" name="AnhPhu" id="upload_img" style="display: none">
-                                    <a id="browse_file" class="btn btn-success"><i class="fa fa-file-image-o"></i> Chọn
-                                        ảnh</a>
+                                <div class="show-product-img">
+                                    <input type="file" name="AnhPhu[]" id="upload_img" multiple>
                                 </div>
                             </div>
                             @if($errors->has('AnhPhu'))

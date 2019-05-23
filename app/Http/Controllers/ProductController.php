@@ -9,8 +9,7 @@ class ProductController extends FrontEndController
 {
     public function index($id, $slug)
     {
-        $product = Product::with('author')
-            ->where('id', '=', $id)
+        $product = Product::where('Id_SanPham', '=', $id)
             ->first();
         return view('detail', compact('product'));
     }

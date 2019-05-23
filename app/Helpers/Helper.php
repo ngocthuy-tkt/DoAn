@@ -83,15 +83,15 @@ if (!function_exists('menu_header_cat')) {
             foreach ($cat_child as $key => $item) {
                 if ($item->child()->count()) {
                     echo '<li class="dropdown-submenu">';
-                    echo '<a class="child" href="' . route('danh-muc', ['id' => $item->id, 'slug' => $item->slug]) . '">' . $item->name . '<span class="caret"></span></a>';
+                    echo '<a class="child" href="' . route('danh-muc', ['id' => $item->Id_DanhMucSp, 'slug' => $item->TieuDe]) . '">' . $item->TieuDe . '<span class="caret"></span></a>';
                     echo '<ul class="dropdown-menu menu-child">';
-                    menu_header_cat($categories, $item->id);
+                    menu_header_cat($categories, $item->Id_DanhMucSp);
                     echo '</ul>';
                     echo '</li>';
                 } else {
                     echo '<li>';
-                    echo '<a href="' . route('danh-muc', ['id' => $item->id, 'slug' => $item->slug]) . '">' . $item->name . '</a>';
-                    menu_header_cat($categories, $item->id);
+                    echo '<a href="' . route('danh-muc', ['id' => $item->Id_DanhMucSp, 'slug' => $item->TieuDe]) . '">' . $item->TieuDe . '</a>';
+                    menu_header_cat($categories, $item->Id_DanhMucSp);
                     echo '</li>';
                 }
             }

@@ -33,7 +33,7 @@
                         <li class="nav-item dropdown">
                             <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#"><i
                                         class="fa fa-user"></i>
-                                {{Auth::user()->name}}</a>
+                                {{Auth::user()->HoTen}}</a>
                             <ul class="dropdown-menu" id="with-200px">
                                 <li>
                                     <a href="{{route('logout')}}">Đăng xuất</a>
@@ -52,7 +52,7 @@
                                         {{ csrf_field() }}
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                            <input type="email" class="form-control" placeholder="Email" required
+                                            <input type="email" class="form-control" placeholder="Email"
                                                    name="email">
                                         </div>
                                         @if($errors->has('email'))
@@ -62,12 +62,12 @@
                                         @endif
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                            <input type="password" class="form-control" placeholder="Password" required
-                                                   name="password">
+                                            <input type="password" class="form-control" placeholder="Mật khẩu"
+                                                   name="MatKhau">
                                         </div>
-                                        @if($errors->has('password'))
+                                        @if($errors->has('MatKhau'))
                                             <p class="text-red">
-                                                * {!! $errors->first('password') !!}
+                                                * {!! $errors->first('MatKhau') !!}
                                             </p>
                                         @endif
                                         @if(session('thongbao'))

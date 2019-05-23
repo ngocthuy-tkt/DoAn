@@ -18,10 +18,10 @@
     </section>
     <!-- Main content -->
     <section class="content">
-        <form action="{{ route('products.update',['id' => $product->id]) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('products.update',['id' => $product->Id_SanPham]) }}" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
             {{ method_field('PUT')}}
-            <input type="hidden" value="{{$product->id}}" name="id">
+            <input type="hidden" value="{{$product->Id_SanPham}}" name="Id_SanPham">
             <div class="box box-danger">
                 <div class="box-header">
                     <h3 class="box-title">Sửa sản phẩm</h3>
@@ -31,107 +31,91 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Thông tin sản phẩm</label>
-                                <select class="form-control select2" style="width: 100%;" name="category_id">
+                                <select class="form-control select2" style="width: 100%;" name="Id_DanhMucSp">
                                     <option value="0">Danh mục</option>
-                                    @php multiple_lever_category($categories,0,'',$product->category_id) @endphp;
+                                    @php multiple_lever_category($categories,0,'',$product->Id_DanhMucSp) @endphp;
                                 </select>
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon">@</span>
-                                    <input type="text" class="form-control" placeholder="Nhập tên danh mục" name="name"
-                                           id="name" value="{{ $product->name }}">
+                                    <input type="text" class="form-control" placeholder="Nhập tên sản phẩm" name="TenSp"
+                                           id="TenSp" value="{{ $product->TenSp }}">
                                 </div>
                             </div>
-                            @if($errors->has('name'))
+                            @if($errors->has('TenSp'))
                                 <div class="help-block text-red">
-                                    * {!! $errors->first('name') !!}
+                                    * {!! $errors->first('TenSp') !!}
                                 </div>
                             @endif
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                    <input type="text" readonly class="form-control" placeholder="Slug" name="slug"
-                                           id="slug"
-                                           value="{{ $product->slug }}">
+                                    <input type="text" class="form-control" placeholder="MaSP" name="MaSP"
+                                           id="MaSP"
+                                           value="{{ $product->MaSP }}">
                                 </div>
                             </div>
-                            @if($errors->has('slug'))
+                            @if($errors->has('MaSP'))
                                 <div class="help-block text-red">
-                                    * {!! $errors->first('slug') !!}
+                                    * {!! $errors->first('MaSP') !!}
                                 </div>
                             @endif
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon">$</span>
-                                    <input type="number" class="form-control" placeholder="Giá sản phẩm" name="price"
-                                           value="{{ $product->price }}">
+                                    <input type="number" class="form-control" placeholder="Giá sản phẩm" name="DonGia"
+                                           value="{{ $product->DonGia }}">
                                 </div>
                             </div>
-                            @if($errors->has('price'))
+                            @if($errors->has('DonGia'))
                                 <div class="help-block text-red">
-                                    * {!! $errors->first('price') !!}
+                                    * {!! $errors->first('DonGia') !!}
                                 </div>
                             @endif
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon">$</span>
                                     <input type="number" class="form-control" placeholder="Giá khuyến mãi"
-                                           name="discount_price"
-                                           value="{{ $product->discount_price }}">
+                                           name="GiaKhuyenMai"
+                                           value="{{ $product->GiaKhuyenMai }}">
                                 </div>
                             </div>
-                            @if($errors->has('discount_price'))
+                            @if($errors->has('GiaKhuyenMai'))
                                 <div class="help-block text-red">
-                                    * {!! $errors->first('discount_price') !!}
+                                    * {!! $errors->first('GiaKhuyenMai') !!}
                                 </div>
                             @endif
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon">$</span>
                                     <input type="number" class="form-control" placeholder="Số sản phẩm hiện có"
-                                           name="quantity"
-                                           value="{{ $product->quantity }}">
+                                           name="SoLuong"
+                                           value="{{ $product->SoLuong }}">
                                 </div>
                             </div>
-                            @if($errors->has('quantity'))
+                            @if($errors->has('SoLuong'))
                                 <div class="help-block text-red">
-                                    * {!! $errors->first('quantity') !!}
+                                    * {!! $errors->first('SoLuong') !!}
                                 </div>
                             @endif
-                            <div class="form-group">
-                                <label>Tác giả</label>
-                                <select class="form-control select2" style="width: 100%;" name="author_id">
-                                    @foreach($authors as $author)
-                                        <option value="{{$author->id}}" {{($product->author_id == $author->id) ? 'selected' : ''}}>{{$author->name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Nhà xuất bản</label>
-                                <select class="form-control select2" style="width: 100%;" name="publishing_house_id">
-                                    @foreach($pubs as $pub)
-                                        <option value="{{$pub->id}}" {{($product->publishing_house_id == $pub->id) ? 'selected' : ''}}>{{$pub->name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Ảnh sản phẩm</label>
                                 <div class="show-avatar show-product-img">
-                                    <img src="{{(preg_match('/http/', $product->image)) ? $product->image : asset('storage/uploads/product/' . $product->image) }}"
+                                    <img src="{{ asset($product->AnhChinh) }}"
                                          alt="" id="img">
-                                    <input type="file" name="upload_product" id="upload_img" style="display: none">
+                                    <input type="file" name="AnhChinh" id="upload_img" style="display: none">
                                     <a id="browse_file" class="btn btn-success">
                                         <i class="fa fa-file-image-o"></i>
                                         Chọn ảnh
                                     </a>
                                 </div>
                             </div>
-                            @if($errors->has('upload_product'))
+                            @if($errors->has('AnhChinh'))
                                 <div class="help-block text-red">
-                                    * {!! $errors->first('upload_product') !!}
+                                    * {!! $errors->first('AnhChinh') !!}
                                 </div>
                             @endif
                             <div class="form-group">
@@ -139,12 +123,12 @@
                                 <div class="radio">
                                     <label>
                                         <input type="radio"
-                                               name="hot" value="0" {{ ($product->hot == 0) ? 'checked' : '' }}>
+                                               name="Sp_Hot" value="0" {{ ($product->Sp_Hot == 0) ? 'checked' : '' }}>
                                         <span class="label label-violet">Không</span>
                                     </label>
                                     <label>
                                         <input type="radio"
-                                               name="hot" value="1" {{ ($product->hot == 1) ? 'checked' : '' }}>
+                                               name="Sp_Hot" value="1" {{ ($product->Sp_Hot == 1) ? 'checked' : '' }}>
                                         <span class="label label-danger">Hot</span>
                                     </label>
                                 </div>
@@ -154,12 +138,12 @@
                                 <div class="radio">
                                     <label>
                                         <input type="radio"
-                                               name="active" value="0" {{ ($product->active == 0) ? 'checked' : '' }}>
+                                               name="TrangThai" value="0" {{ ($product->TrangThai == 0) ? 'checked' : '' }}>
                                         <span class="label label-warning">Ban</span>
                                     </label>
                                     <label>
                                         <input type="radio"
-                                               name="active" value="1" {{ ($product->active == 1) ? 'checked' : '' }}>
+                                               name="TrangThai" value="1" {{ ($product->TrangThai == 1) ? 'checked' : '' }}>
                                         <span class="label label-success">Active</span>
                                     </label>
                                 </div>

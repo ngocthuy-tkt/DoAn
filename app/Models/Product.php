@@ -14,14 +14,14 @@ class Product extends Model
     ];
 
     public function category() {
-        return $this->belongsTo(Category::class,'Id_DanhMucSp','id');
+        return $this->belongsTo(Category::class,'Id_DanhMucSp','Id_DanhMucSp');
     }
 
-    public function author() {
-        return $this->belongsTo(Author::class,'author_id','id');
-    }
+    // public function author() {
+    //     return $this->belongsTo(Author::class,'author_id','id');
+    // }
 
-    public function publishingHouse() {
-        return $this->belongsTo(PublishingHouse::class,'publishing_house_id','id');
-    }
+    // public function publishingHouse() {
+    //     return $this->belongsTo(PublishingHouse::class,'publishing_house_id','id');
+    // }
 }

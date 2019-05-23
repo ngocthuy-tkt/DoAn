@@ -1,6 +1,6 @@
 @extends('layouts.index')
 
-@section('page_title','Mua sắm cùng BookShop')
+@section('page_title','Trang chủ')
 
 @section('content')
     <div class="banner">
@@ -37,7 +37,7 @@
     <div class="main">
         <div class="container products-list"><!-- end content -->
             @if(isset($products))
-                <h2>Sách hiện có</h2>
+                <h2>Sản phẩm hot</h2>
                 <div class="row">
                     @foreach($products as $product)
                         @php echo view('layouts.product-item',compact('product')) @endphp

@@ -41,23 +41,22 @@
                             <tbody>
                             @foreach($products as $key => $item)
                                 <tr>
-                                    <td>{{$item->id}}</td>
-                                    <td class="text-uppercase">{{$item->name}}</td>
-                                    <td>{{format_money($item->price)}}</td>
-                                    <td>{{format_money($item->discount_price)}}</td>
+                                    <td>{{$item->Id_SanPham}}</td>
+                                    <td class="text-uppercase">{{$item->TenSp}}</td>
+                                    <td>{{format_money($item->DonGia)}}</td>
+                                    <td>{{format_money($item->GiaKhuyenMai)}}</td>
                                     <td>
-                                        <img src="{{(preg_match('/http/', $item->image)) ? $item->image : asset('storage/uploads/product/' . $item->image) }}"
+                                        <img src="{{ asset($item->AnhChinh) }}"
                                              alt="" style="width: 60px; height: 90px"
-                                             title="{{$item->name}}">
+                                             title="{{$item->TenSp}}">
                                     </td>
-                                    <td>{{$item->quantity}}</td>
+                                    <td>{{$item->SoLuong}}</td>
                                     <td>
-                                        @if($item->hot == 1)
+                                        @if($item->Sp_Hot == 1)
                                             <label class="label label-danger">Hot</label>
                                         @endif
                                     </td>
-                                    <td>{{$item->category->name}}</td>
-                                    <td>{{$item->author->name}}</td>
+                                    <td>{{$item->category->TieuDe}}</td>
                                     <td>
                                         @if($item->active == 1)
                                             <label class="label label-success">Active</label>
@@ -67,13 +66,13 @@
                                     </td>
                                     <td>
                                         @if(Auth::guard('admin')->user()->edit == 1)
-                                            <a href="{{route('products.edit',['id' => $item->id])}}"
+                                            <a href="{{route('products.edit',['id' => $item->Id_SanPham])}}"
                                                class="btn btn-action label label-success"><i
                                                         class="fa fa-pencil"></i></a>
                                         @endif
 
                                         @if(Auth::guard('admin')->user()->delete == 1)
-                                            <form action="{{ route('products.destroy', ['id' => $item->id]) }}"
+                                            <form action="{{ route('products.destroy', ['id' => $item->Id_SanPham]) }}"
                                                   method="post" class="inline">
                                                 {{ csrf_field() }}
                                                 {{ method_field('DELETE') }}

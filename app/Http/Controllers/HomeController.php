@@ -12,14 +12,10 @@ class HomeController extends FrontEndController
 {
     public function index()
     {
-        $banners = Banner::where('active', '=', 1)
-            ->orderBy('id', 'desc')
-            ->limit(5)->get();
-        $products = Product::with('author')
-            ->where('active', '=', 1)
-            ->orderBy('id', 'desc')
+        $products = Product::where('Sp_Hot', '=', 1)
+            ->orderBy('Id_SanPham', 'desc')
             ->paginate(8);
-        return view('home', compact('banners', 'products'));
+        return view('home', compact('products'));
     }
 
     public function showLoginForm()
