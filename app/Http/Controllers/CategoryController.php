@@ -10,13 +10,12 @@ class CategoryController extends FrontEndController
 {
     public function index($slug, $id)
     {
-        $cat = Category::where('id', '=', $id)
+        $cat = Category::where('Id_DanhMucSp', '=', $id)
             ->first();
 
-        $products = Product::with('author')
-            ->where('active', '=', 1)
-            ->where('category_id', '=', $id)
-            ->orderBy('id', 'desc')
+        $products = Product::where('Sp_Hot', '=', 1)
+            ->where('Id_DanhMucSp', '=', $id)
+            ->orderBy('Id_SanPham', 'desc')
             ->paginate(8);
         return view('danhmuc', compact('cat', 'products'));
     }
