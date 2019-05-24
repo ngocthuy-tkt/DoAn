@@ -8,10 +8,10 @@
             <div class="caption">
                 <h3 class="title">{{$product->TenSp}}</h3>
                 <p class="price-sale">
-                    @if($product->GiaKhuyenMai != 0)
-                        <span class="final-price">{{format_money($product->DonGia)}}</span>
-                        <span class="price-regular">{{format_money($product->GiaKhuyenMai)}}</span>
-                        <span class="sale-tag">{{ discount($product->price,$product->GiaKhuyenMai) }}</span>
+                    @if(!empty($product->GiaKhuyenMai))
+                        <span class="final-price">{{format_money($product->GiaKhuyenMai)}}</span>
+                        <span class="price-regular">{{format_money($product->DonGia)}}</span>
+                        <!-- <span class="sale-tag">{{ discount($product->DonGia,$product->GiaKhuyenMai) }}</span> -->
                     @else
                         <span class="final-price">{{format_money($product->DonGia)}}</span>
                     @endif

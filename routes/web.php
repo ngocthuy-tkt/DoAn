@@ -34,15 +34,15 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/{slug}/{id}', 'CategoryController@index')->name('danh-muc');
 Route::get('/pro/{id}/{slug}', 'ProductController@index')->name('detail');
 Route::get('/cart', 'CartController@index')->name('cart');
-Route::get('/cart/add/{id}', 'CartController@addToCart')->name('add_cart');
-Route::get('/cart/remove/{id}', 'CartController@removeCartItem')->name('remove_cart');
-Route::get('/cart/update/{id}/{qty}', 'CartController@updateCartItem')->name('update_cart');
+Route::post('/cart', 'CartController@addToCart')->name('addToCart');
+Route::delete('/{id}', 'CartController@destroy')->name('cart.destroy');
+Route::patch('gio-hang/{id}', 'CartController@update')->name('cart.update');
 Route::get('/checkout', 'CheckoutController@index')->name('checkout');
 Route::post('/checkout', 'CheckoutController@order')->name('order');
 
 
 Route::get('/login', 'HomeController@showLoginForm')->name('login');
-Route::post('/login', 'Auth\LoginController@login')->name('login.submit');
+Route::post('/login', 'HomeController@postLogin')->name('login.submit');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('/signup', 'HomeController@signupForm')->name('signup');
 Route::post('/signup', 'HomeController@creat')->name('signup');

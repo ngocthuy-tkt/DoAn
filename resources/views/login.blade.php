@@ -6,7 +6,14 @@
     <div class="main">
         <div class="container">
             <div class="row">
-                <h3>Đăng nhập để thanh toán</h3>
+                <h3>Đăng nhập</h3>
+                @if(Session::has('error'))
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <h4><i class="icon fa fa-check"></i> Lỗi rồi!</h4>
+                        {!! Session::get('error') !!}
+                    </div>
+                @endif
                 <div class="col-md-3 col-md-offset-4">
                     <form action="" method="post">
                         @csrf
@@ -20,11 +27,11 @@
                                 </p>
                             @endif
                             <div class="form-group">
-                                <input class="form-control" placeholder="Password" name="password" type="password">
+                                <input class="form-control" placeholder="Mật khẩu" name="MatKhau" type="password">
                             </div>
-                            @if($errors->has('password'))
+                            @if($errors->has('MatKhau'))
                                 <p class="text-red">
-                                    * {!! $errors->first('password') !!}
+                                    * {!! $errors->first('MatKhau') !!}
                                 </p>
                             @endif
                             <div class="form-group">

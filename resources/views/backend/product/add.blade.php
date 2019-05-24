@@ -112,7 +112,7 @@
                                     * {!! $errors->first('AnhChinh') !!}
                                 </div>
                             @endif
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label>Ảnh mô tả</label>
                                 <div class="show-product-img">
                                     <input type="file" name="AnhPhu[]" id="upload_img" multiple>
@@ -122,7 +122,7 @@
                                 <div class="help-block text-red">
                                     * {!! $errors->first('AnhPhu') !!}
                                 </div>
-                            @endif
+                            @endif -->
                             <div class="form-group">
                                 <label>Trạng thái</label>
                                 <div class="radio">

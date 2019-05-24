@@ -63,7 +63,7 @@ class ProductController extends BackendController
           
   
         // insert
-
+          
         try {
             if(Product::create($dataFormRequest)) {
                 return redirect()->back()->with('success', 'Thêm mới sản phẩm thành công');

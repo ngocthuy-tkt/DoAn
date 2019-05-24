@@ -120,7 +120,7 @@ if (!function_exists('total_money_cart')) {
     {
         $total = 0;
         foreach ($cart as $item) {
-            $total += $item['qty'] * $item['price'];
+            $total += $item['qty'] * $item['DonGia'];
         }
         return format_money($total);
     }
@@ -130,7 +130,7 @@ if (!function_exists('total_money_order')) {
     {
         $total = 0;
         foreach ($cart as $item) {
-            $total += $item['qty'] * $item['price'];
+            $total += $item['qty'] * $item['DonGia'];
         }
         return $total;
     }

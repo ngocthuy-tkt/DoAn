@@ -22,8 +22,7 @@ class CartRepository implements CartInterface
 
     public function addToCart($id)
     {
-        $product = Product::with('author')
-            ->where('id', '=', $id)
+        $product = Product::where('Id_SanPham', '=', $id)
             ->first();
         $cart = Session::get('cart');
         if ($cart) {
@@ -31,19 +30,19 @@ class CartRepository implements CartInterface
                 $cart[$id]['qty'] += 1;
             } else {
                 $cart[$product->id] = array(
-                    "id" => $product->id,
-                    "name" => $product->name,
-                    "price" => ($product->discount_price != 0) ? $product->price : $product->discount_price,
-                    "image" => $product->image,
+                    "Id_SanPham" => $product->Id_SanPham,
+                    "TenSp" => $product->TenSp,
+                    "DonGia" => ($product->GiaKhuyenMai != 0) ? $product->DonGia : $product->GiaKhuyenMai,
+                    "AnhChinh" => $product->AnhChinh,
                     "qty" => 1,
                 );
             }
         } else {
             $cart[$product->id] = array(
-                "id" => $product->id,
-                "name" => $product->name,
-                "price" => ($product->discount_price != 0) ? $product->price : $product->discount_price,
-                "image" => $product->image,
+                "Id_SanPham" => $product->Id_SanPham,
+                "TenSp" => $product->TenSp,
+                "DonGia" => ($product->GiaKhuyenMai != 0) ? $product->DonGia : $product->GiaKhuyenMai,
+                "AnhChinh" => $product->AnhChinh,
                 "qty" => 1,
             );
         }

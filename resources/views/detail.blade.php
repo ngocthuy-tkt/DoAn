@@ -46,8 +46,19 @@
                                 </p>
                             @endif
                         </div>
-                        <a href="{{route('add_cart',['id'=>$product->id])}}" class="btn btn-warning"><i
-                                    class="fa fa-cart-plus"></i> Đặt mua ngay</a>
+                        <form action="{{ route('addToCart') }}" method="post" class="variants form-nut-grid has-validation-callback" enctype="multipart/form-data">
+                            {{ csrf_field() }}
+                            <div>
+                                <input type="hidden" name="Id_SanPham" value="{{ $product->Id_SanPham }}">
+                                <input type="hidden" name="TenSp" value="{{ $product->TenSp }}">
+                                <input type="hidden" name="GiaKhuyenMai" value="{{ $product->GiaKhuyenMai }}">
+                                <input type="hidden" name="DonGia" value="{{ $product->DonGia }}">
+                                <input type="hidden" name="AnhChinh" value="{{ $product->AnhChinh }}">
+                                <button type="submit" class="add2cart btn-buy btn-cart btn btn-gray left-to btn-primary add_to_cart" title="Đặt mua ngay">
+                                    <span>Đặt mua ngay</span>
+                                </button>
+                            </div>
+                        </form>            
                     </div>
                 </div><!--  end main section  -->
             </div>

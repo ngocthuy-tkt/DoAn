@@ -9,7 +9,8 @@ class KhachHang extends Authenticatable
 {
      use Notifiable;
    
-
+    // The authentication guard for admin
+    protected $guard = 'web';
     protected $table = 'khachhang';
     protected $primaryKey = 'Id_KhachHang';
     public $timestamps = false;

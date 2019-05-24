@@ -27,13 +27,13 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{route('cart')}}"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
-                    @if(Auth::check())
+                    <li><a href="{{route('cart')}}"><i class="fa fa-shopping-cart"></i> Giỏ hàng {{ \Cart::count() }}</a></li>
+                    @if(Auth::guard('web')->check())
 
                         <li class="nav-item dropdown">
                             <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#"><i
                                         class="fa fa-user"></i>
-                                {{Auth::user()->HoTen}}</a>
+                                {{Auth::guard('web')->user()->HoTen}}</a>
                             <ul class="dropdown-menu" id="with-200px">
                                 <li>
                                     <a href="{{route('logout')}}">Đăng xuất</a>
@@ -42,48 +42,9 @@
                         </li>
                     @else
                         <li class="nav-item dropdown">
-                            <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#"><i
+                            <a class="nav-link" href="{{ route('login') }}"><i
                                         class="fa fa-user"></i>
                                 Đăng nhập</a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <form class="form-inline login-form" action="{{route('login.submit')}}"
-                                          method="post">
-                                        {{ csrf_field() }}
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                            <input type="email" class="form-control" placeholder="Email"
-                                                   name="email">
-                                        </div>
-                                        @if($errors->has('email'))
-                                            <p class="text-red">
-                                                * {!! $errors->first('email') !!}
-                                            </p>
-                                        @endif
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                            <input type="password" class="form-control" placeholder="Mật khẩu"
-                                                   name="MatKhau">
-                                        </div>
-                                        @if($errors->has('MatKhau'))
-                                            <p class="text-red">
-                                                * {!! $errors->first('MatKhau') !!}
-                                            </p>
-                                        @endif
-                                        @if(session('thongbao'))
-                                            <div class="clearfix"></div>
-                                            <p class="text-red">
-                                                {{session('thongbao')}}
-                                            </p>
-                                        @endif
-                                        <button type="submit" class="btn btn-primary">Login</button>
-                                        <div class="clearfix"></div>
-                                        <p class="text-red" style="margin-top: 10px">
-                                            Nếu chưa có tài khoản, đăng ký tại <a href="{{route('signup')}}">đây</a>
-                                        </p>
-                                    </form>
-                                </li>
-                            </ul>
                         </li>
                     @endif
                 </ul>

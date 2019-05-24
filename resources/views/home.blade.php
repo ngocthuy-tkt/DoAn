@@ -51,4 +51,21 @@
 
     </div><!--  end main section  -->
 
+    <div class="main">
+        <div class="container products-list"><!-- end content -->
+            @if(isset($listItemsProduct))
+                <h2>Tất cả sản phẩm</h2>
+                <div class="row">
+                    @foreach($listItemsProduct as $product)
+                        @php echo view('layouts.product-item',compact('product')) @endphp
+                    @endforeach
+                </div>
+            @endif
+            <div class="clearfix center-block max-width-content">
+                {{$listItemsProduct->links()}}
+            </div>
+        </div>
+
+    </div><!--  end main section  -->
+
 @endsection

@@ -8,6 +8,7 @@ class Product extends Model
 {
     protected $table = 'sanpham';
     protected $primaryKey = 'Id_SanPham';
+    public $timestamps =  false;
 
     protected $fillable = [
         'Id_DanhMucSp', 'MaSP', 'TenSp', 'DonGia', 'Id_KhuyenMai', 'SoLuong', 'NgayTao', 'TrangThai', 'LuotXem', 'AnhChinh', 'Sp_Hot'
