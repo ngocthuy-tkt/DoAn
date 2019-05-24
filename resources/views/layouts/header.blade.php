@@ -28,12 +28,12 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="{{route('cart')}}"><i class="fa fa-shopping-cart"></i> Giỏ hàng {{ \Cart::count() }}</a></li>
-                    @if(Auth::guard('web')->check())
+                    @if(Auth::check())
 
                         <li class="nav-item dropdown">
                             <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#"><i
                                         class="fa fa-user"></i>
-                                {{Auth::guard('web')->user()->HoTen}}</a>
+                                {{Auth::user()->HoTen}}</a>
                             <ul class="dropdown-menu" id="with-200px">
                                 <li>
                                     <a href="{{route('logout')}}">Đăng xuất</a>

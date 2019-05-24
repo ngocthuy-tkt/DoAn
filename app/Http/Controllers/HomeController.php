@@ -8,8 +8,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\Http\Requests\ResgisterRequest;
-use App\Http\Requests\LoginRequest;
-use Hash;
 
 class HomeController extends FrontEndController
 {
@@ -47,18 +45,6 @@ class HomeController extends FrontEndController
             return redirect()->back()->with('success','Đăng ký thành công');
         }else{
             return redirect()->back()->with('error','Đăng ký thất bại, vui lòng thử lại');
-        }
-    }
-
-    public function postLogin(LoginRequest $request)
-    {
-        // $pwd = $request->MatKhau;
-        // $hash = Hash::make($pwd);
-        // dd(Hash::check($pwd, $hash));
-        if (Auth::guard('web')->attempt(['email' => $request->email, 'MatKhau' => Hash::make($request->MatKhau)])) {
-            return redirect()->route('home');
-        } else {
-            return redirect()->route('login')->with('error', 'Tài khoản hoặc mật khẩu không đúng');
         }
     }
 }

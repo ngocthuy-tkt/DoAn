@@ -40,12 +40,12 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    protected function guard()
+    public function guard()
     {
         return Auth::guard('web');
     }
 
-    protected function login(LoginRequest $rq)
+    public function login(LoginRequest $rq)
     {
         if (Auth::guard('web')->attempt(['email' => $rq->email, 'MatKhau' => $rq->MatKhau])) {
             return redirect()->route('home');
@@ -53,7 +53,7 @@ class LoginController extends Controller
             return redirect()->route('home')->with('thongbao', 'Tài khoản hoặc mật khẩu không đúng');
         }
     }
-    protected function logout()
+    public function logout()
     {
         Auth::guard('web')->logout();
         return redirect()->route('home');
