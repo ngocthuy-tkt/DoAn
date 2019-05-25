@@ -26,55 +26,55 @@
                             </div>
                         @endif
                         <div class="form-group">
-                            <input type="text" class="form-control" name="HoTen" id="" placeholder="Nhập họ tên" value="{{old('HoTen')}}">
+                            <input type="text" class="form-control" name="name" id="" placeholder="Nhập họ tên" value="{{old('name')}}">
                         </div>
-                        @if($errors->has('HoTen'))
+                        @if($errors->has('name'))
                             <div class="help-block text-red">
-                                * {!! $errors->first('HoTen') !!}
+                                * {!! $errors->first('name') !!}
                             </div>
                         @endif
                         <div class="form-group">
-                            <input class="form-control" name="MatKhau" placeholder="Mật khẩu" type="password" value="{{ old('MatKhau') }}">
+                            <input class="form-control" name="password" placeholder="Mật khẩu" type="password" value="{{ old('password') }}">
                         </div>
-                        @if($errors->has('MatKhau'))
+                        @if($errors->has('password'))
                             <div class="help-block text-red">
-                                * {!! $errors->first('MatKhau') !!}
+                                * {!! $errors->first('password') !!}
                             </div>
                         @endif
                         <div class="form-group">
-                            <input class="form-control" name="NgaySinh" placeholder="Số điện thoại" type="date" value="{{old('date')}}">
+                            <input class="form-control" name="birthday" placeholder="" type="date" value="{{old('birthday')}}">
                         </div>
-                        @if($errors->has('NgaySinh'))
+                        @if($errors->has('birthday'))
                             <div class="help-block text-red">
-                                * {!! $errors->first('NgaySinh') !!}
+                                * {!! $errors->first('birthday') !!}
                             </div>
                         @endif
                         <div class="form-group">
-                            <input class="form-control" name="Sdt" placeholder="Số điện thoại" type="number" value="{{old('Sdt')}}">
+                            <input class="form-control" name="phone" placeholder="Số điện thoại" type="number" value="{{old('phone')}}">
                         </div>
-                        @if($errors->has('Sdt'))
+                        @if($errors->has('phone'))
                             <div class="help-block text-red">
-                                * {!! $errors->first('Sdt') !!}
+                                * {!! $errors->first('phone') !!}
                             </div>
                         @endif
                         <div class="form-group">
-                            <input class="form-control" name="DiaChi" placeholder="Địa chỉ" type="text" value="{{old('DiaChi')}}">
+                            <input class="form-control" name="address" placeholder="Địa chỉ" type="text" value="{{old('address')}}">
                         </div>
-                        @if($errors->has('DiaChi'))
+                        @if($errors->has('address'))
                             <div class="help-block text-red">
-                                * {!! $errors->first('DiaChi') !!}
+                                * {!! $errors->first('address') !!}
                             </div>
                         @endif
                         <div class="form-group">
-                            <select class="form-control" name="GioiTinh">
+                            <select class="form-control" name="gender">
                                 <option>-- Chọn giới tính --</option>
                                 <option value="1">Nam</option>
                                 <option value="0">Nữ</option>
                             </select>
                         </div>
-                        @if($errors->has('GioiTinh'))
+                        @if($errors->has('gender'))
                             <div class="help-block text-red">
-                                * {!! $errors->first('GioiTinh') !!}
+                                * {!! $errors->first('gender') !!}
                             </div>
                         @endif
                         <div class="form-group">

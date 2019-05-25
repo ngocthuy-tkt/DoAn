@@ -25,7 +25,7 @@ class LoginRequest extends FormRequest
     {
         return [
             'email' => 'required|email',
-            'MatKhau' => 'required | min:3 | max:40'
+            'password' => 'required | min:3 | max:40'
         ];
     }
 
@@ -34,9 +34,9 @@ class LoginRequest extends FormRequest
         return [
             'email.required' => 'Email không được để trống',
             'email.email' => 'Email không đúng',
-            'MatKhau.required' => 'Bạn chưa nhập mật khẩu',
-            'MatKhau.min' => 'Mật khẩu không được nhỏ hơn 3 ký tự',
-            'MatKhau.max' => 'Mật khẩu không được lớn hơn 40 ký tự'
+            'password.required' => 'Bạn chưa nhập mật khẩu',
+            'password.min' => 'Mật khẩu không được nhỏ hơn 3 ký tự',
+            'password.max' => 'Mật khẩu không được lớn hơn 40 ký tự'
         ];
     }
 }

@@ -6,9 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class OrderDetail extends Model
 {
-    protected $table = 'order_detail';
-    protected $primaryKey = 'id';
+    protected $table = 'chitietdonhang';
+    protected $primaryKey = 'Id_CTHDBan';
     protected $fillable = [
-        'order_id', 'product_id', 'quantity', 'price', 'name', 'picture'
+        'Id_SanPham', 'SoLuong', 'DonGia', 'TenSp', 'Id_HoaDonBan'
     ];
+
+    public $timestamps = false;
 }

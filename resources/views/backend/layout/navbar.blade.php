@@ -13,7 +13,7 @@
                 <img src="{{asset('backend/images/avatar04.png')}}" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-                <p>{{Auth::guard('admin')->user()->fullname}}</p>
+                <p>{{Auth::guard('admin')->user()->HoTen}}</p>
                 <a href="javascript:void(0)"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>

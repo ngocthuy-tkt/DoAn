@@ -7,6 +7,7 @@ use App\Models\OrderDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Carbon\Carbon;
 
 class CheckoutController extends FrontEndController
 {
@@ -24,37 +25,49 @@ class CheckoutController extends FrontEndController
 
         $this->validate($request,
             [
-                'name' => 'required',
-                'payment_type' => 'required',
+                'TenNguoiNhan' => 'required',
+                'KieuThanhToan' => 'required',
                 'email' => 'required|email',
-                'address' => 'required',
-                'phone'  => 'min:9| max:11',
+                'DiaChi' => 'required',
+                'Sdt'  => 'min:9| max:11',
 
             ],[
-                'name.required' => 'Họ tên không được để trống',
-                'payment_type.required' => 'Phương thức thanh toán không được để trống',
+                'TenNguoiNhan.required' => 'Họ tên không được để trống',
+                'KieuThanhToan.required' => 'Phương thức thanh toán không được để trống',
                 'email.required' => 'Email không được để trống',
                 'email.email' => 'Email không đúng',
-                'address.required' => 'Bạn chưa nhập địa chỉ giao hàng',
-                'phone.min' => 'Số điện thoại không đúng',
-                'phone.max' => 'Số điện thoại không đúng',
+                'DiaChi.required' => 'Bạn chưa nhập địa chỉ giao hàng',
+                'Sdt.min' => 'Số điện thoại không đúng',
+                'Sdt.max' => 'Số điện thoại không đúng',
             ]
         );
 
+        $id = Auth::user()->id;
         $request->offsetunset('_token');
         $products_cart = $this->cartRepository->getAllSession();
-        if ($od = Order::create($request->all())) {
-            foreach ($products_cart as $item) {
+        $data = [
+            'NgayTao' => Carbon::now(),
+            'NgayCapNhap' => Carbon::now(),
+            'TongTien' => \Cart::total(),
+            'TenNguoiNhan' => $request->TenNguoiNhan,
+            'email' => $request->email,
+            'Sdt' => $request->Sdt,
+            'DiaChi' => $request->DiaChi,
+            'GhiChu' => $request->GhiChu,
+            'Id_KhachHang' => $id,
+            'KieuThanhToan' => $request->KieuThanhToan
+        ];
+        if ($od = Order::create($data)) {
+            foreach (\Cart::content() as $value) {
                 OrderDetail::create([
-                    'order_id' => $od->id,
-                    'product_id' => $item['id'],
-                    'quantity' => $item['qty'],
-                    'price' => $item['price'],
-                    'name' => $item['name'],
-                    'picture' => $item['image'],
+                    'Id_HoaDonBan' => $od->Id_HoaDonBan,
+                    'Id_SanPham' => $value->id,
+                    'SoLuong' => $value->qty,
+                    'DonGia' => $value->price,
+                    'TenSp' => $value->name
                 ]);
             }
-            Session::put('cart', []);
+            \Cart::instance('default')->destroy();
             return view('thongbao')->with('success','Đặt hàng thành công');
         }
         return view('thongbao')->with('error','Đặt hàng không thành công');

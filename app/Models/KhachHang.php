@@ -9,27 +9,21 @@ class KhachHang extends Authenticatable
 {
      use Notifiable;
    
-    // The authentication guard for admin
-    protected $guard = 'web';
     protected $table = 'khachhang';
     protected $primaryKey = 'Id_KhachHang';
     public $timestamps = false;
 
     protected $fillable = [
-        'HoTen', 'NgaySinh', 'GioiTinh', 'Sdt', 'DiaChi', 'Avatar', 'MatKhau', 'NgayTao', 'TrangThai', 'email'
+        'HoTen', 'NgaySinh', 'GioiTinh', 'Sdt', 'DiaChi', 'Avatar', 'password', 'NgayTao', 'TrangThai', 'email'
     ];
 
-    public function getAuthPassword()
-    {
-        return $this->MatKhau;
-    }
-
+   
     /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
      */
     protected $hidden = [
-        'MatKhau'
+        'password'
     ];
 }

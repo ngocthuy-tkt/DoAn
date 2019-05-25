@@ -41,7 +41,7 @@ Route::get('/checkout', 'CheckoutController@index')->name('checkout');
 Route::post('/checkout', 'CheckoutController@order')->name('order');
 
 
-Route::get('/login', 'HomeController@showLoginForm')->name('login');
+Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('/login', 'Auth\LoginController@login')->name('login.submit');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('/signup', 'HomeController@signupForm')->name('signup');

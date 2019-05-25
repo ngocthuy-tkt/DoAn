@@ -33,7 +33,7 @@
                         <li class="nav-item dropdown">
                             <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#"><i
                                         class="fa fa-user"></i>
-                                {{Auth::user()->HoTen}}</a>
+                                {{Auth::user()->name}}</a>
                             <ul class="dropdown-menu" id="with-200px">
                                 <li>
                                     <a href="{{route('logout')}}">Đăng xuất</a>

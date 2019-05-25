@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\LoginRequest;
+use App\Models\Category;
 
 class LoginController extends Controller
 {
@@ -45,9 +46,19 @@ class LoginController extends Controller
         return Auth::guard('web');
     }
 
+    public function showLoginForm()
+    {
+        $categories = Category::with('child')
+            ->where('TrangThai', '=', 1)
+            ->orderBy('Id_DanhMucSp', 'desc')
+            ->get();
+
+        return view('login', compact('categories'));
+    }
+
     public function login(LoginRequest $rq)
     {
-        if (Auth::guard('web')->attempt(['email' => $rq->email, 'MatKhau' => $rq->MatKhau])) {
+        if (Auth::guard('web')->attempt(['email' => $rq->email, 'password' => $rq->password])) {
             return redirect()->route('home');
         } else {
             return redirect()->route('home')->with('thongbao', 'Tài khoản hoặc mật khẩu không đúng');

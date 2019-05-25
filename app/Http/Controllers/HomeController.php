@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use App\Models\KhachHang;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
@@ -21,11 +21,6 @@ class HomeController extends FrontEndController
         return view('home', compact('products', 'listItemsProduct'));
     }
 
-    public function showLoginForm()
-    {
-        return view('login');
-    }
-
     public function signupForm(){
         if (Auth::check())
         {
@@ -33,15 +28,17 @@ class HomeController extends FrontEndController
         }
         return view('dangky');
     }
+
     public function creat(ResgisterRequest $request)
     {
         $request->offsetunset('_token');
         $request->merge([
-            'MatKhau' => bcrypt($request->MatKhau),
-            'NgayTao' => Carbon::now()
+            'password' => bcrypt($request->password),
+            'gender'   => $request->gender,
+            'created_at' => Carbon::now()
         ]);
 
-        if (KhachHang::create($request->all())) {
+        if (User::create($request->all())) {
             return redirect()->back()->with('success','Đăng ký thành công');
         }else{
             return redirect()->back()->with('error','Đăng ký thất bại, vui lòng thử lại');
