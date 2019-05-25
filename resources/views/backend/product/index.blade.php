@@ -65,13 +65,13 @@
                                         @endif
                                     </td>
                                     <td>
-                                        @if(Auth::guard('admin')->user()->edit == 1)
+                                        @if(Auth::guard('admin')->user()->quyen == 1)
                                             <a href="{{route('products.edit',['id' => $item->Id_SanPham])}}"
                                                class="btn btn-action label label-success"><i
                                                         class="fa fa-pencil"></i></a>
                                         @endif
 
-                                        @if(Auth::guard('admin')->user()->delete == 1)
+                                        @if(Auth::guard('admin')->user()->quyen == 1)
                                             <form action="{{ route('products.destroy', ['id' => $item->Id_SanPham]) }}"
                                                   method="post" class="inline">
                                                 {{ csrf_field() }}

@@ -25,6 +25,9 @@
                     <div class="box-header">
                         <h3 class="box-title">Danh sách tài khoản khách hàng</h3>
                     </div>
+                    <!-- <div class="box-header">
+                        <a href="{{ route('users.create') }}" class="btn btn-sm btn-success">Thêm mới</a>
+                    </div> -->
                     <!-- /.box-header -->
                     <div class="box-body table-responsive">
                         <table id="data_table" class="table table-bordered table-striped">
@@ -39,31 +42,21 @@
 
                             @foreach($users as $user)
                                 <tr>
-                                    <td>{{$user->Id_KhachHang}}</td>
-                                    <td>{{$user->HoTen}}</td>
-                                    <td>{{$user->NgaySinh}}</td>
-                                    <td>{{$user->GioiTinh}}</td>
-                                    <td>{{$user->Sdt}}</td>
-                                    <td>{{$user->DiaChi}}</td>
-                                    <td><img src="{{(preg_match('/http/', $user->Avatar)) ? $user->Avatar : asset('storage/uploads/user/' . $user->Avatar) }}" alt="" style="width: 60px; height: 60px"
-                                             title="{{$user->HoTen}}"></td>
-                                    <td>{{$user->NgayTao}}</td>
+                                    <td>{{$user->id}}</td>
+                                    <td>{{$user->name}}</td>
+                                    <td>{{\Carbon\Carbon::parse($user->birthday)->format('d-m-Y')}}</td>
+                                    <td> {{ ($user->gender == 1) ? 'Nam' : 'Nữ' }} </td>
+                                    <td>{{$user->phone}}</td>
+                                    <td>{{$user->address}}</td>
+                                    <td>{{\Carbon\Carbon::parse($user->created_at)->format('d-m-Y h:i')}}</td>
                                     <td>
-                                        @if($user->TrangThai == 1)
-                                            <label class="label label-success">Hoạt Động</label>
-                                        @else
-                                            <label class="label label-danger">Khóa</label>
-                                        @endif
-                                    </td>
-                                    <td>{{$user->Xu}}</td>
-                                    <td>
-                                        @if(Auth::guard('admin')->user()->quyen == 1)
+                                        <!-- @if(Auth::guard('admin')->user()->quyen == 1)
                                             <a href="{{route('users.edit',['id' => $user->Id_KhachHang])}}"
                                                class="btn btn-action label label-success"><i
                                                         class="fa fa-pencil"></i></a>
-                                       {{--  @endif
+                                        @endif -->
 
-                                        @if(Auth::guard('admin')->user()->delete == 1) --}}
+                                        @if(Auth::guard('admin')->user()->quyen == 1)
                                             <form action="{{ route('users.destroy', ['id' => $user->Id_KhachHang]) }}"
                                                   method="post" class="inline">
                                                 {{ csrf_field() }}

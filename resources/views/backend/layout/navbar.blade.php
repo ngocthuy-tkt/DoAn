@@ -53,7 +53,6 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="{{route('users.index')}}"><i class="fa fa-circle-o"></i> Danh sách</a></li>
-                    <li><a href="{{route('users.create')}}"><i class="fa fa-circle-o"></i> Thêm mới</a></li>
                 </ul>
             </li>
 

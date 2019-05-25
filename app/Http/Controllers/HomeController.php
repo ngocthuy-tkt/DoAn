@@ -44,4 +44,26 @@ class HomeController extends FrontEndController
             return redirect()->back()->with('error','Đăng ký thất bại, vui lòng thử lại');
         }
     }
+
+    public function historyOrder()
+    {
+        $lichSuMua = \DB::table('chitietdonhang')
+                    ->join('donhang','chitietdonhang.Id_HoaDonBan','=','donhang.Id_HoaDonBan')
+                    ->join('sanpham','chitietdonhang.Id_SanPham','=','sanpham.Id_SanPham')
+                    ->where('donhang.Id_KhachHang','=', Auth::user()->id)
+                    ->select('chitietdonhang.*','donhang.TongTien', 'donhang.NgayTao','sanpham.TenSp','sanpham.GiaKhuyenMai','sanpham.DonGia')
+                    ->get();
+        return view('lichsumuahang',compact('lichSuMua'));
+    }
+
+    public function searchByName(Request $request)
+    {
+        $search = \DB::table('sanpham')
+                ->where('TenSp', 'like', '%'. $request->get('key') .'%')
+                ->select('sanpham.*')
+                ->orderBy('sanpham.Id_SanPham', 'desc')
+                ->get();
+                
+        return view('search', compact('search'));        
+    }
 }

@@ -26,7 +26,20 @@
                         </ul>
                     </li>
                 </ul>
+               
                 <ul class="nav navbar-nav navbar-right">
+                    <li>
+                      <div class="header_search" id="search_form" style="margin-top: 8px">
+                          <form class="input-group search-bar search_form has-validation-callback" action="{{ route('search') }}" method="get" role="search">
+                               <input class="form-control" type="search" name="key" placeholder="Tìm kiếm..." aria-label="Search" autocomplete="off">
+                              <span class="input-group-btn">
+                                  <button class="btn icon-fallback-text">
+                                      <i class="fa fa-search"></i>
+                                  </button>
+                              </span>
+                          </form>
+                      </div>
+                    </li>
                     <li><a href="{{route('cart')}}"><i class="fa fa-shopping-cart"></i> Giỏ hàng {{ \Cart::count() }}</a></li>
                     @if(Auth::check())
 
@@ -35,6 +48,9 @@
                                         class="fa fa-user"></i>
                                 {{Auth::user()->name}}</a>
                             <ul class="dropdown-menu" id="with-200px">
+                                <li>
+                                    <a href="{{route('historyOrder')}}">Lịch sử mua hàng</a>
+                                </li>
                                 <li>
                                     <a href="{{route('logout')}}">Đăng xuất</a>
                                 </li>

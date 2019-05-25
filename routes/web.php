@@ -46,3 +46,7 @@ Route::post('/login', 'Auth\LoginController@login')->name('login.submit');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('/signup', 'HomeController@signupForm')->name('signup');
 Route::post('/signup', 'HomeController@creat')->name('signup');
+Route::get('/lich-su-mua-hang', 'HomeController@historyOrder')->name('historyOrder');
+
+//search
+Route::get('/search', 'HomeController@searchByName')->name('search');

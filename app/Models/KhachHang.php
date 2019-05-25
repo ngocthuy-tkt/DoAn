@@ -16,7 +16,6 @@ class KhachHang extends Authenticatable
     protected $fillable = [
         'HoTen', 'NgaySinh', 'GioiTinh', 'Sdt', 'DiaChi', 'Avatar', 'password', 'NgayTao', 'TrangThai', 'email'
     ];
-
    
     /**
      * The attributes that should be hidden for arrays.

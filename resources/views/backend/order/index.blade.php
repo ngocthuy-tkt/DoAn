@@ -55,11 +55,11 @@
                                         @endif
                                     </td>
                                     <td>
-                                       
-                                            <a href="{{route('order.edit',['id' => $item->Id_HoaDonBan])}}"
+                                    @if(Auth::guard('admin')->user()->quyen == 1)   
+                                        <a href="{{route('order.edit',['id' => $item->Id_HoaDonBan])}}"
                                                class="btn btn-action label label-success"><i
                                                         class="fa fa-pencil"></i></a>
-                                       
+                                    @endif  
                                     </td>
                             @endforeach
                             </tbody>

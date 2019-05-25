@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Models\KhachHang;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -12,10 +12,9 @@ class UserController extends BackendController
 
     public function index()
     {
-        //dd(1);
-        $users = KhachHang::all();
+        $users = User::all();
         $columns = [
-            'ID','Họ tên', 'Ngày sinh', 'giới tính', 'sdt', 'địa chỉ', 'avatar', 'ngày tạo','trạng thái','Xu','Hoạt động'
+            'ID','Họ tên', 'Ngày sinh', 'giới tính', 'sdt', 'địa chỉ', 'ngày tạo','Hoạt động'
         ];
         return view('backend.user.index',compact('users','columns'));
     }
@@ -63,7 +62,7 @@ class UserController extends BackendController
             'NgayTao' => date('Y-m-d',time()),
         ]);
 
-        if (KhachHang::create($request->all())) {
+        if (User::create($request->all())) {
             return redirect()->back()->with('success','Thêm mới tài khoản khách hàng thành công');
         }else{
             return redirect()->back()->with('error','Thêm mới tài khoản thất bại, vui lòng thử lại');
@@ -72,7 +71,7 @@ class UserController extends BackendController
 
     public function edit($id)
     {
-         $user = KhachHang::findOrFail($id);
+         $user = User::findOrFail($id);
         return view('backend.user.edit', compact('user'));
     }
 
