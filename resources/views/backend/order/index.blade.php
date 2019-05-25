@@ -38,24 +38,28 @@
                             <tbody>
                             @foreach($orders as $item)
                                 <tr>
-                                    <td>{{$item->id}}</td>
-                                    <td>{{$item->name}}</td>
-                                    <td>{{$item->phone}}</td>
-                                    <td>{{$item->address}}</td>
-                                    <td>{{format_money($item->total_money_order)}}</td>
+                                    <td>{{$item->Id_HoaDonBan}}</td>
+                                    <td>{{$item->TenNguoiNhan}}</td>
+                                    <td>{{$item->Sdt}}</td>
+                                    <td>{{$item->DiaChi}}</td>
+                                    <td>{{format_money($item->TongTien)}}</td>
                                     <td>
-                                        @if($item->order_status == 1)
+                                        @if($item->TrangThai == 1)
                                             <label class="label label-success">Đã duyệt</label>
+                                        @elseif($item->TrangThai == 2)
+                                            <label class="label label-success">Đã thanh toán</label>
+                                        @elseif($item->TrangThai == -1)    
+                                            <label class="label label-waring">Hủy</label>
                                         @else
-                                            <label class="label label-danger">Đợi duyệt</label>
+                                            <label class="label label-danger">Chờ</label>
                                         @endif
                                     </td>
                                     <td>
-                                        @if(Auth::guard('admin')->user()->edit == 1)
-                                            <a href="{{route('order.edit',['id' => $item->id])}}"
+                                       
+                                            <a href="{{route('order.edit',['id' => $item->Id_HoaDonBan])}}"
                                                class="btn btn-action label label-success"><i
                                                         class="fa fa-pencil"></i></a>
-                                        @endif
+                                       
                                     </td>
                             @endforeach
                             </tbody>
