@@ -27,7 +27,7 @@ class ProductRepository implements ProductInterface
     public function findById($id)
     {
         $product = Product::where('Id_SanPham', '=', $id)
-            ->with(['category', 'author'])
+            ->with(['category'])
             ->first();
         return (isset($product)) ? $product : false;
     }
