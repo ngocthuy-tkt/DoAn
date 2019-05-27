@@ -16,7 +16,9 @@ class OrderController extends BackendController
         $columns = [
             'ID', 'Tên khách hàng', 'Số điện thoại', 'Địa chỉ', 'Tổng tiền', 'Trạng thái' , 'Hành động'
         ];
-        return view('backend.order.index', compact('orders', 'columns'));
+        $orderSucc = DB::table('donhang')->where('TrangThai', '=' , 2)->get();
+        $orderCan = DB::table('donhang')->where('TrangThai', '=' , -1)->get();
+        return view('backend.order.index', compact('orders', 'columns', 'orderSucc', 'orderCan'));
     }
 
     public function edit($id)

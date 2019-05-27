@@ -60,9 +60,16 @@
                                     Thanh toán tại nhà
                                 </label>
                             </div>
+                            <div class="form-group"><br>
+                                <label for="">Phí ship </label><br>
+                                <input type="radio" name="ship" value="20"> Nội thành ( 20k )<br>
+                                <input type="radio" name="ship" value="30"> Ngoại thành ( 30k )<br>
+                                <input type="radio" name="ship" value="40"> Các tỉnh ( 40k )<br>
+                            </div>
                         </div>
                         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                             <h4>Chi tiết đơn hàng</h4>
+                            @php $total = \Cart::total() - \Cart::tax(); @endphp   
                             @foreach(\Cart::content() as $item)
                                 <div class="payment_content_li">
                                     <img src=""
@@ -75,8 +82,7 @@
                                 </div>
                             @endforeach
                             <p>Tạm tính : <strong class="text-red">{{ \Cart::subtotal() }}</strong></p>
-                            <p>VAT(5%) : <strong class="text-red">{{ \Cart::tax() }}</strong></p>
-                            <p>Tổng tiền : <strong class="text-red">{{ \Cart::total() }}</strong></p>
+                            <p>Tổng tiền : <strong class="text-red">{{ $total }}</strong></p>
                             <div>
                             <button type="submit" class="btn btn-primary">Xác nhận & đặt hàng</button>
                             </div>

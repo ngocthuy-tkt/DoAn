@@ -45,11 +45,12 @@ class CheckoutController extends FrontEndController
 
         $id = Auth::user()->id;
         $request->offsetunset('_token');
+        $ship = $request->ship;
         $products_cart = $this->cartRepository->getAllSession();
         $data = [
             'NgayTao' => Carbon::now(),
             'NgayCapNhap' => Carbon::now(),
-            'TongTien' => \Cart::total(),
+            'TongTien' => \Cart::total() - \Cart::tax() + $ship,
             'TenNguoiNhan' => $request->TenNguoiNhan,
             'email' => $request->email,
             'Sdt' => $request->Sdt,
