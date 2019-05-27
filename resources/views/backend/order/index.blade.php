@@ -42,14 +42,14 @@
                                     <td>{{$item->TenNguoiNhan}}</td>
                                     <td>{{$item->Sdt}}</td>
                                     <td>{{$item->DiaChi}}</td>
-                                    <td>{{format_money($item->TongTien)}}</td>
+                                    <td>{{$item->TongTien}}</td>
                                     <td>
                                         @if($item->TrangThai == 1)
                                             <label class="label label-success">Đã duyệt</label>
                                         @elseif($item->TrangThai == 2)
                                             <label class="label label-success">Đã thanh toán</label>
                                         @elseif($item->TrangThai == -1)    
-                                            <label class="label label-waring">Hủy</label>
+                                            <label class="label label-danger">Hủy</label>
                                         @else
                                             <label class="label label-danger">Chờ</label>
                                         @endif

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\OrderDetail;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -59,13 +60,23 @@ class CheckoutController extends FrontEndController
         ];
         if ($od = Order::create($data)) {
             foreach (\Cart::content() as $value) {
-                OrderDetail::create([
+                $data = [
                     'Id_HoaDonBan' => $od->Id_HoaDonBan,
                     'Id_SanPham' => $value->id,
                     'SoLuong' => $value->qty,
                     'DonGia' => $value->price,
                     'TenSp' => $value->name
-                ]);
+                ];
+
+                if($detail = OrderDetail::create($data)) {
+                    $id = $detail->Id_SanPham;
+                    $Sp = Product::find($id);
+                    $data = [
+                        'SoLuong' => ($Sp->SoLuong)-($detail->SoLuong)
+                    ];
+
+                    $Sp->update($data);
+                }    
             }
             \Cart::instance('default')->destroy();
             return view('thongbao')->with('success','Đặt hàng thành công');
