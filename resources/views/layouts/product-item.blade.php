@@ -1,22 +1,20 @@
 <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
-    <div class="thumbnail product-item">
-        <a href="{{route('detail',['slug' => $product->TenSp, 'id' => $product->Id_SanPham])}}">
-            <span class="image">
-                <img src="{{ asset($product->AnhChinh) }}"
-                     alt="" class="img-responsive">
-            </span>
-            <div class="caption">
-                <h3 class="title">{{$product->TenSp}}</h3>
-                <p class="price-sale">
+    <div class="ds_sanpham">
+        <ul>
+            <li>
+                <a href="{{route('detail',['slug' => $product->TenSp, 'id' => $product->Id_SanPham])}}">
+                    <img  src="{{ asset($product->AnhChinh) }}" alt="{{$product->TenSp}}" class="img-responsive"/>
+                    <label class="khuyenmai">GIẢM <span class="sale-tag">{{ discount($product->DonGia,$product->GiaKhuyenMai) }}</span></label>
+                    <h4> {{$product->TenSp}}</h4>
+                    <!-- <p class="gia">{{format_money($product->DonGia)}}đ</p> -->
                     @if(!empty($product->GiaKhuyenMai))
-                        <span class="final-price">{{format_money($product->GiaKhuyenMai)}}</span>
+                        <span class="final-price gia">{{format_money($product->GiaKhuyenMai)}}</span>
                         <span class="price-regular">{{format_money($product->DonGia)}}</span>
-                        <!-- <span class="sale-tag">{{ discount($product->DonGia,$product->GiaKhuyenMai) }}</span> -->
                     @else
-                        <span class="final-price">{{format_money($product->DonGia)}}</span>
+                        <span class="final-price gia">{{format_money($product->DonGia)}}</span>
                     @endif
-                </p>
-            </div>
-        </a>
+                </a>
+            </li>
+        </ul>
     </div>
 </div><!--/ product-item -->

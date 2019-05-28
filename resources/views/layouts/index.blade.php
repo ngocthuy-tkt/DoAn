@@ -7,11 +7,12 @@
     <link rel="stylesheet" href="{{asset('fontawesome/css/font-awesome.min.css')}}">
     <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('giaodien/css/style.css')}}">
 </head>
 <body>
 
 @include('layouts.header')
-<div class="content">
+<div class="content" id="content">
     @yield('content')
 </div>
 
