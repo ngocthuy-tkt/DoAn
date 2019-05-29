@@ -500,3 +500,7 @@ i.ico {
     float: left;
     width: 405px;
 }
+
+.price-regular {
+    text-decoration: line-through;
+}

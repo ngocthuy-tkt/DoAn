@@ -26,6 +26,9 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('products', 'Backend\ProductController', ['only' => ['index', 'create', 'store', 'edit', 'update', 'destroy']]);
     Route::resource('banner', 'Backend\BannerController', ['only' => ['index', 'create', 'store', 'edit', 'update', 'destroy']]);
     Route::resource('order', 'Backend\OrderController', ['only' => ['index', 'edit', 'update']]);
+    Route::resource('supplier', 'Backend\SupplierController');
+    Route::resource('invoice', 'Backend\InvoiceController');
+    Route::resource('bill', 'Backend\BillOfSaleController', ['only' => ['index', 'create', 'store']]);
 
 });
 

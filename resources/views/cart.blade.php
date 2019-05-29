@@ -24,7 +24,6 @@
                 </tr>
                 </thead>
                 <tbody>
-                @php $total = \Cart::total() - \Cart::tax(); @endphp    
                 @foreach(\Cart::content() as $item)
                     <tr>
                         <td>
@@ -60,7 +59,7 @@
                 <tfoot>
                 <tr style="height: 100px">
                     <td><a href="{{route('home')}}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Tiếp tục mua hàng</a></td>
-                    <td colspan="2" class="hidden-xs"><strong>Tổng: {{ $total }}</strong></td>
+                    <td colspan="2" class="hidden-xs"><strong>Tổng: {{ \Cart::total() }}</strong></td>
                     <td><a href="{{route('checkout')}}" class="btn btn-success btn-block">Thanh toán <i class="fa fa-angle-right"></i></a>
                     </td>
                 </tr>
