@@ -26,20 +26,17 @@
                         </ul>
                     </li>
                 </ul>
-               
-                <ul class="nav navbar-nav navbar-right">
-                    <!-- <li>
-                      <div class="header_search" id="search_form" style="margin-top: 8px">
-                          <form class="input-group search-bar search_form has-validation-callback" action="{{ route('search') }}" method="get" role="search">
-                              <input class="form-control" type="search" name="key" placeholder="Tìm kiếm..." aria-label="Search" autocomplete="off">
-                              <span class="input-group-btn">
-                                  <button class="btn icon-fallback-text">
-                                      <i class="fa fa-search"></i>
-                                  </button>
-                              </span>
-                          </form>
-                      </div>
-                    </li> -->
+                <div class="header_search" id="search_form" style="margin-top: 8px">
+                    <form style="padding-right: 250px; padding-left: 40px" class="input-group search-bar search_form has-validation-callback" action="{{ route('search') }}" method="get" role="search">
+                        <input class="form-control" type="search" name="key" placeholder="Tìm kiếm..." aria-label="Search" autocomplete="off">
+                        <span class="input-group-btn">
+                            <button class="btn icon-fallback-text">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </form>
+                </div>
+                <ul class="nav navbar-nav navbar-right" style="margin-top: -43px;">
                     <li><a href="{{route('cart')}}"><i class="fa fa-shopping-cart"></i> Giỏ hàng {{ \Cart::count() }}</a></li>
                     @if(Auth::check())
 
@@ -68,3 +65,4 @@
         </div><!-- /.navbar-collapse -->
     </nav>
 </div><!--  end header section  -->
+

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link rel="stylesheet" href="{{asset('giaodien/css/style.css')}}">
+    
     @yield('style')
 </head>
 <body>
