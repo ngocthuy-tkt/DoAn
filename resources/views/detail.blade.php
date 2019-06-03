@@ -90,10 +90,10 @@
 							</tr>
 							<tr>
 								<td id="LuotXem"> Lượt Xem </td>
-								<td></td>
+								<td>{{ $product->LuotXem }}</td>
 							</tr>
 							<tr>
-								<td colspan="2"><label id="khuyenmai">18% OFF</label></td>
+								<td colspan="2"><label id="khuyenmai">{{ discount($product->DonGia,$product->GiaKhuyenMai) }} OFF</label></td>
 							</tr>
 							<tr>
 								<td colspan="2" id="gia">
