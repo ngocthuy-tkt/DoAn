@@ -29,6 +29,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('supplier', 'Backend\SupplierController');
     Route::resource('invoice', 'Backend\InvoiceController');
     Route::resource('bill', 'Backend\BillOfSaleController', ['only' => ['index', 'create', 'store']]);
+    Route::resource('inventory', 'Backend\InventoryController', ['only' => ['index', 'create', 'store']]);
+    Route::resource('phieunhap', 'Backend\EnterCouponController');
 
 });
 
@@ -50,6 +52,8 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('/signup', 'HomeController@signupForm')->name('signup');
 Route::post('/signup', 'HomeController@creat')->name('signup');
 Route::get('/lich-su-mua-hang', 'HomeController@historyOrder')->name('historyOrder');
+Route::get('/tai-khoan', 'HomeController@detailAccount')->name('detailAccount');
+Route::post('/tai-khoan', 'HomeController@postDetailAccount')->name('detailAccount');
 
 //search
 Route::get('/search', 'HomeController@searchByName')->name('search');

@@ -12,11 +12,13 @@ class OrderController extends BackendController
 {
     public function index()
     {
-        $orders = Order::get();
+        $orders = Order::where('TrangThai', '=', 0)
+                        ->orwhere('TrangThai', '=', 1)
+                        ->get();
         $columns = [
             'ID', 'Tên khách hàng', 'Số điện thoại', 'Địa chỉ', 'Tổng tiền', 'Trạng thái' , 'Hành động'
         ];
-        $orderSucc = DB::table('donhang')->where('TrangThai', '=' , 1)->get();
+        $orderSucc = DB::table('donhang')->where('TrangThai', '=' , 2)->get();
         $orderCan = DB::table('donhang')->where('TrangThai', '=' , -1)->get();
         return view('backend.order.index', compact('orders', 'columns', 'orderSucc', 'orderCan'));
     }

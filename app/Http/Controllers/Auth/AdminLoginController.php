@@ -39,10 +39,16 @@ class AdminLoginController extends Controller
             ]
         );
 
-        if (Auth::guard('admin')->attempt(['MaNV' => $rq->login_name, 'password' => $rq->password])) {
+        $data = [
+            'MaNV' => $rq->login_name,
+            'password' => $rq->password,
+            'TrangThai' => 1
+        ];
+
+        if (Auth::guard('admin')->attempt($data)) {
             return redirect()->route('admin');
         } else {
-            return redirect()->route('admin.login')->with('thongbao', 'Tài khoản hoặc mật khẩu không đúng');
+            return redirect()->route('admin.login')->with('thongbao', 'Tài khoản hoặc mật khẩu không đúng hoặc bạn chưa được active tài khoản');
         }
     }
 

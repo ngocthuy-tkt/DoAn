@@ -50,7 +50,7 @@ class HomeController extends FrontEndController
         $lichSuMua = \DB::table('chitietdonhang')
                     ->join('donhang','chitietdonhang.Id_HoaDonBan','=','donhang.Id_HoaDonBan')
                     ->join('sanpham','chitietdonhang.Id_SanPham','=','sanpham.Id_SanPham')
-                    ->where('donhang.Id_KhachHang','=', Auth::user()->id)
+                    ->where('donhang.Id_KhachHang','=', \Auth::user()->id)
                     ->select('chitietdonhang.*','donhang.TongTien', 'donhang.NgayTao','sanpham.TenSp','sanpham.GiaKhuyenMai','sanpham.DonGia')
                     ->get();
         return view('lichsumuahang',compact('lichSuMua'));
@@ -65,5 +65,34 @@ class HomeController extends FrontEndController
                 ->get();
                 
         return view('search', compact('search'));        
+    }
+
+    public function detailAccount()
+    {
+        return view('taikhoan');
+    }
+
+    public function postDetailAccount(Request $request)
+    {
+        $id = \Auth::user()->id;
+        $user = User::find($id);
+        $this->validate($request, [
+            'password' => 'required'
+        ], [
+            'password.required' => 'Không để trống'
+        ]);
+        $request->offsetunset('_token');
+        $user->name = $request->name;
+        $user->phone = $request->phone;
+        $user->email = $request->email;
+        $user->gender = $request->gender;
+        $user->birthday = $request->birthday;
+        $user->password = bcrypt($request->password);
+        $check = $user->save();
+        if ($check) {
+            return redirect()->back()->with('success', 'Cập nhập thành công');
+        } else {
+            return redirect()->back()->with('error', 'Cập nhập thất bại, vui lòng thử lại');
+        }
     }
 }

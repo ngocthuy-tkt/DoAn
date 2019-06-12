@@ -18,7 +18,7 @@
     </section>
     <!-- Main content -->
     <section class="content">
-        <form action="{{route('invoice.update', ['id' => $hdm->Id_HoaDonMua])}}" method="POST" role="form" enctype="multipart/form-data">
+        <form action="{{route('phieunhap.update', ['id' => $ph->id])}}" method="POST" role="form" enctype="multipart/form-data">
             {{ csrf_field() }}
             @method('PUT')
             <div class="box box-danger">
@@ -33,7 +33,7 @@
                                 <select class="form-control select2" style="width: 100%;" name="Id_NhaCC">
                                     <option value="0" selected="selected">Chọn nhà cung cấp</option>
                                     @foreach($ncc as $item)
-                                        <option value="{{ $item->Id_NCC }}" {{ $item->Id_NCC == old('Id_NhaCC', $hdm->Id_NhaCC) ? "selected" : "" }}>{{ $item->TenNCC }}</option>
+                                        <option value="{{ $item->Id_NCC }}" {{ $item->Id_NCC == old('Id_NhaCC', $ph->Id_NhaCC) ? "selected" : "" }}>{{ $item->TenNCC }}</option>
                                     @endforeach()
                                 </select>
                                 @if($errors->has('Id_NhaCC'))
@@ -46,7 +46,7 @@
                                 <div class="input-group">
                                     <span class="input-group-addon">@</span>
                                     <input type="date" class="form-control" placeholder="Ngày tạo" name="NgayTao"
-                                           id="NgayTao" value="{{ old('NgayTao', $hdm->NgayTao) }}">
+                                           id="NgayTao" value="{{ old('NgayTao', $ph->NgayTao) }}">
                                 </div>
                             </div>
                             @if($errors->has('NgayTao'))
@@ -58,7 +58,7 @@
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
                                     <input type="date" class="form-control" placeholder="Ngày cập nhập" name="NgayCapNhap" id="NgayCapNhap"
-                                           value="{{ old('NgayCapNhap', $hdm->NgayCapNhap) }}">
+                                           value="{{ old('NgayCapNhap', $ph->NgayCapNhap) }}">
                                 </div>
                             </div>
                             @if($errors->has('NgayCapNhap'))
@@ -70,12 +70,24 @@
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
                                     <input type="text" class="form-control" placeholder="Tổng tiền" name="TongTien" id="TongTien"
-                                           value="{{ old('TongTien', $hdm->TongTien) }}">
+                                           value="{{ old('TongTien', $ph->TongTien) }}">
                                 </div>
                             </div>
                             @if($errors->has('TongTien'))
                                 <div class="help-block text-red">
                                     * {!! $errors->first('TongTien') !!}
+                                </div>
+                            @endif
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input type="text" class="form-control" placeholder="Ghi chú" name="GhiChu" id="GhiChu"
+                                           value="{{ old('GhiChu', $ph->GhiChu) }}">
+                                </div>
+                            </div>
+                            @if($errors->has('GhiChu'))
+                                <div class="help-block text-red">
+                                    * {!! $errors->first('GhiChu') !!}
                                 </div>
                             @endif
                         </div>

@@ -1,15 +1,19 @@
 @extends('backend.layout.index')
 @section('page_title','Administration')
 
+@section('custom_css')
+    <style>
+    </style>
+@endsection
 @section('content')
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Quản lý hóa đơn bán
+            Quản lý phiếu hàng
         </h1>
         <ol class="breadcrumb">
             <li><a href="{{route('admin')}}"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">user</li>
+            <li class="active">Phiếu hàng</li>
 
         </ol>
     </section>
@@ -19,13 +23,14 @@
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Danh sách hóa đơn bán</h3>
-                    </div>
-                    <div class="box-header">
-                        <a href="{{ route('bill.create') }}" class="btn btn-sm btn-success">Thêm mới</a>
+                        <h3 class="box-title" style="margin-bottom: 15px">Danh sách phiếu hàng</h3>
+                        <div class="box-header">
+	                        <a href="{{ route('phieunhap.create') }}" class="btn btn-sm btn-success">Thêm mới</a>
+	                    </div>
                     </div>
                     <!-- /.box-header -->
-                    <div class="box-body table-responsive">
+                    
+                    <div class="box-body table-responsive table_full">
                         <table id="data_table" class="table table-bordered table-striped">
                             <thead>
                             <tr>
@@ -35,25 +40,28 @@
                             </tr>
                             </thead>
                             <tbody>
-
-                            @foreach($hdb as $user)
+                            @foreach($phieunhap as $item)
                                 <tr>
-                                    <td>{{$user->Id_HoaDonBan}}</td>
-                                    <td>{{$user->HoTen}}</td>
-                                    <td>{{$user->TenNguoiNhan}}</td>
-                                    <td>{{$user->Sdt}}</td>
-                                    <td>{{$user->DiaChi}}</td>
-                                    <td>{{$user->TongTien}}</td>
-                                    <td>{{\Carbon\Carbon::parse($user->NgayTao)->format('d-m-Y')}}</td>
+                                    <td>{{$item->id}}</td>
+                                    <td>{{$item->TenNCC}}</td>
+                                    <td>        {{\Carbon\Carbon::parse($item->NgayTao)->format('d-m-Y')}}</td>
+                                    <td>{{\Carbon\Carbon::parse($item->NgayCapNhap)->format('d-m-Y')}}</td>
+                                    <td>{{$item->TongTien}}</td>
+                                    <td>{{$item->GhiChu}}</td>
                                     <td>
-                                        <!-- @if(Auth::guard('admin')->user()->quyen == 1)
-                                            <a href="{{route('invoice.edit',['id' => $user->Id_HoaDonBan])}}"
+                                        @if($item->TrangThai == 1)
+                                            Kích hoạt 
+                                        @endif        
+                                    </td>
+                                    <td>
+                                        @if(Auth::guard('admin')->user()->quyen == 1)
+                                            <a href="{{route('phieunhap.edit',['id' => $item->id])}}"
                                                class="btn btn-action label label-success"><i
                                                         class="fa fa-pencil"></i></a>
-                                        @endif -->
+                                        @endif
 
                                         @if(Auth::guard('admin')->user()->quyen == 1)
-                                            <form action="{{ route('invoice.destroy', ['id' => $user->Id_HoaDonBan]) }}"
+                                            <form action="{{ route('phieunhap.destroy', ['id' => $item->id]) }}"
                                                   method="post" class="inline">
                                                 {{ csrf_field() }}
                                                 {{ method_field('DELETE') }}
@@ -64,7 +72,7 @@
                                             </form>
                                         @endif
                                     </td>
-                                </tr>
+                                   
                             @endforeach
                             </tbody>
                             <tfoot>
@@ -76,6 +84,7 @@
                             </tfoot>
                         </table>
                     </div>
+                    
                     <!-- /.box-body -->
                 </div>
                 <!-- /.box -->
@@ -93,8 +102,20 @@
     <script>
         $(function () {
             $('#data_table').DataTable({
-                "order": [[0, "desc"]]
-            })
+                "ordering": false
+            });
+
+            $('#table_success').DataTable({
+                "ordering": false
+            });
+
+            $('#table_cancel').DataTable({
+                "ordering": false
+            });
+
+            $('.success').on('click', function(){
+                $('.table_full').css('display', 'none');
+            });
         })
     </script>
 @endsection

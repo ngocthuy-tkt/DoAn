@@ -53,7 +53,7 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-eye-slash"></i></span>
-                                    <input type="password" class="form-control" placeholder="Nhập mật khẩu" name="MatKhau">
+                                    <input type="password" class="form-control" placeholder="Nhập mật khẩu" name="MatKhau" value="{{ old('MatKhau') }}">
                                 </div>
                             </div>
                             @if($errors->has('MatKhau'))
@@ -64,8 +64,30 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-eye-slash"></i></span>
-                                    <input type="password" class="form-control" placeholder="Nhập lại mật khẩu" name="password_confirmation">
+                                    <input type="date" class="form-control" placeholder="Nhập ngày sinh" name="NgaySinh">
                                 </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-eye-slash"></i></span>
+                                    <input type="number" class="form-control" placeholder="Nhập số điện thoại" name="Sdt" value="{{ old('Sdt') }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-eye-slash"></i></span>
+                                    <input type="text" class="form-control" placeholder="Nhập địa chỉ" name="DiaChi" value="{{ old('DiaChi') }}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <!-- Minimal style -->
+                            <div class="form-group">
+                                <label>Giới tính</label>
+                                <select class="form-control select2" style="width: 100%;" name="GioiTinh">
+                                    <option value="1" selected="selected">Nam</option>
+                                    <option value="2">Nữ</option>
+                                </select>
                             </div>
                         </div>
                         <div class="col-md-6">

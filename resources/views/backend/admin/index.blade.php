@@ -43,6 +43,16 @@
                                 <tr>
                                     <td>{{$admin->HoTen}}</td>
                                     <td>{{$admin->MaNV}}</td>
+                                    <td>{{$admin->NgaySinh}}</td>
+                                    <td>
+                                        @if($admin->GioiTinh == 1)
+                                            Nam
+                                        @else
+                                            Nữ
+                                        @endif
+                                    </td>
+                                    <td>{{$admin->Sdt}}</td>
+                                    <td>{{$admin->DiaChi}}</td>
                                     <td>
                                         @if($admin->TrangThai == 1)
                                             <label class="label label-success">Activated</label>

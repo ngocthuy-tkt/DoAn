@@ -13,7 +13,7 @@ class AdminController extends BackendController
     {
         $admins = NhanVien::where('Id_NhanVien', '!=', Auth::guard('admin')->user()->Id_NhanVien)->get();
         $columns = [
-            'Họ tên', 'Tài khoản', 'Active', 'Quyền', 'Hành động'
+            'Họ tên', 'Tài khoản', 'Ngày Sinh', 'Giới tính', 'Số điện thoại', 'Địa chỉ','Active', 'Quyền', 'Hành động'
         ];
         return view('backend.admin.index',
             compact('admins', 'columns')
@@ -31,8 +31,7 @@ class AdminController extends BackendController
             [
                 'MaNV' => 'required',
                 'HoTen' => 'required|min:5|max:50|unique:nhanvien,MaNV',
-                'MatKhau' => 'required|min:4|confirmed',
-                'password_confirmation' => 'required|required_with:MatKhau|same:MatKhau',
+                'MatKhau' => 'required|min:4',
                 'quyen'     => 'required'
             ],[
                 'MaNV.required' => 'Mã nhân viên không được để trống',
@@ -41,10 +40,8 @@ class AdminController extends BackendController
                 'HoTen.max' => 'Tên đăng nhập quá dài',
                 'HoTen.unique' => 'Tên đăng nhập đã tồn tại',
                 'MatKhau.required' => 'Bạn chưa nhập mật khẩu',
-                'MatKhau.confirmed' => 'Mật khẩu không khớp',
                 'MatKhau.min' => 'Mật khẩu quá ngắn',
                 'quyen.required' => 'Mật khẩu quá ngắn',
-                'password_confirmation.required' => 'Bạn chưa nhập lại mật khẩu'
             ]
         );
 
@@ -76,8 +73,13 @@ class AdminController extends BackendController
 
         $request->offsetunset('_token');
 
-        $admin->TrangThai = $request->active;
-        $admin->quyen = $request->role;
+        $admin->TrangThai = $request->TrangThai;
+        $admin->quyen = $request->quyen;
+        $admin->NgaySinh = $request->NgaySinh;
+        $admin->Sdt = $request->Sdt;
+        $admin->DiaChi = $request->DiaChi;
+        $admin->GioiTinh = $request->GioiTinh;
+        $admin->MatKhau = bcrypt($request->MatKhau);
         $check = $admin->save();
         if ($check){
             return redirect()->route('administration.index')->with('success','Sửa tài khoản thành công');

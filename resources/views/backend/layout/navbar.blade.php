@@ -79,8 +79,8 @@
                     <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href=""><i class="fa fa-circle-o"></i> Phiếu nhập</a></li>
-                    <li><a href=""><i class="fa fa-circle-o"></i> Tồn kho</a></li>
+                    <li><a href="{{ route('phieunhap.index') }}"><i class="fa fa-circle-o"></i> Phiếu nhập</a></li>
+                    <li><a href="{{ route('inventory.index') }}"><i class="fa fa-circle-o"></i> Tồn kho</a></li>
                 </ul>
             </li>
             <li class="treeview">

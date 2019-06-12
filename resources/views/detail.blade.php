@@ -1,6 +1,6 @@
 @extends('layouts.index')
 
-@section('page_title',$product->name)
+@section('page_title',$product->TenSp)
 
 @section('style')
 <link rel="stylesheet" href="{{asset('giaodien/css/chitiet.css')}}">

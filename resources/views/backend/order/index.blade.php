@@ -29,7 +29,7 @@
                                 <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#home" role="tab" aria-controls="pills-home" aria-selected="true">Danh sách đơn hàng</a>
                             </li> -->
                             <li class="nav-item">
-                                <a class="nav-link success" id="pills-profile-tab" data-toggle="pill" href="#profile" role="tab" aria-controls="pills-profile" aria-selected="false" style="background: #3c8dbc; color: #fff">Đơn hàng đã duyệt</a>
+                                <a class="nav-link success" id="pills-profile-tab" data-toggle="pill" href="#profile" role="tab" aria-controls="pills-profile" aria-selected="false" style="background: #3c8dbc; color: #fff">Đơn hàng thanh toán</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link cancel" id="pills-contact-tab" data-toggle="pill" href="#contact" role="tab" aria-controls="pills-contact" aria-selected="false" style="background: #3c8dbc; color: #fff">Đơn hàng hủy</a>
@@ -156,11 +156,7 @@
                                     <td>
                                         @if($item->TrangThai == 1)
                                             <label class="label label-success">Đã duyệt</label>
-                                        @elseif($item->TrangThai == 2)
-                                            <label class="label label-success">Đã thanh toán</label>
-                                        @elseif($item->TrangThai == -1)    
-                                            <label class="label label-danger">Hủy</label>
-                                        @else
+                                        @elseif($item->TrangThai == 0)
                                             <label class="label label-danger">Chờ</label>
                                         @endif
                                     </td>

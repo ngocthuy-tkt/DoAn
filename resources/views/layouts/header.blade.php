@@ -49,6 +49,9 @@
                                     <a href="{{route('historyOrder')}}">Lịch sử mua hàng</a>
                                 </li>
                                 <li>
+                                    <a href="{{route('detailAccount')}}">Thông tin cá nhân</a>
+                                </li>
+                                <li>
                                     <a href="{{route('logout')}}">Đăng xuất</a>
                                 </li>
                             </ul>

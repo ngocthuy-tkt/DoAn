@@ -40,7 +40,7 @@
 
                             <div class="form-group">
                                 <label>Quyền</label>
-                                <select class="form-control select2" style="width: 100%;" name="role">
+                                <select class="form-control select2" style="width: 100%;" name="quyen">
                                     <option value="1" {{($admin->quyen == 1 ) ? 'selected' : ''}}>
                                         Super Admin
                                     </option>
@@ -52,19 +52,53 @@
                                     </option>
                                 </select>
                             </div>
-
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-eye-slash"></i></span>
+                                    <input type="date" class="form-control" placeholder="Nhập ngày sinh" name="NgaySinh" value="{{ old('NgaySinh', $admin->NgaySinh) }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-eye-slash"></i></span>
+                                    <input type="number" class="form-control" placeholder="Nhập số điện thoại" name="Sdt" value="{{ old('Sdt', $admin->Sdt) }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-eye-slash"></i></span>
+                                    <input type="text" class="form-control" placeholder="Nhập địa chỉ" name="DiaChi" value="{{ old('DiaChi', $admin->DiaChi) }}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <!-- Minimal style -->
+                            <div class="form-group">
+                                <label>Mật khẩu mới ( Thay mật khẩu bằng mật khẩu của bạn )</label>
+                                <input type="password" class="form-control" placeholder="Nhập mật khẩu mới" name="MatKhau" value="{{ old('MatKhau') }}">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <!-- Minimal style -->
+                            <div class="form-group">
+                                <label>Giới tính</label>
+                                <select class="form-control select2" style="width: 100%;" name="GioiTinh">
+                                    <option value="1" {{($admin->GioiTinh == 1 ) ? 'selected' : ''}}>Nam</option>
+                                    <option value="2" {{($admin->GioiTinh == 2 ) ? 'selected' : ''}}>Nữ</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="col-md-6">
                             <label>Trạng thái</label>
                             <div class="radio">
                                 <label>
                                     <input <?php $checked = ($admin->TrangThai == 0) ? 'checked' : ''; ?> type="radio"
-                                           name="active" value="0" {{$checked}}>
+                                           name="TrangThai" value="0" {{$checked}}>
                                     <span class="label label-danger">khóa</span>
                                 </label>
                                 <label>
                                     <input <?php $checked = ($admin->TrangThai == 1) ? 'checked' : ''; ?> type="radio"
-                                           name="active" value="1" {{$checked}}>
+                                           name="TrangThai" value="1" {{$checked}}>
                                     <span class="label label-success">hoạt động</span>
                                 </label>
                             </div>

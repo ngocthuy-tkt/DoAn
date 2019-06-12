@@ -22,31 +22,12 @@ class ProductController extends BackendController
     public function create()
     {
         $categories = $this->categoryRepository->all();
-        // $authors = $this->authorRepository->all();
-        // $pubs = $this->publishingHouseRepository->all();
         return view('backend.product.add', compact('categories'));
     }
 
     public function store(ProductRequest $request)
     {
         $request->offsetunset('_token');
-
-        // $photos = $request->file('AnhPhu');
-        // $paths  = [];
-
-        // foreach ($photos as $photo) {
-        //     $extension = $photo->getClientOriginalExtension();
-        //     $filename  = 'product-photo-' . time() . '.' . $extension;
-        //     $paths[]   = $photo->storeAs('upload', $filename);
-        // }
-
-        // dd($paths);
-
-
-        // $request->merge([
-        //     'AnhChinh' => $this->getImage('AnhChinh', 'upload/product', $request),
-        //     'AnhPhu'   => json_encode($data), 
-        // ]);
 
         $dataFormRequest = [
             'Id_DanhMucSp' => $request->Id_DanhMucSp,
