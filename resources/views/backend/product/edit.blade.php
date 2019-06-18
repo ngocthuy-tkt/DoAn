@@ -97,6 +97,15 @@
                                     * {!! $errors->first('SoLuong') !!}
                                 </div>
                             @endif
+                            <div class="form-group">
+                                <label>Kích cỡ</label>
+                                <select class="form-control select2" style="width: 100%;" name="size[]" multiple>
+                                    <option value="">|--- Chọn size---|</option>
+                                    <option value="S">S</option>
+                                    <option value="M">M</option>
+                                    <option value="L">L</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">

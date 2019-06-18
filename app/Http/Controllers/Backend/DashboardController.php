@@ -15,4 +15,9 @@ class DashboardController extends BackendController
         $user = \App\Models\NhanVien::count();
         return view('backend.dashboard.index', compact('customer', 'order', 'total', 'user'));
     }
+
+    public function listProductSelling($id)
+    {
+    	$product = \App\Models\Order::where('Id_SanPham', '=', $id)->count();dd($product);
+    }
 }

@@ -56,9 +56,21 @@
                             <h4>Phương thức thanh toán</h4>
                             <div class="radio">
                                 <label>
-                                    <input type="checkbox" name="KieuThanhToan" checked="checked" value="1">
+                                    <input type="radio" name="KieuThanhToan" checked="checked" value="1">
                                     Thanh toán tại nhà
                                 </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="KieuThanhToan" id="check" checked="checked" value="1">
+                                    Chuyển khoản
+                                </label>
+                                <div id="show" style="display: none; margin-top: 20px;">
+                                    <p>STK: 210000817775</p>
+                                    <p>Chủ TK: Nguyễn Thị Ngọc Thủy</p>
+                                    <p>Ngân hàng: BIDV - 191 Hai Bà Trưng, Hà Nội</p>
+                                    <p>Nội dung: Mã đơn hàng + Tên người mua</p>
+                                </div>
                             </div>
                             <div class="form-group"><br>
                                 <label for="">Phí ship </label><br>
@@ -95,3 +107,12 @@
     </div>
 
 @endsection
+@section('script')
+    <script>
+        $(document).ready(function(){
+            $('#check').click(function(){
+                $('#show').css('display', 'block');
+            });
+        });
+    </script>
+@stop

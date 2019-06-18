@@ -26,7 +26,7 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                         <p class="title">Giới thiệu</p>
-                        <p><a href="" class="link_ft">Giới thiệu Tiki</a></p>
+                        <p><a href="" class="link_ft">Giới thiệu</a></p>
                         <p><a href="" class="link_ft">Tuyển Dụng</a></p>
                         <p><a href="" class="link_ft">Chính sách bảo mật thanh toán</a></p>
                         <p><a href="" class="link_ft">Chính sách bảo mật thông tin cá nhân</a></p>
@@ -36,7 +36,7 @@
                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                         <p class="title">Hỗ trợ khách hàng</p>
                         <p><a href="" class="link_ft">Điều khoản sử dụng</a></p>
-                        <p><a href="" class="link_ft">Hội Sách Online</a></p>
+                        <p><a href="{{ route('quydinhdoitra') }}" class="link_ft">Quy định đổi trả</a></p>
                         <p><a href="" class="link_ft">Giới thiệu Tiki Xu</a></p>
                         <p><a href="" class="link_ft">Tiki Tư Vấn</a></p>
                         <p><a href="" class="link_ft">Ưu đãi doanh nghiệp</a></p>

@@ -95,4 +95,9 @@ class HomeController extends FrontEndController
             return redirect()->back()->with('error', 'Cập nhập thất bại, vui lòng thử lại');
         }
     }
+
+    public function quydinhdoitra()
+    {
+        return view('quydinhdoitra');
+    }
 }

@@ -11,7 +11,7 @@ class Product extends Model
     public $timestamps =  false;
 
     protected $fillable = [
-        'Id_DanhMucSp', 'MaSP', 'TenSp', 'DonGia', 'Id_KhuyenMai', 'SoLuong', 'NgayTao', 'TrangThai', 'LuotXem', 'AnhChinh', 'Sp_Hot', 'size'
+        'Id_DanhMucSp', 'MaSP', 'TenSp', 'DonGia', 'Id_KhuyenMai', 'SoLuong', 'NgayTao', 'TrangThai', 'LuotXem', 'AnhChinh', 'Sp_Hot', 'size', 'GiaKhuyenMai'
     ];
 
     public function category() {

@@ -17,6 +17,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
 
     Route::get('/', 'Backend\DashboardController@index')->name('admin');
+    Route::get('/ban-chay/{id}', 'Backend\DashboardController@listProductSelling');
 
     Route::resource('administration', 'Backend\AdminController', ['only' => ['index', 'create', 'store', 'edit', 'update', 'destroy']]);
     Route::resource('users', 'Backend\UserController', ['only' => ['index', 'create', 'store', 'edit', 'update', 'destroy']]);
@@ -54,6 +55,7 @@ Route::post('/signup', 'HomeController@creat')->name('signup');
 Route::get('/lich-su-mua-hang', 'HomeController@historyOrder')->name('historyOrder');
 Route::get('/tai-khoan', 'HomeController@detailAccount')->name('detailAccount');
 Route::post('/tai-khoan', 'HomeController@postDetailAccount')->name('detailAccount');
+Route::get('/quydinhdoitra', 'HomeController@quydinhdoitra')->name('quydinhdoitra');
 
 //search
 Route::get('/search', 'HomeController@searchByName')->name('search');

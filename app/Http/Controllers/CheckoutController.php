@@ -47,6 +47,9 @@ class CheckoutController extends FrontEndController
         $request->offsetunset('_token');
         $ship = $request->ship;
         $products_cart = $this->cartRepository->getAllSession();
+        $contents = \Cart::content()->map(function($item){
+            return $item->id; 
+        })->values();
         $data = [
             'NgayTao' => Carbon::now(),
             'NgayCapNhap' => Carbon::now(),
@@ -57,8 +60,10 @@ class CheckoutController extends FrontEndController
             'DiaChi' => $request->DiaChi,
             'GhiChu' => $request->GhiChu,
             'Id_KhachHang' => $id,
-            'KieuThanhToan' => $request->KieuThanhToan
+            'KieuThanhToan' => $request->KieuThanhToan,
+            'Id_SanPham' => $contents[0]
         ];
+        
         if ($od = Order::create($data)) {
             foreach (\Cart::content() as $value) {
                 $data = [
