@@ -76,9 +76,7 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon">$</span>
-                                    <input type="number" class="form-control" placeholder="Giá khuyến mãi"
-                                           name="GiaKhuyenMai"
-                                           value="{{ $product->GiaKhuyenMai }}">
+                                    <input type="number" class="form-control" placeholder="Giá khuyến mãi" name="GiaKhuyenMai" value="{{ $product->GiaKhuyenMai }}">
                                 </div>
                             </div>
                             @if($errors->has('GiaKhuyenMai'))

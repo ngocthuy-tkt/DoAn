@@ -15,7 +15,7 @@
 <body>
 
 @include('layouts.header')
-<div class="content" style="overflow-y: -webkit-paged-x;">
+<div class="content" style="overflow-x: hidden;">
     @yield('content')
 </div>
 
