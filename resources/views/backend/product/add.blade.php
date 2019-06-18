@@ -95,6 +95,15 @@
                                     * {!! $errors->first('SoLuong') !!}
                                 </div>
                             @endif
+                            <div class="form-group">
+                                <label>Kích cỡ</label>
+                                <select class="form-control select2" style="width: 100%;" name="size[]" multiple>
+                                    <option value="">|--- Chọn size---|</option>
+                                    <option value="S">S</option>
+                                    <option value="M">M</option>
+                                    <option value="L">L</option>
+                                </select>
+                            </div>
                             
                         </div>
                         <div class="col-md-6">
@@ -112,17 +121,6 @@
                                     * {!! $errors->first('AnhChinh') !!}
                                 </div>
                             @endif
-                            <!-- <div class="form-group">
-                                <label>Ảnh mô tả</label>
-                                <div class="show-product-img">
-                                    <input type="file" name="AnhPhu[]" id="upload_img" multiple>
-                                </div>
-                            </div>
-                            @if($errors->has('AnhPhu'))
-                                <div class="help-block text-red">
-                                    * {!! $errors->first('AnhPhu') !!}
-                                </div>
-                            @endif -->
                             <div class="form-group">
                                 <label>Trạng thái</label>
                                 <div class="radio">

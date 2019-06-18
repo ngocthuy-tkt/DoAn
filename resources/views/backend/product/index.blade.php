@@ -56,7 +56,7 @@
                                             <label class="label label-danger">Hot</label>
                                         @endif
                                     </td>
-                                    <td>{{$item->category->TieuDe}}</td>
+                                    <td>{{$item->TieuDe}}</td>
                                     <td>
                                         @if($item->active == 1)
                                             <label class="label label-success">Active</label>

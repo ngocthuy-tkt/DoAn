@@ -38,10 +38,10 @@ class ProductController extends BackendController
             'SoLuong'      => $request->SoLuong,
             'Sp_Hot'       => $request->Sp_Hot,
             'TrangThai'    => $request->TrangThai,
+            'size'         => serialize($request->size),
             'AnhChinh'     => $this->getImage('AnhChinh', 'upload/product', $request),
             'NgayTao'      => Carbon::now()
           ];
-          
   
         // insert
           

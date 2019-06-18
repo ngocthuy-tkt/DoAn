@@ -198,15 +198,17 @@
 								<th>MÔNG</th>
 								<th>DÀI</th>
 							</tr>
+							@foreach($sizes as $size)
 							<tr>
-								<td>S</td>
+								<td>{{ $size }}</td>
 								<td>34-35</td>
 								<td>82-86</td>
 								<td>68-74</td>
 								<td>84-88</td>
 								<td>86</td>
 							</tr>
-							<tr>
+							@endforeach()
+							<!-- <tr>
 								<td>M</td>
 								<td>35-36</td>
 								<td>86-90</td>
@@ -221,7 +223,7 @@
 								<td>80-86</td>
 								<td>92-96</td>
 								<td>90</td>
-							</tr>
+							</tr> -->
 						</table>
 					</div>
 				</div>

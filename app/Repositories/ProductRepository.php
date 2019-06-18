@@ -18,7 +18,8 @@ class ProductRepository implements ProductInterface
 
     public function all()
     {
-        $products = Product::with(['category'])
+        $products = Product::join('danhmucsanpham', 'sanpham.Id_DanhMucSp', '=', 'danhmucsanpham.Id_DanhMucSp')
+            ->select('sanpham.*', 'danhmucsanpham.TieuDe')
             ->orderBy('Id_SanPham', 'desc')
             ->get();
         return (isset($products)) ? $products : false;

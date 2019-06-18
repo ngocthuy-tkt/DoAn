@@ -10,9 +10,10 @@ class ProductController extends FrontEndController
     public function index($id, $slug)
     {
         $product = Product::where('Id_SanPham', '=', $id)
-            ->first(); 
+            ->first();
+        $sizes = unserialize($product->size);
         $product->increment('LuotXem');
         
-        return view('detail', compact('product'));
+        return view('detail', compact('product', 'sizes'));
     }
 }
