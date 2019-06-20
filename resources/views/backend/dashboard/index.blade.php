@@ -231,20 +231,20 @@
                   <tbody>
                       <tr>
                         <th style="width: 10px">#</th>
-                        <th>Task</th>
-                        <th>Progress</th>
-                        <th style="width: 40px">Label</th>
+                        <th>Mã sản phẩm</th>
+                        <th>Tên sản phẩm</th>
+                        <th style="width: 40px">Lượt xem</th>
                       </tr>
+                      @foreach($result as $res)
                       <tr>
                         <td>1.</td>
-                        <td>Update software</td>
+                        <td>{{ $res->MaSP }}</td>
                         <td>
-                          <div class="progress progress-xs">
-                            <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                          </div>
+                          {{ $res->TenSP }} 
                         </td>
-                        <td><span class="badge bg-red">55%</span></td>
+                        <td><span class="badge bg-red">{{ $res->LuotXem }} </span></td>
                       </tr>
+                      @endforeach()
                     </tbody>
                   </table>
               </div>
@@ -271,20 +271,20 @@
                   <tbody>
                       <tr>
                         <th style="width: 10px">#</th>
-                        <th>Task</th>
-                        <th>Progress</th>
-                        <th style="width: 40px">Label</th>
+                        <th>Mã sản phẩm</th>
+                        <th>Tên sản phẩm</th>
+                        <th style="width: 40px">Lượt xem</th>
                       </tr>
+                      @foreach($pro as $res)
                       <tr>
                         <td>1.</td>
-                        <td>Update software</td>
+                        <td>{{ $res->MaSP }}</td>
                         <td>
-                          <div class="progress progress-xs">
-                            <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                          </div>
+                          {{ $res->TenSP }} 
                         </td>
-                        <td><span class="badge bg-red">55%</span></td>
+                        <td><span class="badge bg-red">{{ $res->LuotXem }} </span></td>
                       </tr>
+                      @endforeach()
                     </tbody>
                   </table>
               </div>

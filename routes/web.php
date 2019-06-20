@@ -17,7 +17,6 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
 
     Route::get('/', 'Backend\DashboardController@index')->name('admin');
-    Route::get('/ban-chay/{id}', 'Backend\DashboardController@listProductSelling');
 
     Route::resource('administration', 'Backend\AdminController', ['only' => ['index', 'create', 'store', 'edit', 'update', 'destroy']]);
     Route::resource('users', 'Backend\UserController', ['only' => ['index', 'create', 'store', 'edit', 'update', 'destroy']]);
