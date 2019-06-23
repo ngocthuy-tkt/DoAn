@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 20, 2019 at 10:35 AM
+-- Generation Time: Jun 21, 2019 at 10:52 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.4
 
@@ -29,25 +29,26 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `chitietdonhang` (
-  `Id_CTHDBan` int(11) NOT NULL,
+  `Id_CTDonHang` int(11) NOT NULL,
   `Id_SanPham` int(11) DEFAULT NULL,
   `SoLuong` int(11) DEFAULT NULL,
   `DonGia` float(15,2) DEFAULT NULL,
   `TenSp` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Id_HoaDonBan` int(11) DEFAULT NULL
+  `Id_DonHang` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `chitietdonhang`
 --
 
-INSERT INTO `chitietdonhang` (`Id_CTHDBan`, `Id_SanPham`, `SoLuong`, `DonGia`, `TenSp`, `Id_HoaDonBan`) VALUES
+INSERT INTO `chitietdonhang` (`Id_CTDonHang`, `Id_SanPham`, `SoLuong`, `DonGia`, `TenSp`, `Id_DonHang`) VALUES
 (1, 1, 1, 100.00, 'Áo dài', 1),
 (2, 1, 1, 100.00, 'Áo dài', 2),
 (3, 2, 1, 200.00, 'Quần dài', 2),
 (4, 2, 1, 200.00, 'Quần dài', 3),
 (5, 1, 1, 100.00, 'Áo dài', 4),
-(6, 3, 1, 12.00, 'sadad', 5);
+(6, 3, 1, 12.00, 'sadad', 5),
+(7, 1, 1, 100.00, 'Áo dài', NULL);
 
 -- --------------------------------------------------------
 
@@ -60,10 +61,16 @@ CREATE TABLE `chitiethoadonban` (
   `Id_SanPham` int(11) DEFAULT NULL,
   `SoLuong` int(11) DEFAULT NULL,
   `DonGia` float(15,2) DEFAULT NULL,
-  `GiaKm` float(15,2) DEFAULT NULL,
-  `TenSp` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Id_HoaDonBan` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+
+--
+-- Dumping data for table `chitiethoadonban`
+--
+
+INSERT INTO `chitiethoadonban` (`Id_CTHDBan`, `Id_SanPham`, `SoLuong`, `DonGia`, `Id_HoaDonBan`) VALUES
+(1, 1, 1, 12.00, 1),
+(2, 2, 2, 23.00, 1);
 
 -- --------------------------------------------------------
 
@@ -82,28 +89,17 @@ CREATE TABLE `chitiethoadonmua` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `chitietkhuyenmai`
+-- Table structure for table `chitietphieuhang`
 --
 
-CREATE TABLE `chitietkhuyenmai` (
-  `Id_ChiTietKM` int(11) NOT NULL,
-  `Id_SanPham` int(11) DEFAULT NULL,
-  `Id_KhuyenMai` int(11) DEFAULT NULL,
-  `GiaSauKM` float(15,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `danhgia`
---
-
-CREATE TABLE `danhgia` (
-  `Id_DanhGia` int(11) NOT NULL,
-  `Id_SanPham` int(11) DEFAULT NULL,
-  `Id_KhachHang` int(11) DEFAULT NULL,
-  `Sao` int(5) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+CREATE TABLE `chitietphieuhang` (
+  `id` int(11) NOT NULL,
+  `Id_SanPham` int(11) NOT NULL,
+  `SoLuong` int(11) NOT NULL,
+  `DonGia` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `TenSP` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `Id_PhieuHang` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -153,10 +149,9 @@ CREATE TABLE `doihang` (
 --
 
 CREATE TABLE `donhang` (
-  `Id_HoaDonBan` int(11) NOT NULL,
+  `Id_DonHang` int(11) NOT NULL,
   `Id_NhanVien` int(11) DEFAULT NULL,
   `Id_SanPham` int(11) NOT NULL,
-  `Id_DoiHang` int(11) DEFAULT NULL,
   `NgayTao` timestamp NULL DEFAULT NULL,
   `NgayCapNhap` timestamp NULL DEFAULT NULL,
   `TongTien` float(15,2) DEFAULT NULL,
@@ -167,19 +162,23 @@ CREATE TABLE `donhang` (
   `GhiChu` text COLLATE utf8mb4_unicode_ci,
   `TrangThai` int(5) DEFAULT '0' COMMENT '0: chờ 1: duyệt 2: đã thanh toán -1: hủy',
   `Id_KhachHang` int(11) DEFAULT NULL,
-  `KieuThanhToan` tinyint(4) DEFAULT NULL
+  `KieuThanhToan` tinyint(4) DEFAULT NULL,
+  `size` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ship` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `donhang`
 --
 
-INSERT INTO `donhang` (`Id_HoaDonBan`, `Id_NhanVien`, `Id_SanPham`, `Id_DoiHang`, `NgayTao`, `NgayCapNhap`, `TongTien`, `TenNguoiNhan`, `email`, `Sdt`, `DiaChi`, `GhiChu`, `TrangThai`, `Id_KhachHang`, `KieuThanhToan`) VALUES
-(1, 1, 0, NULL, '2019-05-25 10:30:58', '2019-05-25 10:30:58', 105.00, 'Hoàng Khánh', 'hoang@gmail.com', '12345678910', 'Hà Nội', 'Giao hàng vào chủ nhật', 2, 2, 1),
-(2, 1, 0, NULL, '2019-05-25 10:34:01', '2019-05-25 10:34:01', 315.00, 'Hoàng Khánh', 'hoang@gmail.com', '12345678910', 'Hà Nội', 'Giao hàng nhanh', -1, 2, 1),
-(3, NULL, 0, NULL, '2019-05-27 16:59:54', '2019-05-27 16:59:54', 220.00, 'Khánh Hoàng', 'khanh@gmail.com', '1234567890', 'Haf Nooij', 'adadadsad', 0, 1, 1),
-(4, NULL, 0, NULL, '2019-05-27 17:02:40', '2019-05-27 17:02:40', 140.00, 'Khánh Hoàng', 'khanh@gmail.com', '1234567890', 'dasdas', 'asdasd', 0, 1, 1),
-(5, NULL, 3, NULL, '2019-06-18 12:27:00', '2019-06-18 12:27:00', 12.00, 'Hoàng Khánh', 'hoang@gmail.com', '12345678910', 'Hà Nội', NULL, 0, 2, 1);
+INSERT INTO `donhang` (`Id_DonHang`, `Id_NhanVien`, `Id_SanPham`, `NgayTao`, `NgayCapNhap`, `TongTien`, `TenNguoiNhan`, `email`, `Sdt`, `DiaChi`, `GhiChu`, `TrangThai`, `Id_KhachHang`, `KieuThanhToan`, `size`, `ship`) VALUES
+(1, 1, 0, '2019-05-25 10:30:58', '2019-05-25 10:30:58', 105.00, 'Hoàng Khánh', 'hoang@gmail.com', '12345678910', 'Hà Nội', 'Giao hàng vào chủ nhật', 2, 2, 1, '', '20'),
+(2, 1, 0, '2019-05-25 10:34:01', '2019-05-25 10:34:01', 315.00, 'Hoàng Khánh', 'hoang@gmail.com', '12345678910', 'Hà Nội', 'Giao hàng nhanh', -1, 2, 1, '', '30'),
+(3, NULL, 0, '2019-05-27 16:59:54', '2019-05-27 16:59:54', 220.00, 'Khánh Hoàng', 'khanh@gmail.com', '1234567890', 'Haf Nooij', 'adadadsad', 0, 1, 1, '', '40'),
+(4, NULL, 0, '2019-05-27 17:02:40', '2019-05-27 17:02:40', 140.00, 'Khánh Hoàng', 'khanh@gmail.com', '1234567890', 'dasdas', 'asdasd', 0, 1, 1, '', '20'),
+(5, NULL, 3, '2019-06-18 12:27:00', '2019-06-18 12:27:00', 12.00, 'Hoàng Khánh', 'hoang@gmail.com', '12345678910', 'Hà Nội', NULL, 0, 2, 1, '', '30'),
+(6, NULL, 1, '2019-06-21 16:18:05', '2019-06-21 16:18:05', 100.00, 'Hoàng Khánh', 'hoang@gmail.com', '12345678910', 'Hà Nội', NULL, 0, 2, 2, NULL, '40'),
+(7, NULL, 1, '2019-06-21 16:20:08', '2019-06-21 16:20:08', 100.00, 'Hoàng Khánh', 'hoang@gmail.com', '12345678910', 'Hà Nội', NULL, 0, 2, 2, 'L', '20');
 
 -- --------------------------------------------------------
 
@@ -204,51 +203,25 @@ INSERT INTO `hangloi` (`id`, `Id_SanPham`, `SoLuong`, `GhiChu`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `hinhanh`
---
-
-CREATE TABLE `hinhanh` (
-  `Id_HinhAnh` int(11) NOT NULL,
-  `Link` text COLLATE utf8mb4_unicode_ci,
-  `Id_SanPham` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `hinhthuc_thanhtoan`
---
-
-CREATE TABLE `hinhthuc_thanhtoan` (
-  `Id_ThanhToan` int(11) NOT NULL,
-  `TieuDe` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `NoiDung` text COLLATE utf8mb4_unicode_ci,
-  `TrangThai` int(2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `hoadonban`
 --
 
 CREATE TABLE `hoadonban` (
   `Id_HoaDonBan` int(11) NOT NULL,
   `Id_NhanVien` int(11) DEFAULT NULL,
-  `Id_DoiHang` int(11) DEFAULT NULL,
   `NgayTao` timestamp NULL DEFAULT NULL,
-  `NgayCapNhap` timestamp NULL DEFAULT NULL,
-  `TongTien` float(15,2) DEFAULT NULL,
-  `GiaVanChuyen` int(11) DEFAULT NULL,
-  `TenNguoiNhan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `TenKhachhang` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Sdt` int(11) DEFAULT NULL,
   `DiaChi` text COLLATE utf8mb4_unicode_ci,
-  `GhiChu` text COLLATE utf8mb4_unicode_ci,
-  `TrangThai` int(5) DEFAULT NULL,
-  `NVChuyenHang` int(11) DEFAULT NULL,
-  `Id_KhachHang` int(11) DEFAULT NULL,
-  `Id_ThanhToan` int(11) DEFAULT NULL
+  `GhiChu` text COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
+
+--
+-- Dumping data for table `hoadonban`
+--
+
+INSERT INTO `hoadonban` (`Id_HoaDonBan`, `Id_NhanVien`, `NgayTao`, `TenKhachhang`, `Sdt`, `DiaChi`, `GhiChu`) VALUES
+(1, 1, '2019-06-21 17:00:00', 'Khánh Hoàng', 31231, '280/21 Cổ Nhuế', 'adad');
 
 -- --------------------------------------------------------
 
@@ -263,51 +236,6 @@ CREATE TABLE `hoadonmua` (
   `NgayCapNhap` timestamp NULL DEFAULT NULL,
   `TongTien` float(15,2) DEFAULT NULL,
   `TrangThai` int(2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `khachhang`
---
-
-CREATE TABLE `khachhang` (
-  `Id_KhachHang` int(11) NOT NULL,
-  `HoTen` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `NgaySinh` timestamp NULL DEFAULT NULL,
-  `GioiTinh` tinyint(4) DEFAULT NULL,
-  `Sdt` varchar(11) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `DiaChi` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Avatar` text COLLATE utf8mb4_unicode_ci,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `NgayTao` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `TrangThai` int(2) DEFAULT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
-
---
--- Dumping data for table `khachhang`
---
-
-INSERT INTO `khachhang` (`Id_KhachHang`, `HoTen`, `NgaySinh`, `GioiTinh`, `Sdt`, `DiaChi`, `Avatar`, `password`, `NgayTao`, `TrangThai`, `email`) VALUES
-(3, 'nguyễnlýggg', NULL, 1, '123_______', 'hnnn', '1558193188.png', '$2y$10$fCpPtm4u3XrflmbmWwiqveIFW7lsaqzbM6MGX2E6QD2OoQQLmfLGu', '2019-05-18 15:57:08', 1, NULL),
-(4, 'Khanh Hoang', '2019-05-24 17:00:00', 1, '123456789', 'Ha Noi', NULL, '$2y$10$4zqsy/YWfQGos/OfZAdpMOBoD6/BC2NPoa.pY80OwTRwP/R9p3Zem', '2019-05-25 08:05:47', NULL, 'khanhhoang@gmail.com');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `khuyenmai`
---
-
-CREATE TABLE `khuyenmai` (
-  `Id_KhuyenMai` int(11) NOT NULL,
-  `TieuDe` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `NoiDung` text COLLATE utf8mb4_unicode_ci,
-  `PhanTramKm` float(15,2) DEFAULT NULL,
-  `TrangThai` int(2) DEFAULT NULL,
-  `NgayBatDau` date DEFAULT NULL,
-  `NgayKetThuc` date DEFAULT NULL,
-  `AnhKm` text COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
 
 -- --------------------------------------------------------
@@ -365,10 +293,10 @@ CREATE TABLE `nhanvien` (
 --
 
 INSERT INTO `nhanvien` (`Id_NhanVien`, `MaNV`, `HoTen`, `NgaySinh`, `GioiTinh`, `Sdt`, `DiaChi`, `Avatar`, `MatKhau`, `remember_token`, `NgayTao`, `TrangThai`, `quyen`) VALUES
-(1, 'admin', 'admin', NULL, NULL, NULL, NULL, NULL, '$2y$10$WQjLOrtAtTja8MAphzjUNesDI/x8Oaev97gXXHxFA/vBqKza/uAGK', '', '2019-05-12 09:31:42', 1, 1),
+(1, 'admin', 'admin', NULL, '1', NULL, 'admin', NULL, '$2y$10$UPYdggkUWT3rPevI9cVIuOzPHTw3.FqaOGV4pJb0deEQpCCcw6Zye', '', '2019-06-21 17:09:41', 1, 1),
 (4, 'admin1', 'Ngocthuy', NULL, NULL, NULL, NULL, NULL, '$2y$10$CKvZ0WbonlubZxzV6x2jheFB7NV/Gd8TH1jEbCSj0qYZ9N.rUAhKa', '', '2019-05-12 09:49:55', 1, 2),
 (5, 'admin2', 'Nguyễn Thủy', NULL, NULL, NULL, NULL, NULL, '$2y$10$Y3xNHiLcS1jJBVaGJg0Fi.EQOaG/0R9mgx2U554bh7RZ9jk6QyDoy', '', '2019-05-12 09:51:15', 0, 3),
-(6, 'NV001', 'Khánh', NULL, NULL, NULL, NULL, NULL, '$2y$10$4TnaGrQrnvAtRON5B8YOTe8BDXGZj086mPjcAUtZ.aRrLgncWDSH2', '', '2019-05-22 16:34:26', 1, 2);
+(6, 'NV001', 'Khánh', NULL, '1', NULL, 'admin', NULL, '$2y$10$YrQlPKG2wmjlse2./DLLIOtIwU6sZ8FbpdGt9r.1iTGesoa4ElIk6', '', '2019-06-21 17:10:45', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -378,7 +306,7 @@ INSERT INTO `nhanvien` (`Id_NhanVien`, `MaNV`, `HoTen`, `NgaySinh`, `GioiTinh`, 
 
 CREATE TABLE `phieuhang` (
   `id` int(11) NOT NULL,
-  `Id_NhaCC` int(11) NOT NULL,
+  `Id_KhachHang` int(11) NOT NULL,
   `NgayTao` int(11) NOT NULL,
   `NgayCapNhap` int(11) NOT NULL,
   `TongTien` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -413,9 +341,9 @@ CREATE TABLE `sanpham` (
 --
 
 INSERT INTO `sanpham` (`Id_SanPham`, `Id_DanhMucSp`, `MaSP`, `TenSp`, `DonGia`, `SoLuong`, `NgayTao`, `TrangThai`, `LuotXem`, `AnhChinh`, `Sp_Hot`, `GiaKhuyenMai`, `size`) VALUES
-(1, 7, 'A123', 'Áo dài', 100, 9, '2019-06-18 11:59:49', 1, 6, '/upload/product/5ce7f594cb419.png', 1, NULL, 'a:1:{i:0;s:1:\"L\";}'),
-(2, 4, 'QD001', 'Quần dài', 200, 9, '2019-06-18 11:55:47', 1, 9, '/upload/product/5ce919e4b8fbe.jpg', 1, NULL, 'a:1:{i:0;s:1:\"S\";}'),
-(3, 7, '2123', 'sadad', 123, 11, '2019-06-18 12:02:03', 1, 4, '/upload/product/5d08d0a84a208.PNG', 1, '12', 'a:2:{i:0;s:1:\"S\";i:1;s:1:\"M\";}');
+(1, 7, 'A123', 'Áo dài', 100, 8, '2019-06-18 11:59:49', 1, 12, '/upload/product/5ce7f594cb419.png', 1, NULL, 'a:1:{i:0;s:1:\"L\";}'),
+(2, 4, 'QD001', 'Quần dài', 200, 9, '2019-06-18 11:55:47', 1, 11, '/upload/product/5ce919e4b8fbe.jpg', 1, NULL, 'a:1:{i:0;s:1:\"S\";}'),
+(3, 7, '2123', 'sadad', 123, 11, '2019-06-18 12:02:03', 1, 22, '/upload/product/5d08d0a84a208.PNG', 1, '12', 'a:2:{i:0;s:1:\"S\";i:1;s:1:\"M\";}');
 
 -- --------------------------------------------------------
 
@@ -444,26 +372,6 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `phone
 (1, 'Khánh Hoàng', 'khanh@gmail.com', '$2y$10$WQjLOrtAtTja8MAphzjUNesDI/x8Oaev97gXXHxFA/vBqKza/uAGK', 'MBQlwnPhVRa4kSkz0QjLkvd02kOBN2glxRCLG1hnA04II1jMXntz3voy1ZXI', '3456', NULL, NULL, NULL, '2019-05-25 08:56:41'),
 (2, 'Hoàng Khánh', 'hoang@gmail.com', '$2y$10$bOygcQ213H6PppFPF7qGt.CZHlHsl8coA2QNqg.lxX7klY8CAD.xC', 'P6JeiwKptRfglNSwYfttEKu6INK6zXitAoHiUkzpQCHhQNFRbQaYIa5UDIzy', '12345678910', '2019-05-25', 'Hà Nội', 1, '2019-05-25 08:56:41');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `vaitro`
---
-
-CREATE TABLE `vaitro` (
-  `Id_VaiTro` int(11) NOT NULL,
-  `Ten` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Quyen` int(5) DEFAULT NULL,
-  `TrangThai` int(2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=COMPACT;
-
---
--- Dumping data for table `vaitro`
---
-
-INSERT INTO `vaitro` (`Id_VaiTro`, `Ten`, `Quyen`, `TrangThai`) VALUES
-(1, 'Admin', 1, 1);
-
 --
 -- Indexes for dumped tables
 --
@@ -472,7 +380,7 @@ INSERT INTO `vaitro` (`Id_VaiTro`, `Ten`, `Quyen`, `TrangThai`) VALUES
 -- Indexes for table `chitietdonhang`
 --
 ALTER TABLE `chitietdonhang`
-  ADD PRIMARY KEY (`Id_CTHDBan`) USING BTREE;
+  ADD PRIMARY KEY (`Id_CTDonHang`) USING BTREE;
 
 --
 -- Indexes for table `chitiethoadonban`
@@ -485,18 +393,6 @@ ALTER TABLE `chitiethoadonban`
 --
 ALTER TABLE `chitiethoadonmua`
   ADD PRIMARY KEY (`Id_CTHDMua`) USING BTREE;
-
---
--- Indexes for table `chitietkhuyenmai`
---
-ALTER TABLE `chitietkhuyenmai`
-  ADD PRIMARY KEY (`Id_ChiTietKM`) USING BTREE;
-
---
--- Indexes for table `danhgia`
---
-ALTER TABLE `danhgia`
-  ADD PRIMARY KEY (`Id_DanhGia`) USING BTREE;
 
 --
 -- Indexes for table `danhmucsanpham`
@@ -514,25 +410,13 @@ ALTER TABLE `doihang`
 -- Indexes for table `donhang`
 --
 ALTER TABLE `donhang`
-  ADD PRIMARY KEY (`Id_HoaDonBan`) USING BTREE;
+  ADD PRIMARY KEY (`Id_DonHang`) USING BTREE;
 
 --
 -- Indexes for table `hangloi`
 --
 ALTER TABLE `hangloi`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `hinhanh`
---
-ALTER TABLE `hinhanh`
-  ADD PRIMARY KEY (`Id_HinhAnh`) USING BTREE;
-
---
--- Indexes for table `hinhthuc_thanhtoan`
---
-ALTER TABLE `hinhthuc_thanhtoan`
-  ADD PRIMARY KEY (`Id_ThanhToan`) USING BTREE;
 
 --
 -- Indexes for table `hoadonban`
@@ -545,18 +429,6 @@ ALTER TABLE `hoadonban`
 --
 ALTER TABLE `hoadonmua`
   ADD PRIMARY KEY (`Id_HoaDonMua`) USING BTREE;
-
---
--- Indexes for table `khachhang`
---
-ALTER TABLE `khachhang`
-  ADD PRIMARY KEY (`Id_KhachHang`) USING BTREE;
-
---
--- Indexes for table `khuyenmai`
---
-ALTER TABLE `khuyenmai`
-  ADD PRIMARY KEY (`Id_KhuyenMai`) USING BTREE;
 
 --
 -- Indexes for table `migrations`
@@ -602,25 +474,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `chitietdonhang`
 --
 ALTER TABLE `chitietdonhang`
-  MODIFY `Id_CTHDBan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `Id_CTDonHang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `chitiethoadonban`
+--
+ALTER TABLE `chitiethoadonban`
+  MODIFY `Id_CTHDBan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `chitiethoadonmua`
 --
 ALTER TABLE `chitiethoadonmua`
   MODIFY `Id_CTHDMua` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `chitietkhuyenmai`
---
-ALTER TABLE `chitietkhuyenmai`
-  MODIFY `Id_ChiTietKM` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `danhgia`
---
-ALTER TABLE `danhgia`
-  MODIFY `Id_DanhGia` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `danhmucsanpham`
@@ -638,7 +504,7 @@ ALTER TABLE `doihang`
 -- AUTO_INCREMENT for table `donhang`
 --
 ALTER TABLE `donhang`
-  MODIFY `Id_HoaDonBan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `Id_DonHang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `hangloi`
@@ -647,22 +513,16 @@ ALTER TABLE `hangloi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `hinhthuc_thanhtoan`
+-- AUTO_INCREMENT for table `hoadonban`
 --
-ALTER TABLE `hinhthuc_thanhtoan`
-  MODIFY `Id_ThanhToan` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `hoadonban`
+  MODIFY `Id_HoaDonBan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `hoadonmua`
 --
 ALTER TABLE `hoadonmua`
   MODIFY `Id_HoaDonMua` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `khachhang`
---
-ALTER TABLE `khachhang`
-  MODIFY `Id_KhachHang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `nhacungcap`

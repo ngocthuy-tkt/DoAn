@@ -19,8 +19,9 @@ class CartController extends Controller
 
     public function addToCart(Request $request)
     {
-        \Cart::add($request->Id_SanPham, $request->TenSp,1,
-           isset($request->GiaKhuyenMai) ? $request->GiaKhuyenMai : $request->DonGia
+        $cart = \Cart::add($request->Id_SanPham, $request->TenSp,1,
+           isset($request->GiaKhuyenMai) ? $request->GiaKhuyenMai : $request->DonGia, 
+           ['size' => $request->size, 'image' => $request->AnhChinh]
         )->associate('App\Models\Product');
         return redirect()->route('cart')->with('success', 'Sản phẩm được thêm thành công');
     }

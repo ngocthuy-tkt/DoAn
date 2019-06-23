@@ -46,14 +46,18 @@ class CheckoutController extends FrontEndController
         $id = Auth::user()->id;
         $request->offsetunset('_token');
         $ship = $request->ship;
+        $total = str_replace(',', '', \Cart::subtotal()) + $ship;
         $products_cart = $this->cartRepository->getAllSession();
         $contents = \Cart::content()->map(function($item){
             return $item->id; 
         })->values();
+        $size = \Cart::content()->map(function($item){
+            return $item->options->size; 
+        })->values();
         $data = [
             'NgayTao' => Carbon::now(),
             'NgayCapNhap' => Carbon::now(),
-            'TongTien' => \Cart::total() - \Cart::tax() + $ship,
+            'TongTien' => $total,
             'TenNguoiNhan' => $request->TenNguoiNhan,
             'email' => $request->email,
             'Sdt' => $request->Sdt,
@@ -61,13 +65,15 @@ class CheckoutController extends FrontEndController
             'GhiChu' => $request->GhiChu,
             'Id_KhachHang' => $id,
             'KieuThanhToan' => $request->KieuThanhToan,
-            'Id_SanPham' => $contents[0]
+            'Id_SanPham' => $contents[0],
+            'size' => $size[0],
+            'ship' => $ship
         ];
         
         if ($od = Order::create($data)) {
             foreach (\Cart::content() as $value) {
                 $data = [
-                    'Id_HoaDonBan' => $od->Id_HoaDonBan,
+                    'Id_DonHang' => $od->Id_DonHang,
                     'Id_SanPham' => $value->id,
                     'SoLuong' => $value->qty,
                     'DonGia' => $value->price,

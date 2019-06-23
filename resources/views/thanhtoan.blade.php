@@ -62,7 +62,7 @@
                             </div>
                             <div class="radio">
                                 <label>
-                                    <input type="radio" name="KieuThanhToan" id="check" checked="checked" value="1">
+                                    <input type="radio" name="KieuThanhToan" id="check" checked="checked" value="2">
                                     Chuyển khoản
                                 </label>
                                 <div id="show" style="display: none; margin-top: 20px;">
@@ -81,10 +81,10 @@
                         </div>
                         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                             <h4>Chi tiết đơn hàng</h4>
-                            @php $total = \Cart::total() - \Cart::tax(); @endphp   
+                            @php $total = \Cart::total(); @endphp   
                             @foreach(\Cart::content() as $item)
                                 <div class="payment_content_li">
-                                    <img src=""
+                                    <img src="{{ $item->options->image }}"
                                          alt="{{ $item->name }}" class="img-responsive" title="{{ $item->name }}">
                                     <div class="payment_content_info">
                                         <h5>{{ $item->name }}</h5>

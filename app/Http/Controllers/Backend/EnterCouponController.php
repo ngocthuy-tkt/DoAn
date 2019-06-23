@@ -14,8 +14,8 @@ class EnterCouponController extends Controller
     		'ID', 'Tên nhà cung cấp', 'Ngày tạo', 'Ngày cập nhập', 'Tổng tiền', 'Ghi chú', 'Trạng Thái', 'Hành động'
     	];
     	$phieunhap = \DB::table('phieuhang')
-                        ->join('nhacungcap', 'phieuhang.Id_NhaCC', '=', 'nhacungcap.Id_NCC')
-                        ->select('phieuhang.*', 'nhacungcap.TenNCC')
+                        // ->join('nhacungcap', 'phieuhang.Id_NhaCC', '=', 'nhacungcap.Id_NCC')
+                        ->select('phieuhang.*')
                         ->orderBy('phieuhang.id', 'desc')
                         ->get();
     	return view('backend.coupon.index', compact('phieunhap', 'columns'));

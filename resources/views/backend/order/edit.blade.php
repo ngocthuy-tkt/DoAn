@@ -18,10 +18,10 @@
     </section>
     <!-- Main content -->
     <section class="content">
-        <form action="{{ route('order.update',['id' => $editOrder->Id_HoaDonBan]) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('order.update',['id' => $editOrder->Id_DonHang]) }}" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
             {{ method_field('PUT')}}
-            <input type="hidden" value="{{$editOrder->Id_HoaDonBan}}" name="Id_HoaDonBan">
+            <input type="hidden" value="{{$editOrder->Id_DonHang}}" name="Id_DonHang">
             <div class="box box-danger">
                 <div class="box-header">
                     <h3 class="box-title">Sửa đơn hàng</h3>

@@ -16,7 +16,7 @@ class OrderController extends BackendController
                         ->orwhere('TrangThai', '=', 1)
                         ->get();
         $columns = [
-            'ID', 'Tên khách hàng', 'Số điện thoại', 'Địa chỉ', 'Tổng tiền', 'Trạng thái' , 'Hành động'
+            'ID', 'Mã đơn hàng','Tên khách hàng', 'Số điện thoại', 'Địa chỉ', 'Tổng tiền', 'Ghi chú', 'Phương thức', 'Ship','Trạng thái' , 'Hành động'
         ];
         $orderSucc = DB::table('donhang')->where('TrangThai', '=' , 2)->get();
         $orderCan = DB::table('donhang')->where('TrangThai', '=' , -1)->get();
@@ -26,7 +26,7 @@ class OrderController extends BackendController
     public function edit($id)
     {
     	$editOrder = DB::table('donhang')
-    		->where('Id_HoaDonBan', '=', $id)
+    		->where('Id_DonHang', '=', $id)
             ->select('donhang.*')
             ->first();   
         return view('backend.order.edit', compact('editOrder'));    

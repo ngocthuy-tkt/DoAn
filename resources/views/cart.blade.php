@@ -29,8 +29,8 @@
                         <td>
                             <div class="row">
                                 <div class="col-sm-2 hidden-xs">
-                                    <img src=""
-                                        alt="{{ $item->AnhChinh }}" class="img-responsive"
+                                    <img src="{{ $item->options->image }}"
+                                        alt="{{ $item->options->image }}" class="img-responsive"
                                         title="{{ $item->name }}" style="width: 100px;height: 100px">
                                 </div>
                             </div>

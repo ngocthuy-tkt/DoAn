@@ -30,20 +30,18 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon">@</span>
-                                    <input type="text" class="form-control" placeholder="Tên người nhận" name="TenNguoiNhan"
-                                           id="TenNguoiNhan" value="{{ old('TenNguoiNhan') }}">
+                                    <input type="text" class="form-control" placeholder="Tên khách hàng" name="TenKhachHang" value="{{ old('TenKhachHang') }}">
                                 </div>
                             </div>
-                            @if($errors->has('TenNguoiNhan'))
+                            @if($errors->has('TenKhachHang'))
                                 <div class="help-block text-red">
-                                    {!! $errors->first('TenNguoiNhan') !!}
+                                    {!! $errors->first('TenKhachHang') !!}
                                 </div>
                             @endif
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                    <input type="number" class="form-control" placeholder="Số điện thoại" name="Sdt" id="Sdt"
-                                           value="{{ old('Sdt') }}">
+                                    <input type="number" class="form-control" placeholder="Số điện thoại" name="Sdt" value="{{ old('Sdt') }}">
                                 </div>
                             </div>
                             @if($errors->has('Sdt'))
@@ -54,8 +52,7 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                    <input type="text" class="form-control" placeholder="Địa chỉ" name="DiaChi" id="DiaChi"
-                                           value="{{ old('DiaChi') }}">
+                                    <input type="text" class="form-control" placeholder="Địa chỉ" name="DiaChi" value="{{ old('DiaChi') }}">
                                 </div>
                             </div>
                             @if($errors->has('DiaChi'))
@@ -63,11 +60,11 @@
                                     * {!! $errors->first('DiaChi') !!}
                                 </div>
                             @endif
+                            
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                    <input type="text" class="form-control" placeholder="Ghi chú" name="GhiChu" id="GhiChu"
-                                           value="{{ old('GhiChu') }}">
+                                    <input type="text" class="form-control" placeholder="Ghi chú" name="GhiChu" value="{{ old('GhiChu') }}">
                                 </div>
                             </div>
                             @if($errors->has('GhiChu'))
@@ -75,29 +72,30 @@
                                     * {!! $errors->first('GhiChu') !!}
                                 </div>
                             @endif
+                        </div>
+                        <div class="col-md-6 detail-form">
+                            <label for="">Thêm chi tiết</label>
+                            <div class="form-group">
+                                <select class="form-control select2" style="width: 100%;" name="Id_SanPham[]" id="mySelect">
+                                    <option value="">Chọn sản phẩm</option>
+                                    @foreach($product as $pro)
+                                        <option id="filter" value="{{ $pro->Id_SanPham }}" data-price="{{$pro->DonGia}}">{{ $pro->TenSp }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                    <input type="text" class="form-control" placeholder="Tổng tiền" name="TongTien" id="TongTien"
-                                           value="{{ old('TongTien') }}">
+                                    <input type="number" class="form-control" placeholder="Số lượng" name="SoLuong[]">
                                 </div>
                             </div>
-                            @if($errors->has('TongTien'))
-                                <div class="help-block text-red">
-                                    * {!! $errors->first('TongTien') !!}
-                                </div>
-                            @endif
-                        </div>
-                        <div class="col-md-6">
                             <div class="form-group">
-                                <label>Trạng thái</label>
-                                <div class="radio">
-                                    <label>
-                                        <input checked type="radio" name="TrangThai" value="1">
-                                        <span class="label label-success">Active</span>
-                                    </label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input type="number" class="form-control" placeholder="Đơn giá" name="DonGia[]">
                                 </div>
                             </div>
+                            <button type="button" class="btn btn-xs btn-primary add">Thêm chi tiết</button>
                         </div>
                     </div>
                 </div>
@@ -121,6 +119,37 @@
         $(function () {
             //Initialize Select2 Elements
             $('.select2').select2();
-        })
+        });
+
+        $(document).ready(function(){
+          var element ='<div class="form-group">'+
+                                '<select class="form-control select2" style="width: 100%;" name="Id_SanPham[]">'+
+                                    '<option value="">Chọn sản phẩm</option>'+
+                                    '@foreach($product as $pro)'+
+                                        '<option value="{{ $pro->Id_SanPham }}">{{ $pro->TenSp }}</option>'+
+                                    '@endforeach'+
+                                '</select>'+
+                            '</div>'+
+                            '<div class="form-group">'+
+                                '<div class="input-group">'+
+                                    '<span class="input-group-addon"><i class="fa fa-user"></i></span>'+
+                                    '<input type="number" class="form-control" placeholder="Số lượng" name="SoLuong[]">'+
+                                '</div>'+
+                            '</div>'+
+                            '<div class="form-group">'+
+                               '<div class="input-group">'+
+                                    '<span class="input-group-addon"><i class="fa fa-user"></i></span>'+
+                                    '<input type="number" class="form-control" placeholder="Đơn giá" name="DonGia[]">'+
+                                '</div>'+
+                            '</div>';  
+          $(".add").click(function(){
+            $(".detail-form").append(element);
+          })
+
+          $('#mySelect').on('change', function(){
+            alert($(this).data('price'));
+          });
+
+        });
     </script>
 @endsection

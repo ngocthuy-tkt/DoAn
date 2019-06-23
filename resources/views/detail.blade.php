@@ -121,16 +121,16 @@
 								@endif
 								</td>
 							</tr>
-							<!-- <tr>
+							<tr>
 								<td> Size:</td>
 								<td>
-									<select id="size">
-										<option> S</option>
-										<option> M</option>
-										<option> L</option>	
+									<select id="size" name="size">
+										@foreach($sizes as $size)
+										<option value="{{$size}}">{{ $size }}</option>
+										@endforeach
 									</select>
 								</td>
-							</tr> -->
+							</tr>
 							<tr>
 								<td>MÃ:</td>
 								<td>{{ $product->MaSP }}</td>
@@ -145,14 +145,7 @@
 								@endif
 								</td>
 							</tr>
-							<!-- <tr>
-								<td>Số Lượng</td>
-								<td>
-									<label class="soluong"> - </label>
-									<label class="soluong">1 </label>
-									<label class="soluong">+ </label>
-								</td>
-							</tr> -->
+							
 								<td colspan="2">
 									<form action="{{ route('addToCart') }}" method="post" class="variants form-nut-grid has-validation-callback" enctype="multipart/form-data">
 										{{ csrf_field() }}
@@ -162,7 +155,11 @@
 											<input type="hidden" name="GiaKhuyenMai" value="{{ $product->GiaKhuyenMai }}">
 											<input type="hidden" name="DonGia" value="{{ $product->DonGia }}">
 											<input type="hidden" name="AnhChinh" value="{{ $product->AnhChinh }}">
+											@foreach($sizes as $size => $value)
+											<input type="hidden" name="size" value="{{ $value }}">
+											@endforeach
 											<button type="submit" id="sbm" class="add2cart btn-buy btn-cart btn btn-gray left-to btn-primary add_to_cart" title="Đặt mua ngay">
+
 												<span>Thêm vào giỏ hàng</span>
 											</button>
 										</div>
@@ -198,17 +195,15 @@
 								<th>MÔNG</th>
 								<th>DÀI</th>
 							</tr>
-							@foreach($sizes as $size)
 							<tr>
-								<td>{{ $size }}</td>
+								<td>S</td>
 								<td>34-35</td>
 								<td>82-86</td>
 								<td>68-74</td>
 								<td>84-88</td>
 								<td>86</td>
 							</tr>
-							@endforeach()
-							<!-- <tr>
+							<tr>
 								<td>M</td>
 								<td>35-36</td>
 								<td>86-90</td>
@@ -223,7 +218,7 @@
 								<td>80-86</td>
 								<td>92-96</td>
 								<td>90</td>
-							</tr> -->
+							</tr>
 						</table>
 					</div>
 				</div>

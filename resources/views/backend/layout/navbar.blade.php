@@ -19,50 +19,29 @@
         </div>
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree" data-animation-speed="300">
-            <li class="treeview">
-                <a href="javascript:void(0)"><i class="fa fa-navicon"></i><span>Danh mục sản phẩm</span>
-                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+            <li>
+                <a href="{{route('category.index')}}"><i class="fa fa-navicon"></i><span>Danh mục sản phẩm</span>
                 </a>
-                <ul class="treeview-menu">
-                    <li><a href="{{route('category.index')}}"><i class="fa fa-circle-o"></i> Danh sách</a></li>
-                </ul>
+                
             </li>
 
-            <li class="treeview">
-                <a href="javascript:void(0)"><i class="fa  fa-book"></i><span>Sản phẩm</span>
-                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+            <li>
+                <a href="{{route('products.index')}}"><i class="fa  fa-book"></i><span>Sản phẩm</span>
                 </a>
-                <ul class="treeview-menu">
-                    <li><a href="{{route('products.index')}}"><i class="fa fa-circle-o"></i> Danh sách</a></li>
-                </ul>
             </li>
 
-            <li class="treeview">
-                <a href="javascript:void(0)"><i class="fa fa-cart-arrow-down"></i><span>Đơn hàng</span>
-                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="{{route('order.index')}}"><i class="fa fa-circle-o"></i> Danh sách</a></li>
-                </ul>
+            <li>
+                <a href="{{route('order.index')}}"><i class="fa fa-cart-arrow-down"></i><span>Đơn hàng</span></a>
             </li>
 
 
-            <li class="treeview">
-                <a href="javascript:void(0)"><i class="fa fa-users"></i><span>Tài khoản khách hàng</span>
-                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="{{route('users.index')}}"><i class="fa fa-circle-o"></i> Danh sách</a></li>
-                </ul>
+            <li>
+                <a href="{{route('users.index')}}"><i class="fa fa-users"></i><span>Tài khoản khách hàng</span></a>
             </li>
 
-            <li class="treeview">
-                <a href="javascript:void(0)"><i class="fa fa-user"></i><span>nhân viên</span>
-                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="{{route('administration.index')}}"><i class="fa fa-circle-o"></i> Danh sách</a></li>
-                </ul>
+            <li>
+                <a href="{{route('administration.index')}}"><i class="fa fa-user"></i><span>nhân viên</span>
+                    </a>
             </li>
 
             <li class="treeview">
@@ -83,13 +62,8 @@
                     <li><a href="{{ route('inventory.index') }}"><i class="fa fa-circle-o"></i> Tồn kho</a></li>
                 </ul>
             </li>
-            <li class="treeview">
-                <a href="javascript:void(0)"><i class="fa fa-user"></i><span>Nhà cung cấp</span>
-                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="{{route('supplier.index')}}"><i class="fa fa-circle-o"></i> Danh sách</a></li>
-                </ul>
+            <li>
+                <a href="{{route('supplier.index')}}"><i class="fa fa-user"></i><span>Nhà cung cấp</span></a>
             </li>
         </ul>
     </section>

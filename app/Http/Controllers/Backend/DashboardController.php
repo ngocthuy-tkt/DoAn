@@ -16,14 +16,14 @@ class DashboardController extends BackendController
 
         $result = DB::table('donhang')
                     ->leftJoin('sanpham','donhang.Id_SanPham','=','sanpham.Id_SanPham')
-                   ->leftJoin('chitietdonhang','chitietdonhang.Id_HoaDonBan','=','donhang.Id_HoaDonBan')
+                   ->leftJoin('chitietdonhang','chitietdonhang.Id_DonHang','=','donhang.Id_DonHang')
                    ->select('sanpham.TenSP', 'sanpham.MaSP', 'sanpham.LuotXem')
                    ->groupBy('chitietdonhang.Id_SanPham')->havingRaw('COUNT(*) > 10')
                    ->get();
 
         $pro = DB::table('donhang')
                     ->leftJoin('sanpham','donhang.Id_SanPham','=','sanpham.Id_SanPham')
-                   ->leftJoin('chitietdonhang','chitietdonhang.Id_HoaDonBan','=','donhang.Id_HoaDonBan')
+                   ->leftJoin('chitietdonhang','chitietdonhang.Id_DonHang','=','donhang.Id_DonHang')
                    ->select('sanpham.TenSP', 'sanpham.MaSP', 'sanpham.LuotXem')
                    ->groupBy('chitietdonhang.Id_SanPham')->havingRaw('COUNT(*) > 3')
                    ->get();           

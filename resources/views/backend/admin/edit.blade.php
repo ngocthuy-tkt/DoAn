@@ -37,7 +37,14 @@
                                            value="{{ $admin->MaNV }}" readonly>
                                 </div>
                             </div>
-
+                            <div class="form-group">
+                                <label>Họ tên</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input type="text" class="form-control" placeholder="Tên đăng nhập" name="HoTen"
+                                           value="{{ $admin->HoTen }}" readonly="">
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <label>Quyền</label>
                                 <select class="form-control select2" style="width: 100%;" name="quyen">
@@ -74,7 +81,7 @@
                         <div class="col-md-6">
                             <!-- Minimal style -->
                             <div class="form-group">
-                                <label>Mật khẩu mới ( Thay mật khẩu bằng mật khẩu của bạn )</label>
+                                <label>Mật khẩu mới ( Nếu bạn muốn đổi mật khẩu thì nhập ở đây )</label>
                                 <input type="password" class="form-control" placeholder="Nhập mật khẩu mới" name="MatKhau" value="{{ old('MatKhau') }}">
                             </div>
                         </div>

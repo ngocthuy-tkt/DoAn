@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Backend;
 
 use App\Models\HoaDonBan;
 use Illuminate\Http\Request;
+use App\Models\ChiTietHoaDonBan;
+use App\Models\Product;
 use DB;
 use Auth;
 
@@ -13,56 +15,64 @@ class BillOfSaleController extends BackendController
     {
         $hdb = DB::table('hoadonban')
                         ->join('nhanvien', 'hoadonban.Id_NhanVien', '=', 'nhanvien.Id_NhanVien')
-                        ->select('hoadonban.*', 'nhanvien.HoTen')
+                        ->join('chitiethoadonban', 'hoadonban.Id_HoaDonBan', '=', 'chitiethoadonban.Id_HoaDonBan')
+                        ->join('sanpham', 'chitiethoadonban.Id_SanPham', '=', 'sanpham.Id_SanPham')
+                        ->select('hoadonban.*', 'nhanvien.HoTen', 'chitiethoadonban.*', 'sanpham.TenSP')
                         ->orderBy('hoadonban.Id_HoaDonBan', 'desc')
                         ->get();
         $columns = [
-            'ID', 'Tên nhân viên', 'Tên khách hàng', 'Sdt', 'Địa chỉ' , 'Tổng tiền', 'Ngày tạo','Hành động'
+            'ID', 'Mã hóa đơn bán','Tên nhân viên', 'Tên khách hàng', 'Sdt', 'Địa chỉ', 'Ngày tạo','Hành động'
         ];
         return view('backend.bill.index', compact('hdb', 'columns'));
     }
 
     public function create()
     {
-        return view('backend.bill.add');
+        $product = Product::all();
+        return view('backend.bill.add', compact('product'));
     }
 
     public function store(Request $request)
     {
         $this->validate($request,
             [
-                'TenNguoiNhan' => 'required',
+                'TenKhachHang' => 'required',
                 'Sdt' => 'required',
                 'DiaChi' => 'required',
-                'GhiChu'  => 'required',
-                // 'Tongtien' => 'required'
+                'GhiChu'  => 'required'
             ],[
-                'TenNguoiNhan.required' => 'Tên người nhận không được để trống',
+                'TenKhachHang.required' => 'Tên khách hàng không được để trống',
                 'Sdt.required' => 'Số điện thoại không được để trống',
                 'DiaChi.required' => 'Địa chỉ không được để trống',
-                'GhiChu.required' => 'Ghi chú không được để trống',
-                // 'TongTien.required' => 'Tổng tiền không được để trống'
+                'GhiChu.required' => 'Ghi chú không được để trống'
             ]
         );
 
         $request->offsetunset('_token');
 
-        $data = [
+        $dataFormRequest = [
             'NgayTao' => date('Y-m-d',time()),
-            'NgayCapNhap' => date('Y-m-d',time()),
             'Id_NhanVien' => Auth::guard('admin')->user()->Id_NhanVien,
-            'TongTien' => $request->TongTien,
-            'TenNguoiNhan' => $request->TenNguoiNhan,
+            'TenKhachHang' => $request->TenKhachHang,
             'Sdt' => $request->Sdt,
             'DiaChi' => $request->DiaChi,
-            'GhiChu' => $request->GhiChu,
-            'TrangThai' => $request->TrangThai
+            'GhiChu' => $request->GhiChu
         ];
+        
+        if ($hdb = HoaDonBan::create($dataFormRequest)) {
+            foreach ($request->Id_SanPham as $key => $v) {
+                $data = [
+                    'Id_HoaDonBan' => $hdb->Id_HoaDonBan,
+                    'Id_SanPham' => $v,
+                    'SoLuong' => $request->SoLuong[$key],
+                    'DonGia' => $request->DonGia[$key]
+                ];
 
-        if (HoaDonBan::create($data)) {
+                ChiTietHoaDonBan::create($data);
+            }
             return redirect()->back()->with('success','Thêm mới hóa đơn bán thành công');
         }else{
-            return redirect()->back()->with('error','Thêm mới hóa đơn bán thất bại, vui lòng thử lại');
+             return redirect()->back()->with('error','Thêm mới hóa đơn bán thất bại, vui lòng thử lại');
         }
     }
 

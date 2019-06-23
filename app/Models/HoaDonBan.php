@@ -12,8 +12,8 @@ class HoaDonBan extends Model
     public $incrementing = true;
 
     protected $fillable = [
-        'Id_NhanVien', 'Id_DoiHang', 'NgayTao', 'NgayCapNhap', 'TongTien', 'TenNguoiNhan', 
-        'Sdt', 'DiaChi', 'GhiChu', 'TrangThai', 'NVChuyenHang', 'Id_KhachHang', 'Id_ThanhToan'
+        'Id_NhanVien', 'NgayTao', 'TenKhachHang', 
+        'Sdt', 'DiaChi', 'GhiChu'
     ];
 }
 

@@ -48,7 +48,7 @@ class HomeController extends FrontEndController
     public function historyOrder()
     {
         $lichSuMua = \DB::table('chitietdonhang')
-                    ->join('donhang','chitietdonhang.Id_HoaDonBan','=','donhang.Id_HoaDonBan')
+                    ->join('donhang','chitietdonhang.Id_DonHang','=','donhang.Id_DonHang')
                     ->join('sanpham','chitietdonhang.Id_SanPham','=','sanpham.Id_SanPham')
                     ->where('donhang.Id_KhachHang','=', \Auth::user()->id)
                     ->select('chitietdonhang.*','donhang.TongTien', 'donhang.NgayTao','sanpham.TenSp','sanpham.GiaKhuyenMai','sanpham.DonGia')
