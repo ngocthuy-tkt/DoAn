@@ -77,7 +77,7 @@
                     <div class="center-block max-width-content">
                         <a href="{{route('order.index')}}" class="btn btn-lg btn-primary"
                            style="margin-right: 10px">Back</a>
-                        <button type="submit" class="btn btn-lg btn-warning">Sửa <i class="fa fa-pencil-square-o"></i>
+                        <button type="submit" class="btn btn-lg btn-warning">Thay đổi trạng thái <i class="fa fa-pencil-square-o"></i>
                         </button>
                     </div>
                 </div>

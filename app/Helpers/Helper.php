@@ -33,9 +33,9 @@ if (!function_exists('table_category')) {
                 echo '</td>';
                 echo '<td>';
                 if ($item->TrangThai == 1) {
-                    echo '<label class="label label-success">Active</label>';
+                    echo '<label class="label label-success">Hoạt động</label>';
                 } else {
-                    echo ' <label class="label label-danger">Ban</label>';
+                    echo ' <label class="label label-danger">Khóa</label>';
                 }
                 echo '</td>';
                 echo '<td>';

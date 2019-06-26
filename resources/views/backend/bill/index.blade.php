@@ -99,6 +99,24 @@
         </button>
       </div>
       <div class="modal-body">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Sản phẩm</th>
+              <th scope="col">Số lượng</th>
+              <th scope="col">Giá</th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach($hdb1 as $hd)
+           <tr>
+               <td>{{$hd->TenSP}}</td>
+               <td>{{$hd->SoLuong}}</td>
+               <td>{{$hd->DonGia}}</td>
+           </tr>
+           @endforeach()
+          </tbody>
+        </table>
         <form>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Mã đơn hàng:</label>

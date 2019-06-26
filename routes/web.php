@@ -17,6 +17,9 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
 
     Route::get('/', 'Backend\DashboardController@index')->name('admin');
+    Route::get('/san-pham-ban-chay', 'Backend\DashboardController@banchay')->name('banchay');
+    Route::get('/san-pham-ban-cham', 'Backend\DashboardController@bancham')->name('bancham');
+    Route::get('/hang-sap-het-trong-kho', 'Backend\DashboardController@hanghet')->name('hanghet');
 
     Route::resource('administration', 'Backend\AdminController', ['only' => ['index', 'create', 'store', 'edit', 'update', 'destroy']]);
     Route::resource('users', 'Backend\UserController', ['only' => ['index', 'create', 'store', 'edit', 'update', 'destroy']]);
@@ -50,7 +53,7 @@ Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('/login', 'Auth\LoginController@login')->name('login.submit');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('/signup', 'HomeController@signupForm')->name('signup');
-Route::post('/signup', 'HomeController@creat')->name('signup');
+Route::post('/signup', 'HomeController@create')->name('signup');
 Route::get('/lich-su-mua-hang', 'HomeController@historyOrder')->name('historyOrder');
 Route::get('/tai-khoan', 'HomeController@detailAccount')->name('detailAccount');
 Route::post('/tai-khoan', 'HomeController@postDetailAccount')->name('detailAccount');

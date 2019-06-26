@@ -126,11 +126,11 @@
                                 <div class="radio">
                                     <label>
                                         <input type="radio" name="TrangThai" value="0">
-                                        <span class="label label-warning">Ban</span>
+                                        <span class="label label-warning">Khóa</span>
                                     </label>
                                     <label>
                                         <input checked type="radio" name="TrangThai" value="1">
-                                        <span class="label label-success">Active</span>
+                                        <span class="label label-success">Hoạt động</span>
                                     </label>
                                 </div>
                             </div>

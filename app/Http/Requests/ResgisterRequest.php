@@ -25,7 +25,7 @@ class ResgisterRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'email' => 'required|email|unique:khachhang,email',
+            'email' => 'required|email|unique:users,email',
             'password' => 'required|min:4',
             'phone'  => 'min:9| max:11',
             'address' => 'required',

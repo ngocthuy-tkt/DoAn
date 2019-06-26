@@ -146,12 +146,12 @@
                                     <label>
                                         <input type="radio"
                                                name="TrangThai" value="0" {{ ($product->TrangThai == 0) ? 'checked' : '' }}>
-                                        <span class="label label-warning">Ban</span>
+                                        <span class="label label-warning">Khóa</span>
                                     </label>
                                     <label>
                                         <input type="radio"
                                                name="TrangThai" value="1" {{ ($product->TrangThai == 1) ? 'checked' : '' }}>
-                                        <span class="label label-success">Active</span>
+                                        <span class="label label-success">Hoạt động</span>
                                     </label>
                                 </div>
                             </div>

@@ -14,7 +14,7 @@ class UserController extends BackendController
     {
         $users = User::all();
         $columns = [
-            'ID','Họ tên', 'Ngày sinh', 'giới tính', 'sdt', 'địa chỉ', 'ngày tạo','Hoạt động'
+            'ID','Họ tên', 'Ngày sinh', 'giới tính', 'sdt', 'địa chỉ', 'ngày tạo'
         ];
         return view('backend.user.index',compact('users','columns'));
     }
@@ -106,7 +106,7 @@ class UserController extends BackendController
     public function destroy($id)
     {
    
-        $user = KhachHang::findOrFail($id);
+        $user = User::findOrFail($id);
 
         if ($user->delete()) {
             Storage::disk('user')->delete($user->Avatar);

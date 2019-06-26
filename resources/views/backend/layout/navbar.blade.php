@@ -59,11 +59,21 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="{{ route('phieunhap.index') }}"><i class="fa fa-circle-o"></i> Phiếu nhập</a></li>
-                    <li><a href="{{ route('inventory.index') }}"><i class="fa fa-circle-o"></i> Tồn kho</a></li>
+                    <li><a href="{{ route('inventory.index') }}"><i class="fa fa-circle-o"></i> Hàng lỗi</a></li>
                 </ul>
             </li>
             <li>
                 <a href="{{route('supplier.index')}}"><i class="fa fa-user"></i><span>Nhà cung cấp</span></a>
+            </li>
+            <li class="treeview">
+                <a href="javascript:void(0)"><i class="fa fa-user"></i><span>Báo các thống kê</span>
+                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ route('banchay') }}"><i class="fa fa-circle-o"></i> Sản phẩm bán chạy</a></li>
+                    <li><a href="{{ route('bancham') }}"><i class="fa fa-circle-o"></i> Sản phẩm bán chậm</a></li>
+                    <li><a href="{{ route('hanghet') }}"><i class="fa fa-circle-o"></i> Hàng sắp hết trong kho</a></li>
+                </ul>
             </li>
         </ul>
     </section>

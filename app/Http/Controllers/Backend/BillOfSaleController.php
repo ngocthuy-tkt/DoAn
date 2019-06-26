@@ -17,13 +17,22 @@ class BillOfSaleController extends BackendController
                         ->join('nhanvien', 'hoadonban.Id_NhanVien', '=', 'nhanvien.Id_NhanVien')
                         ->join('chitiethoadonban', 'hoadonban.Id_HoaDonBan', '=', 'chitiethoadonban.Id_HoaDonBan')
                         ->join('sanpham', 'chitiethoadonban.Id_SanPham', '=', 'sanpham.Id_SanPham')
-                        ->select('hoadonban.*', 'nhanvien.HoTen', 'chitiethoadonban.*', 'sanpham.TenSP')
+                        ->select('hoadonban.*', 'nhanvien.HoTen', 'chitiethoadonban.*', 'sanpham.TenSP', )
                         ->orderBy('hoadonban.Id_HoaDonBan', 'desc')
+                        ->groupby('hoadonban.Id_HoaDonBan')->distinct()
                         ->get();
+
+        $hdb1 = DB::table('hoadonban')
+                        ->join('chitiethoadonban', 'hoadonban.Id_HoaDonBan', '=', 'chitiethoadonban.Id_HoaDonBan')
+                        ->join('sanpham', 'chitiethoadonban.Id_SanPham', '=', 'sanpham.Id_SanPham')
+                        ->select('hoadonban.*', 'chitiethoadonban.*', 'sanpham.TenSP', )
+                        ->where('hoadonban.Id_HoaDonBan', '=','chitiethoadonban.Id_HoaDonBan')
+                        ->get();dd($hdb1);
+                                        
         $columns = [
             'ID', 'Mã hóa đơn bán','Tên nhân viên', 'Tên khách hàng', 'Sdt', 'Địa chỉ', 'Ngày tạo','Hành động'
         ];
-        return view('backend.bill.index', compact('hdb', 'columns'));
+        return view('backend.bill.index', compact('hdb', 'columns', 'hdb1'));
     }
 
     public function create()

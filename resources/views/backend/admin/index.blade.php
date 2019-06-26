@@ -55,7 +55,7 @@
                                     <td>{{$admin->DiaChi}}</td>
                                     <td>
                                         @if($admin->TrangThai == 1)
-                                            <label class="label label-success">Activated</label>
+                                            <label class="label label-success">Hoạt động</label>
                                         @else
                                             <label class="label label-danger">Đợi duyệt</label>
                                         @endif

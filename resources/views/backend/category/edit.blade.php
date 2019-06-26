@@ -62,12 +62,12 @@
                                 <label>
                                     <input <?php $checked = ($cat->TrangThai == 0) ? 'checked' : ''; ?> type="radio"
                                            name="TrangThai" value="0" {{$checked}}>
-                                    <span class="label label-danger">Ban</span>
+                                    <span class="label label-danger">Khóa</span>
                                 </label>
                                 <label>
                                     <input <?php $checked = ($cat->TrangThai == 1) ? 'checked' : ''; ?> type="radio"
                                            name="TrangThai" value="1" {{$checked}}>
-                                    <span class="label label-success">Active</span>
+                                    <span class="label label-success">Hoạt động</span>
                                 </label>
                             </div>
                         </div>

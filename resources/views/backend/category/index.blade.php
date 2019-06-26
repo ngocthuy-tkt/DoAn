@@ -1,5 +1,5 @@
 @extends('backend.layout.index')
-@section('page_title','Administration')
+@section('page_title','Danh mục sản phẩm | Administration')
 
 @section('custom_css')
     <style>

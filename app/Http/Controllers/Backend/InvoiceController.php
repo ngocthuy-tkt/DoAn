@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\HoaDonMua;
+use App\Models\ChiTietHoaDonMua;
 use Illuminate\Http\Request;
 use DB;
 use Auth;
@@ -13,8 +14,11 @@ class InvoiceController extends BackendController
     {
         $hdm = DB::table('hoadonmua')
                         ->join('nhacungcap', 'hoadonmua.Id_NhaCC', '=', 'nhacungcap.Id_NCC')
-                        ->select('hoadonmua.*', 'nhacungcap.TenNCC')
-                        ->orderBy('hoadonmua.Id_NhaCC', 'desc')
+                        ->join('chitiethoadonmua', 'hoadonmua.Id_HoaDonMua', '=', 'chitiethoadonmua.Id_HoaDonMua')
+                        ->join('sanpham', 'chitiethoadonmua.Id_SanPham', '=', 'sanpham.Id_SanPham')
+                        ->select('hoadonmua.*', 'nhacungcap.TenNCC', 'chitiethoadonmua.*', 'sanpham.TenSP')
+                        ->orderBy('hoadonmua.Id_HoaDonMua', 'desc')
+                        ->groupby('hoadonmua.Id_HoaDonMua')->distinct()
                         ->get();
         $columns = [
             'ID', 'Tên nhà cung cấp', 'Ngày tạo', 'Tổng tiền', 'Trạng thái' , 'Hành động'
@@ -25,7 +29,8 @@ class InvoiceController extends BackendController
     public function create()
     {
         $ncc = \App\Models\NhaCungCap::all();
-        return view('backend.invoice.add', compact('ncc'));
+        $product = \App\Models\Product::all();
+        return view('backend.invoice.add', compact('ncc', 'product'));
     }
 
     public function store(Request $request)
@@ -52,7 +57,17 @@ class InvoiceController extends BackendController
             'NgayCapNhap' => date('Y-m-d',time()),
         ]);
 
-        if (HoaDonMua::create($request->all())) {
+        if ($hdm = HoaDonMua::create($request->all())) {
+            foreach ($request->Id_SanPham as $key => $v) {
+                $data = [
+                    'Id_HoaDonMua' => $hdm->Id_HoaDonMua,
+                    'Id_SanPham' => $v,
+                    'SoLuong' => $request->SoLuong[$key],
+                    'DonGia' => $request->DonGia[$key]
+                ];
+
+                ChiTietHoaDonMua::create($data);
+            }
             return redirect()->back()->with('success','Thêm mới hóa đơn mua thành công');
         }else{
             return redirect()->back()->with('error','Thêm mới hóa đơn mua thất bại, vui lòng thử lại');

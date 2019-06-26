@@ -29,7 +29,7 @@ class HomeController extends FrontEndController
         return view('dangky');
     }
 
-    public function creat(ResgisterRequest $request)
+    public function create(ResgisterRequest $request)
     {
         $request->offsetunset('_token');
         $request->merge([
@@ -37,7 +37,7 @@ class HomeController extends FrontEndController
             'gender'   => $request->gender,
             'created_at' => Carbon::now()
         ]);
-
+        
         if (User::create($request->all())) {
             return redirect()->back()->with('success','Đăng ký thành công');
         }else{

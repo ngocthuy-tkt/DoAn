@@ -78,16 +78,29 @@
                                 </div>
                             @endif
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 detail-form">
+                            <label for="">Thêm chi tiết</label>
                             <div class="form-group">
-                                <label>Trạng thái</label>
-                                <div class="radio">
-                                    <label>
-                                        <input checked type="radio" name="TrangThai" value="1">
-                                        <span class="label label-success">Active</span>
-                                    </label>
+                                <select class="form-control select2" style="width: 100%;" name="Id_SanPham[]" id="filter">
+                                    <option value="">Chọn sản phẩm</option>
+                                    @foreach($product as $pro)
+                                        <option value="{{ $pro->Id_SanPham }}" data-price="{{$pro->DonGia}}">{{ $pro->TenSp }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input type="number" class="form-control" placeholder="Số lượng" name="SoLuong[]">
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input type="number" class="form-control" id="dongia" placeholder="Đơn giá" name="DonGia[]">
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-xs btn-primary add">Thêm chi tiết</button>
                         </div>
                     </div>
                 </div>
@@ -96,6 +109,7 @@
                     <div class="center-block max-width-content">
                         <button type="submit" class="btn btn-primary">Tạo mới</button>
                         <button type="reset" class="btn btn-warning ">Làm lại</button>
+                        <button type="reset" class="btn btn-warning " onclick='window.print();'>In</button>
                     </div>
                 </div>
             </div>
@@ -111,6 +125,37 @@
         $(function () {
             //Initialize Select2 Elements
             $('.select2').select2();
-        })
+        });
+
+        $(document).ready(function(){
+          var element ='<div class="form-group">'+
+                                '<select class="form-control select2" style="width: 100%;" name="Id_SanPham[]" id="mySelect">'+
+                                    '<option value="">Chọn sản phẩm</option>'+
+                                    '@foreach($product as $pro)'+
+                                        '<option value="{{ $pro->Id_SanPham }}" data-price="{{$pro->DonGia}}">{{ $pro->TenSp }}</option>'+
+                                    '@endforeach'+
+                                '</select>'+
+                            '</div>'+
+                            '<div class="form-group">'+
+                                '<div class="input-group">'+
+                                    '<span class="input-group-addon"><i class="fa fa-user"></i></span>'+
+                                    '<input type="number" class="form-control" placeholder="Số lượng" name="SoLuong[]">'+
+                                '</div>'+
+                            '</div>'+
+                            '<div class="form-group">'+
+                               '<div class="input-group">'+
+                                    '<span class="input-group-addon"><i class="fa fa-user"></i></span>'+
+                                    '<input type="number" class="form-control" placeholder="Đơn giá" id="dongia" name="DonGia[]">'+
+                                '</div>'+
+                            '</div>';  
+          $(".add").click(function(){
+            $(".detail-form").append(element);
+          })
+
+          $('#filter').on('change', function(){
+            var option = $(this).find('option:selected');
+            $('#dongia').val(option.data('price'));
+          });
+      });
     </script>
 @endsection
