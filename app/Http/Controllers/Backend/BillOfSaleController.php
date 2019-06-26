@@ -27,7 +27,7 @@ class BillOfSaleController extends BackendController
                         ->join('sanpham', 'chitiethoadonban.Id_SanPham', '=', 'sanpham.Id_SanPham')
                         ->select('hoadonban.*', 'chitiethoadonban.*', 'sanpham.TenSP', )
                         ->where('hoadonban.Id_HoaDonBan', '=','chitiethoadonban.Id_HoaDonBan')
-                        ->get();dd($hdb1);
+                        ->get();
                                         
         $columns = [
             'ID', 'Mã hóa đơn bán','Tên nhân viên', 'Tên khách hàng', 'Sdt', 'Địa chỉ', 'Ngày tạo','Hành động'
