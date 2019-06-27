@@ -9,10 +9,14 @@
 /*-----------content-------------------------*/
 
 #content {
-	width:100%;
+	max-width:100%;
 	min-height:500px;
 	margin-top:30px;
 	float:left;	
+}
+
+#content img {
+	width: 100%
 }
 
 #content #danhmuc{
