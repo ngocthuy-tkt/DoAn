@@ -31,23 +31,34 @@
                                 <label>Thông tin tài khoản</label>
                                 <div class="input-group">
                                     <span class="input-group-addon">@</span>
-                                    <input type="text" class="form-control" placeholder="Nhập họ và tên" name="HoTen" id="fullname" value="{{ old('HoTen') }}">
+                                    <input type="text" class="form-control" placeholder="Họ tên khách hàng" name="name" id="name" value="{{ old('name') }}">
                                 </div>
                             </div>
-                            @if($errors->has('HoTen'))
+                            @if($errors->has('name'))
                                 <div class="help-block text-red">
-                                    * {!! $errors->first('HoTen') !!}
+                                    * {!! $errors->first('name') !!}
+                                </div>
+                            @endif
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">@</span>
+                                    <input type="text" class="form-control" placeholder="email" name="email" id="email" value="{{ old('email') }}">
+                                </div>
+                            </div>
+                            @if($errors->has('email'))
+                                <div class="help-block text-red">
+                                    * {!! $errors->first('email') !!}
                                 </div>
                             @endif
                             <div class="form-group">
                                 <label>Giới tính</label>
                                 <div class="radio">
                                     <label>
-                                        <input type="radio" name="GioiTinh" value="0">
+                                        <input type="radio" name="gender" value="0">
                                         <span>Nữ</span>
                                     </label>
                                     <label>
-                                        <input checked type="radio" name="GioiTinh" value="1">
+                                        <input checked type="radio" name="gender" value="1">
                                         <span>Nam</span>
                                     </label>
                                 </div>
@@ -59,68 +70,40 @@
                                     <input type="password" class="form-control" placeholder="Nhập mật khẩu" name="password">
                                 </div>
                             </div>
-                            @if($errors->has('password'))
-                                <div class="help-block text-red">
-                                    * {!! $errors->first('password') !!}
-                                </div>
-                            @endif
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-eye-slash"></i></span>
-                                    <input type="password" class="form-control" placeholder="Nhập lại mật khẩu" name="password_confirmation">
-                                </div>
-                            </div>
 
                             <div class="form-group">
                                 <div class="input-group">
                                     <div class="input-group-addon">
                                         <i class="fa fa-phone"></i>
                                     </div>
-                                    <input type="text" class="form-control" name="Sdt" value="{{ old('Sdt') }}" data-inputmask="'mask': ['9999999999[9]']" data-mask="" placeholder="Số điện thoại">
+                                    <input type="text" class="form-control" name="phone" value="{{ old('phone') }}" data-inputmask="'mask': ['9999999999[9]']" data-mask="" placeholder="Số điện thoại">
                                 </div>
                             </div>
-                            @if($errors->has('Sdt'))
+                            @if($errors->has('phone'))
                                 <div class="help-block text-red">
-                                    * {!! $errors->first('Sdt') !!}
+                                    * {!! $errors->first('phone') !!}
                                 </div>
                             @endif
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon">#</span>
-                                    <input type="text" class="form-control" placeholder="Nhập địa chỉ" name="DiaChi" value="{{ old('DiaChi') }}">
+                                    <input type="date" class="form-control" placeholder="Ngày sinh" name="birthday" value="{{ old('birthday') }}">
                                 </div>
                             </div>
-                            @if($errors->has('DiaChi'))
+                            @if($errors->has('birthday'))
                                 <div class="help-block text-red">
-                                    * {!! $errors->first('DiaChi') !!}
+                                    * {!! $errors->first('birthday') !!}
                                 </div>
                             @endif
-                        </div>
-                        <div class="col-md-6">
                             <div class="form-group">
-                                <label>Trạng thái</label>
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="TrangThai" value="0">
-                                        <span class="label label-danger">khóa</span>
-                                    </label>
-                                    <label>
-                                        <input checked type="radio" name="TrangThai" value="1">
-                                        <span class="label label-success">hoạt động</span>
-                                    </label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">#</span>
+                                    <input type="text" class="form-control" placeholder="Nhập địa chỉ" name="address" value="{{ old('address') }}">
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label>Avatar</label>
-                                <div class="show-avatar">
-                                    <img src="" alt="" id="img">
-                                    <input type="file" name="upload_avatar" id="upload_img" style="display: none">
-                                    <a id="browse_file" class="btn btn-success"><i class="fa fa-file-image-o"></i> Chọn avatar</a>
-                                </div>
-                            </div>
-                            @if($errors->has('upload_avatar'))
+                            @if($errors->has('address'))
                                 <div class="help-block text-red">
-                                    * {!! $errors->first('upload_avatar') !!}
+                                    * {!! $errors->first('address') !!}
                                 </div>
                             @endif
                         </div>

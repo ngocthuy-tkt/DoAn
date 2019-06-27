@@ -8,6 +8,7 @@
             <table id="cart" class="table table-hover table-condensed">
                 <thead>
                 <tr>
+                    <th style="width:10%">Mã đơn hàng</th>
                     <th style="width:50%">Sản phẩm</th>
                     <th style="width:10%">Số lượng</th>
                     <th style="width:10%">Giá</th>
@@ -17,6 +18,9 @@
                 <tbody>
                 @foreach($lichSuMua as $item)
                     <tr>
+                        <td>
+                           #OD00-{{ $item->Id_DonHang }}
+                        </td>
                         <td>
                            {{ $item->TenSp }}
                         </td>

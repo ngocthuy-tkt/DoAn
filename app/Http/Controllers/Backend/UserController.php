@@ -30,38 +30,36 @@ class UserController extends BackendController
         // dd(date('Y-m-d',time()));
         $this->validate($request,
             [
-                'HoTen' => 'required',
-                'DiaChi' => 'required',
+                'name' => 'required',
+                'email' => 'required',
+                'address' => 'required',
                 'password' => 'required|min:4|confirmed',
-                'Sdt'  => 'min:4| max:15',
-                'upload_avatar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'phone'  => 'min:4| max:15'
             ],[
-                'HoTen.required' => 'Họ tên không được để trống',
-                'DiaChi.required' => 'Địa chỉ không được để trống',
+                'name.required' => 'Họ tên không được để trống',
+                'email.required' => 'Email không được để trống',
+                'address.required' => 'Địa chỉ không được để trống',
                 'password.required' => 'Bạn chưa nhập mật khẩu',
                 'password.confirmed' => 'Mật khẩu không khớp',
                 'password.min' => 'Mật khẩu quá ngắn',
-                'Sdt.min' => 'Số điện thoại không đúng',
-                'Sdt.max' => 'Số điện thoại không đúng',
-                'upload_avatar.image' => 'File phải là ảnh',
-                'upload_avatar.max' => 'Dung lượng file quá lớn',
+                'phone.min' => 'Số điện thoại không đúng',
+                'phone.max' => 'Số điện thoại không đúng'
             ]
         );
 
         $request->offsetunset('_token');
-        $imgName = '';
-        if($request->hasFile('upload_avatar')){
-            $image      = $request->file('upload_avatar');
-            $imgName   = time() . '.' . $image->getClientOriginalExtension();
-            Storage::disk('user')->put($imgName,file_get_contents($image));
-        }
+        // $imgName = '';
+        // if($request->hasFile('upload_avatar')){
+        //     $image      = $request->file('upload_avatar');
+        //     $imgName   = time() . '.' . $image->getClientOriginalExtension();
+        //     Storage::disk('user')->put($imgName,file_get_contents($image));
+        // }
 
         $request->merge([
-            'Avatar' => $imgName,
-            'MatKhau' => bcrypt($request->password),
-            'NgayTao' => date('Y-m-d',time()),
+            // 'Avatar' => $imgName,
+            'password' => bcrypt($request->password),
         ]);
-
+        dd(User::create($request->all()));
         if (User::create($request->all())) {
             return redirect()->back()->with('success','Thêm mới tài khoản khách hàng thành công');
         }else{

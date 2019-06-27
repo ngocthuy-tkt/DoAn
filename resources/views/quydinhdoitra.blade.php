@@ -49,6 +49,7 @@
 							<p>Lưu ý</p>
 							<ul>
 								<li>Đơn hàng đổi thuộc 6 quận nội thành Hà Nội (Cầu Giấy, Ba Đình, Đống Đa, Hoàn Kiếm, Hai Bà Trưng, Thanh Xuân), CANIFA hỗ trợ giao hàng đổi đến địa chỉ đơn hàng và nhận lại sản phẩm Khách hàng cần đổi</li>
+								<li><b>Ngoài 6 quận trên khách gửi hàng về kho chịu phí vận chuyển, shop chịu chiều đi cho khách</b></li>
 								<li>Đơn hàng không thuộc địa chỉ trên, Khách hàng vui lòng gửi hàng về Kho Online theo hướng dẫn</li>
 								<li>Thời gian nhận hàng: Sáng 08h30-12h, Chiều 13h-17h từ thứ 2 – thứ 6</li>
 								<li>Kho online không nhận giữ hàng trong thời gian khách hàng gửi sản phẩm về đổi hàng</li>

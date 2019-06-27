@@ -1,6 +1,6 @@
 <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
     <div class="ds_sanpham">
-        <ul>
+        <ul style="list-style: none">
             <li>
                 <a href="{{route('detail',['slug' => $product->TenSp, 'id' => $product->Id_SanPham])}}">
                     <img  src="{{ asset($product->AnhChinh) }}" alt="{{$product->TenSp}}" class="img-responsive"/>
