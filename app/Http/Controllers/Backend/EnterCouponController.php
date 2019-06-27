@@ -11,11 +11,11 @@ class EnterCouponController extends Controller
     public function index()
     {
     	$columns = [
-    		'ID', 'Tên nhà cung cấp', 'Ngày tạo', 'Ngày cập nhập', 'Tổng tiền', 'Ghi chú', 'Trạng Thái', 'Hành động'
+    		'ID', 'Tên khách hàng', 'Ngày tạo', 'Ngày cập nhập', 'Tổng tiền', 'Ghi chú', 'Trạng Thái', 'Hành động'
     	];
     	$phieunhap = \DB::table('phieuhang')
-                        // ->join('nhacungcap', 'phieuhang.Id_NhaCC', '=', 'nhacungcap.Id_NCC')
-                        ->select('phieuhang.*')
+                        ->join('users', 'users.id', '=', 'phieuhang.Id_Khachhang')
+                        ->select('phieuhang.*', 'users.name')
                         ->orderBy('phieuhang.id', 'desc')
                         ->get();
     	return view('backend.coupon.index', compact('phieunhap', 'columns'));

@@ -58,7 +58,7 @@
                                     </td>
                                     <td>{{$item->TieuDe}}</td>
                                     <td>
-                                        @if($item->active == 1)
+                                        @if($item->TrangThai == 1)
                                             <label class="label label-success">Hoạt động</label>
                                         @else
                                             <label class="label label-warning">Đợi duyệt</label>

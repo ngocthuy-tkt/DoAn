@@ -13,8 +13,7 @@ class CategoryController extends FrontEndController
         $cat = Category::where('Id_DanhMucSp', '=', $id)
             ->first();
 
-        $products = Product::where('Sp_Hot', '=', 1)
-            ->where('Id_DanhMucSp', '=', $id)
+        $products = Product::where('Id_DanhMucSp', '=', $id)
             ->orderBy('Id_SanPham', 'desc')
             ->paginate(8);
         return view('danhmuc', compact('cat', 'products'));

@@ -67,13 +67,13 @@ if (!function_exists('table_category')) {
 }
 
 if (!function_exists('menu_header_cat')) {
-    function menu_header_cat($categories, $parent_id = 0)
+    function menu_header_cat($categories, $Id_NhomSp_Cha = 0)
     {
 
         // Lấy danh sách cá danh mục con
         $cat_child = collect();
         foreach ($categories as $key => $item) {
-            if ($item->parent_id == $parent_id) {
+            if ($item->Id_NhomSp_Cha == $Id_NhomSp_Cha) {
                 $cat_child->push($item);
                 $categories->forget($key);
             }

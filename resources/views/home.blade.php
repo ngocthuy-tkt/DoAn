@@ -53,19 +53,19 @@
                 </li>
                 <li>
                     <img src="giaodien/img/kh2.jpg"/>
-                    <p> Chị:Nguyễn Thị Hoa</p>
+                    <p> Chị:Nguyễn Thị Hòa</p>
                 </li>
                 <li>
                     <img src="giaodien/img/kh3.jpg"/>
-                    <p> Chị:Nguyễn Thị Hoa</p>
+                    <p> Chị:Nguyễn Thị Thảo</p>
                 </li>
                 <li>
                     <img src="giaodien/img/kh4.jpg"/>
-                    <p> Chị:Nguyễn Thị Hoa</p>
+                    <p> Chị:Nguyễn Thị Hạnh</p>
                 </li>
                 <li>
                     <img src="giaodien/img/kh2.jpg"/>
-                    <p> Chị:Nguyễn Thị Hoa</p>
+                    <p> Chị:Nguyễn Thị Hồng</p>
                 </li>
             </ul>
         </div>

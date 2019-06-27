@@ -33,17 +33,11 @@ class UserController extends BackendController
                 'name' => 'required',
                 'email' => 'required',
                 'address' => 'required',
-                'password' => 'required|min:4|confirmed',
-                'phone'  => 'min:4| max:15'
+                'phone'  => 'required'
             ],[
                 'name.required' => 'Họ tên không được để trống',
                 'email.required' => 'Email không được để trống',
-                'address.required' => 'Địa chỉ không được để trống',
-                'password.required' => 'Bạn chưa nhập mật khẩu',
-                'password.confirmed' => 'Mật khẩu không khớp',
-                'password.min' => 'Mật khẩu quá ngắn',
-                'phone.min' => 'Số điện thoại không đúng',
-                'phone.max' => 'Số điện thoại không đúng'
+                'phone.min' => 'Số điện thoại không để trống',
             ]
         );
 
@@ -59,7 +53,7 @@ class UserController extends BackendController
             // 'Avatar' => $imgName,
             'password' => bcrypt($request->password),
         ]);
-        dd(User::create($request->all()));
+        
         if (User::create($request->all())) {
             return redirect()->back()->with('success','Thêm mới tài khoản khách hàng thành công');
         }else{

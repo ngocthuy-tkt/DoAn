@@ -27,7 +27,7 @@ class ProductRequest extends FormRequest
         return [
             'TenSp' => 'required|unique:sanpham,TenSp,' . $this->get('Id_SanPham') . ',Id_SanPham',
             'DonGia' => 'required|numeric|min:4',
-            'GiaKhuyenMai' => 'numeric|min:0',
+            // 'GiaKhuyenMai' => 'numeric|min:0',
             'SoLuong' => 'required|numeric|min:0',
             'Id_DanhMucSp' => 'required',
             'MaSP' => 'required',
@@ -42,7 +42,7 @@ class ProductRequest extends FormRequest
             'TenSp.unique' => 'Sản phẩm đã tồn tại',
             'DonGia.required' => 'Không được để trống giá',
             'DonGia.numeric' => 'Giá phải là số',
-            'GiaKhuyenMai.numeric' => 'Giá phải là số',
+            // 'GiaKhuyenMai.numeric' => 'Giá phải là số',
             'SoLuong.required' => 'Số lượng không được để trống',
             'SoLuong.numeric' => 'Số lượng phải là số',
             'Id_DanhMucSp.required' => 'Danh mục không được để trống',

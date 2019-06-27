@@ -17,7 +17,7 @@
         </ol>
     </section>
     <!-- Main content -->
-    <section class="content">
+    <section class="content container">
         <form action="{{route('users.store')}}" method="POST" role="form" enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="box box-danger">
@@ -26,6 +26,7 @@
                 </div>
                 <div class="box-body">
                     <div class="row">
+                        <div class="col-sm-3"></div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Thông tin tài khoản</label>
@@ -107,6 +108,7 @@
                                 </div>
                             @endif
                         </div>
+                        <div class="col-sm-3"></div>
                     </div>
                 </div>
                 <!-- /.box-body -->
