@@ -79,28 +79,43 @@
                             @endif
                         </div>
                         <div class="col-md-6 detail-form">
+                            <button style="float: right;" type="button" class="btn btn-xs btn-primary add">Thêm chi tiết</button>
                             <label for="">Thêm chi tiết</label>
                             <div class="form-group">
-                                <select class="form-control select2" style="width: 100%;" name="Id_SanPham[]" id="filter">
+                                <select class="form-control select2" style="width: 100%;" name="Id_SanPham[]" id="mySelect">
                                     <option value="">Chọn sản phẩm</option>
                                     @foreach($product as $pro)
-                                        <option value="{{ $pro->Id_SanPham }}" data-price="{{$pro->DonGia}}">{{ $pro->TenSp }}</option>
+                                        <option value="{{ $pro->Id_SanPham }}" data-price="{{$pro->DonGia}}"  data-name="{{$pro->TenSp}}">{{ $pro->TenSp }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                    <input type="number" class="form-control" placeholder="Số lượng" name="SoLuong[]">
+                                    <input type="number" class="form-control soluong" placeholder="Số lượng" name="SoLuong[]">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                    <input type="number" class="form-control" id="dongia" placeholder="Đơn giá" name="DonGia[]">
+                                    <input type="number" class="form-control dongia" id="dongia" placeholder="Đơn giá" name="DonGia[]">
                                 </div>
                             </div>
-                            <button type="button" class="btn btn-xs btn-primary add">Thêm chi tiết</button>
+                        </div>
+                        <div class="col-sm-6"></div>
+                        <div class="col-sm-6">
+                            <table class="table table-bordered">
+                              <thead>
+                                <tr>
+                                  <th scope="col">Sản phẩm</th>
+                                  <th scope="col">Số lượng</th>
+                                  <th scope="col">Giá</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                               
+                              </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -139,20 +154,32 @@
                             '<div class="form-group">'+
                                 '<div class="input-group">'+
                                     '<span class="input-group-addon"><i class="fa fa-user"></i></span>'+
-                                    '<input type="number" class="form-control" placeholder="Số lượng" name="SoLuong[]">'+
+                                    '<input type="number" class="form-control soluong" placeholder="Số lượng" name="SoLuong[]">'+
                                 '</div>'+
                             '</div>'+
                             '<div class="form-group">'+
                                '<div class="input-group">'+
                                     '<span class="input-group-addon"><i class="fa fa-user"></i></span>'+
-                                    '<input type="number" class="form-control" placeholder="Đơn giá" id="dongia" name="DonGia[]">'+
+                                    '<input type="number" class="form-control dongia" placeholder="Đơn giá" id="dongia" name="DonGia[]">'+
                                 '</div>'+
                             '</div>';  
           $(".add").click(function(){
-            $(".detail-form").append(element);
-          })
+            var soluong = $('.soluong').val();
+            var dongia = $('.dongia').val();
+            var e = document.getElementById("mySelect");
+            var name = e.options[e.selectedIndex].text;
 
-          $('#filter').on('change', function(){
+            var tbody =  "<tr>" +
+                            "<td id='sp'>"+ name +"</td>" +
+                            "<td id='sl'>"+ soluong +"</td>" +
+                            "<td id='gia'>"+ dongia +"</td>" +
+                         "</tr>";   
+
+            $(".detail-form").append(element);
+            $('tbody').append(tbody);
+          });
+
+          $('#mySelect').on('change', function(){
             var option = $(this).find('option:selected');
             $('#dongia').val(option.data('price'));
           });

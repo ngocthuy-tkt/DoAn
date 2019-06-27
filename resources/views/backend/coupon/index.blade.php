@@ -44,15 +44,10 @@
                                 <tr>
                                     <td>{{$item->id}}</td>
                                     <td>{{$item->TenNCC}}</td>
-                                    <td>        {{\Carbon\Carbon::parse($item->NgayTao)->format('d-m-Y')}}</td>
+                                    <td>{{\Carbon\Carbon::parse($item->NgayTao)->format('d-m-Y')}}</td>
                                     <td>{{\Carbon\Carbon::parse($item->NgayCapNhap)->format('d-m-Y')}}</td>
                                     <td>{{$item->TongTien}}</td>
                                     <td>{{$item->GhiChu}}</td>
-                                    <td>
-                                        @if($item->TrangThai == 1)
-                                            Kích hoạt 
-                                        @endif        
-                                    </td>
                                     <td>
                                         @if(Auth::guard('admin')->user()->quyen == 1)
                                             <a href="{{route('phieunhap.edit',['id' => $item->id])}}"

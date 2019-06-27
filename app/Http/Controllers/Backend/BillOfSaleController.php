@@ -11,7 +11,7 @@ use Auth;
 
 class BillOfSaleController extends BackendController
 {
-    public function index()
+    public function index(Request $request)
     {
         $hdb = DB::table('hoadonban')
                         ->join('nhanvien', 'hoadonban.Id_NhanVien', '=', 'nhanvien.Id_NhanVien')
@@ -22,17 +22,23 @@ class BillOfSaleController extends BackendController
                         ->groupby('hoadonban.Id_HoaDonBan')->distinct()
                         ->get();
 
-        $hdb1 = DB::table('hoadonban')
-                        ->join('chitiethoadonban', 'hoadonban.Id_HoaDonBan', '=', 'chitiethoadonban.Id_HoaDonBan')
-                        ->join('sanpham', 'chitiethoadonban.Id_SanPham', '=', 'sanpham.Id_SanPham')
-                        ->select('hoadonban.*', 'chitiethoadonban.*', 'sanpham.TenSP', )
-                        ->where('hoadonban.Id_HoaDonBan', '=','chitiethoadonban.Id_HoaDonBan')
-                        ->get();
                                         
         $columns = [
             'ID', 'Mã hóa đơn bán','Tên nhân viên', 'Tên khách hàng', 'Sdt', 'Địa chỉ', 'Ngày tạo','Hành động'
         ];
-        return view('backend.bill.index', compact('hdb', 'columns', 'hdb1'));
+        return view('backend.bill.index', compact('hdb', 'columns'));
+    }
+
+    public function show($id)
+    {
+        $hdb1 = DB::table('hoadonban')
+                        ->join('chitiethoadonban', 'hoadonban.Id_HoaDonBan', '=', 'chitiethoadonban.Id_HoaDonBan')
+                        ->join('sanpham', 'chitiethoadonban.Id_SanPham', '=', 'sanpham.Id_SanPham')
+                        ->select('hoadonban.*', 'chitiethoadonban.*', 'sanpham.TenSP', )
+                        ->where('chitiethoadonban.Id_HoaDonBan', $id)
+                        ->get();
+                        
+        return view('backend.bill.view', compact('hdb1'));
     }
 
     public function create()

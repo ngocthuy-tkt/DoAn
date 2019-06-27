@@ -28,11 +28,11 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Nhà cung cấp</label>
+                                <label>Khách hàng</label>
                                 <select class="form-control select2" style="width: 100%;" name="Id_NhaCC">
-                                    <option value="0" selected="selected">Chọn nhà cung cấp</option>
+                                    <option value="0" selected="selected">Chọn khách hàng</option>
                                     @foreach($ncc as $item)
-                                        <option value="{{ $item->Id_NCC }}">{{ $item->TenNCC }}</option>
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
                                     @endforeach()
                                 </select>
                                 @if($errors->has('TongTien'))
@@ -68,13 +68,13 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                    <input type="text" class="form-control" placeholder="Tổng tiền" name="TongTien" id="TongTien"
-                                           value="{{ old('TongTien') }}">
+                                    <input type="text" class="form-control" placeholder="Giá bán" name="GiaBan" id="GiaBan"
+                                           value="{{ old('GiaBan') }}">
                                 </div>
                             </div>
-                            @if($errors->has('TongTien'))
+                            @if($errors->has('GiaBan'))
                                 <div class="help-block text-red">
-                                    * {!! $errors->first('TongTien') !!}
+                                    * {!! $errors->first('GiaBan') !!}
                                 </div>
                             @endif
                             <div class="form-group">
@@ -90,17 +90,7 @@
                                 </div>
                             @endif
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Trạng thái</label>
-                                <div class="radio">
-                                    <label>
-                                        <input checked type="radio" name="TrangThai" value="1">
-                                        <span class="label label-success">Active</span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
                 <!-- /.box-body -->

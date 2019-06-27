@@ -11,7 +11,7 @@ class EnterCouponController extends Controller
     public function index()
     {
     	$columns = [
-    		'ID', 'Tên khách hàng', 'Ngày tạo', 'Ngày cập nhập', 'Tổng tiền', 'Ghi chú', 'Trạng Thái', 'Hành động'
+    		'ID', 'Tên khách hàng', 'Ngày tạo', 'Ngày cập nhập', 'Tổng tiền', 'Ghi chú','Hành động'
     	];
     	$phieunhap = \DB::table('phieuhang')
                         ->join('users', 'users.id', '=', 'phieuhang.Id_Khachhang')
@@ -23,7 +23,7 @@ class EnterCouponController extends Controller
 
     public function create()
     {
-        $ncc = \App\Models\NhaCungCap::all();
+        $ncc = \App\Models\User::all();
     	return view('backend.coupon.add', compact('ncc'));
     }
 
@@ -31,16 +31,16 @@ class EnterCouponController extends Controller
     {
         $this->validate($request,
             [
-                'Id_NhaCC' => 'required',
+                'Id_KhachHang' => 'required',
                 'NgayTao' => 'required',
                 'NgayCapNhap' => 'required',
-                'TongTien'  => 'required',
+                'GiaBan'  => 'required',
                 "GhiChu" => 'required'
             ],[
-                'Id_NhaCC.required' => 'Tên nhà cung cấp không được để trống',
+                'Id_KhachHang.required' => 'Tên khách hàng không được để trống',
                 'NgayTao.required' => 'Ngày tạo không được để trống',
                 'NgayCapNhap.required' => 'Ngày cập nhập không được để trống',
-                'TongTien.required' => 'Tổng tiền không được để trống',
+                'GiaBan.required' => 'Giá bán không được để trống',
                 'GhiChu.required' => 'Bạn chưa nhập ghi chú'
             ]
         );
@@ -73,10 +73,10 @@ class EnterCouponController extends Controller
         
         $request->offsetunset('_token');
 
-        $ph->Id_NhaCC = $request->Id_NhaCC;
+        $ph->Id_KhachHang = $request->Id_KhachHang;
         $ph->NgayTao = $request->NgayTao;
         $ph->NgayCapNhap = $request->NgayCapNhap;
-        $ph->TongTien = $request->TongTien;
+        $ph->GiaBan = $request->GiaBan;
         $ph->GhiChu = $request->GhiChu;
         $ph->TrangThai = 1;
         $check = $ph->save();

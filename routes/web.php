@@ -31,7 +31,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('order', 'Backend\OrderController', ['only' => ['index', 'edit', 'update']]);
     Route::resource('supplier', 'Backend\SupplierController');
     Route::resource('invoice', 'Backend\InvoiceController');
-    Route::resource('bill', 'Backend\BillOfSaleController', ['only' => ['index', 'create', 'store']]);
+    Route::resource('bill', 'Backend\BillOfSaleController', ['only' => ['index', 'create', 'store', 'show']]);
     Route::resource('inventory', 'Backend\InventoryController', ['only' => ['index', 'create', 'store']]);
     Route::resource('phieunhap', 'Backend\EnterCouponController');
 

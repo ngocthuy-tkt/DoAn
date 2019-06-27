@@ -38,6 +38,7 @@
 
                             @foreach($hdb as $user)
                                 <tr>
+                                  <input type="hidden" value="{{$user->Id_HoaDonBan}}" name="id">  
                                     <td>{{$user->Id_HoaDonBan}}</td>
                                     <td>#HB-00{{$user->Id_HoaDonBan}}</td>
                                     <td>{{$user->HoTen}}</td>
@@ -63,8 +64,11 @@
                                                 </button>
                                             </form>
                                         @endif
-                                        @if(Auth::guard('admin')->user()->quyen == 1)   
-                                            <button type="button" class="btn btn-xs btn-primary show-modal" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" data-id="#HB-00{{ $user->Id_HoaDonBan }}" data-nameNV="{{ $user->HoTen }}" data-nameKH="{{ $user->TenKhachhang }}" data-diachi="{{ $user->DiaChi }}" data-sdt="{{ $user->Sdt }}" data-note="{{ $user->GhiChu }}" data-soluong="{{ $user->SoLuong }}" data-dongia="{{ $user->DonGia }}" data-tensp="{{ $user->TenSP }}"><i class="fa fa-eye"></i></button>                
+                                        @if(Auth::guard('admin')->user()->quyen == 1) 
+
+                                            <!-- <button type="button" class="btn btn-xs btn-primary show-modal" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" data-id="#HB-00{{ $user->Id_HoaDonBan }}" data-nameNV="{{ $user->HoTen }}" data-nameKH="{{ $user->TenKhachhang }}" data-diachi="{{ $user->DiaChi }}" data-sdt="{{ $user->Sdt }}" data-note="{{ $user->GhiChu }}" data-soluong="{{ $user->SoLuong }}" data-dongia="{{ $user->DonGia }}" data-tensp="{{ $user->TenSP }}"><i class="fa fa-eye"></i></button>      -->  
+
+                                            <a href="{{ route('bill.show', ['id' =>$user->Id_HoaDonBan]) }}" class="btn btn-xs btn-primary"><i class="fa fa-eye"></i></a>         
                                         @endif 
                                     </td>
                                 </tr>
@@ -88,79 +92,6 @@
         <!-- /.row -->
     </section>
     <!-- /.content -->
-
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Chi tiết</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th scope="col">Sản phẩm</th>
-              <th scope="col">Số lượng</th>
-              <th scope="col">Giá</th>
-            </tr>
-          </thead>
-          <tbody>
-            @foreach($hdb1 as $hd)
-           <tr>
-               <td>{{$hd->TenSP}}</td>
-               <td>{{$hd->SoLuong}}</td>
-               <td>{{$hd->DonGia}}</td>
-           </tr>
-           @endforeach()
-          </tbody>
-        </table>
-        <form>
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Mã đơn hàng:</label>
-            <input type="text" class="form-control" id="id">
-          </div>
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Tên nhân viên:</label>
-            <input type="text" class="form-control" id="nameNV">
-          </div>
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Tên khách hàng:</label>
-            <input type="text" class="form-control" id="nameKH">
-          </div>
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Số điện thoại:</label>
-            <input type="text" class="form-control" id="sdt">
-          </div>
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Địa chỉ:</label>
-            <input type="text" class="form-control" id="diachi">
-          </div>
-          <div class="form-group">
-            <label for="message-text" class="col-form-label">Ghi chú:</label>
-            <textarea class="form-control" id="note"></textarea>
-          </div>
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Số lượng:</label>
-            <input type="text" class="form-control" id="soluong">
-          </div>
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Đơn giá:</label>
-            <input type="text" class="form-control" id="dongia">
-          </div>
-           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Tên sản phẩm:</label>
-            <input type="text" class="form-control" id="tensp">
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-      </div>
-    </div>
-  </div>
 </div>
 
 @endsection
