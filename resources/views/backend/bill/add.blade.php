@@ -28,10 +28,12 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <div class="input-group">
-                                    <span class="input-group-addon">@</span>
-                                    <input type="text" class="form-control" placeholder="Tên khách hàng" name="TenKhachHang" value="{{ old('TenKhachHang') }}">
-                                </div>
+                                <select class="form-control select2" style="width: 100%;" name="TenKhachHang">
+                                    <option value="">Chọn khách hàng</option>
+                                    @foreach($users as $user)
+                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             @if($errors->has('TenKhachHang'))
                                 <div class="help-block text-red">

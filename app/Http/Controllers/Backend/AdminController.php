@@ -13,7 +13,7 @@ class AdminController extends BackendController
     {
         $admins = NhanVien::where('Id_NhanVien', '!=', Auth::guard('admin')->user()->Id_NhanVien)->get();
         $columns = [
-            'Họ tên', 'Tài khoản', 'Ngày Sinh', 'Giới tính', 'Số điện thoại', 'Địa chỉ','Active', 'Quyền', 'Hành động'
+            'Họ tên', 'Tài khoản', 'Ngày Sinh', 'Giới tính', 'Số điện thoại', 'Địa chỉ','Hoạt động', 'Quyền', 'Hành động'
         ];
         return view('backend.admin.index',
             compact('admins', 'columns')

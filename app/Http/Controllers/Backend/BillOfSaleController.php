@@ -6,6 +6,7 @@ use App\Models\HoaDonBan;
 use Illuminate\Http\Request;
 use App\Models\ChiTietHoaDonBan;
 use App\Models\Product;
+use App\Models\User;
 use DB;
 use Auth;
 
@@ -44,7 +45,8 @@ class BillOfSaleController extends BackendController
     public function create()
     {
         $product = Product::all();
-        return view('backend.bill.add', compact('product'));
+        $users = User::all();
+        return view('backend.bill.add', compact('product', 'users'));
     }
 
     public function store(Request $request)

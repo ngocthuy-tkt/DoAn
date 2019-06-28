@@ -106,6 +106,16 @@
                                 </div>
                             @endif
                         </div>
+                        <div class="col-md-6">
+                            <!-- Minimal style -->
+                            <div class="form-group">
+                                <label>Trạng thái</label>
+                                <select class="form-control select2" style="width: 100%;" name="TrangThai">
+                                    <option value="1" selected="selected">Hoạt động</option>
+                                    <option value="0">Đợi duyệt</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- /.box-body -->
