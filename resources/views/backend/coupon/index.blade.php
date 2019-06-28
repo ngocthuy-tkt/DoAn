@@ -43,7 +43,7 @@
                             @foreach($phieunhap as $item)
                                 <tr>
                                     <td>{{$item->id}}</td>
-                                    <td>{{$item->TenNCC}}</td>
+                                    <td>{{$item->name}}</td>
                                     <td>{{\Carbon\Carbon::parse($item->NgayTao)->format('d-m-Y')}}</td>
                                     <td>{{\Carbon\Carbon::parse($item->NgayCapNhap)->format('d-m-Y')}}</td>
                                     <td>{{$item->TongTien}}</td>

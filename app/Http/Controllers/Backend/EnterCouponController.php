@@ -24,7 +24,8 @@ class EnterCouponController extends Controller
     public function create()
     {
         $ncc = \App\Models\User::all();
-    	return view('backend.coupon.add', compact('ncc'));
+        $product = \App\Models\Product::all();
+    	return view('backend.coupon.add', compact('ncc', 'product'));
     }
 
     public function store(Request $request)

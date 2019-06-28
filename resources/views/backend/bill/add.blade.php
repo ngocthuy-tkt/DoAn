@@ -140,7 +140,7 @@
 
         // $(document).ready(function(){
           var element ='<div class="form-group">'+
-                                '<select class="form-control select2" style="width: 100%;" name="Id_SanPham[]" id="mySelect1">'+
+                                '<select class="form-control select2" style="width: 100%;" name="Id_SanPham[]" id="mySelect">'+
                                     // '<option value="">Chọn sản phẩm</option>'+
                                     '@foreach($product as $pro)'+
                                         '<option value="{{ $pro->Id_SanPham }}" data-price="{{$pro->DonGia}}" data-name="{{$pro->TenSp}}">{{ $pro->TenSp }}</option>'+
