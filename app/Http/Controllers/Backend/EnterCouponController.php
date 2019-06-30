@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Backend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\PhieuHang;
+use App\Models\Product;
+use App\Models\ChiTietPhieuHang;
 
 class EnterCouponController extends Controller
 {
@@ -54,7 +56,25 @@ class EnterCouponController extends Controller
             'NgayCapNhap' => date('Y-m-d',time()),
         ]);
 
-        if (PhieuHang::create($request->all())) {
+        if ($hdm = PhieuHang::create($request->all())) {
+            foreach ($request->Id_SanPham as $key => $v) {
+                $data = [
+                    'Id_PhieuHang' => $hdm->id,
+                    'Id_SanPham' => $v,
+                    'SoLuong' => $request->SoLuong[$key],
+                    'DonGia' => $request->DonGia[$key]
+                ];
+
+                if ($ph = ChiTietPhieuHang::create($data)) {
+                    $id = $ph->Id_SanPham;
+                    $Sp = Product::find($id);
+                    $data1 = [
+                        'SoLuong' => ($Sp->SoLuong)+($ph->SoLuong)
+                    ];
+
+                    $Sp->update($data1);
+                }
+            }
             return redirect()->back()->with('success','Thêm mới phiếu hàng thành công');
         }else{
             return redirect()->back()->with('error','Thêm mới phiếu hàng thất bại, vui lòng thử lại');

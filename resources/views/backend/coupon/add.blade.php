@@ -29,15 +29,15 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Khách hàng</label>
-                                <select class="form-control select2" style="width: 100%;" name="Id_NhaCC">
-                                    <option value="0" selected="selected">Chọn khách hàng</option>
+                                <select class="form-control select2" style="width: 100%;" name="Id_KhachHang">
+                                    <option>Chọn khách hàng</option>
                                     @foreach($ncc as $item)
                                         <option value="{{ $item->id }}">{{ $item->name }}</option>
                                     @endforeach()
                                 </select>
-                                @if($errors->has('TongTien'))
+                                @if($errors->has('Id_KhachHang'))
                                 <div class="help-block text-red">
-                                    * {!! $errors->first('TongTien') !!}
+                                    * {!! $errors->first('Id_KhachHang') !!}
                                 </div>
                             @endif
                             </div>
@@ -68,7 +68,7 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                    <input type="text" class="form-control" placeholder="Giá bán" name="GiaBan" id="GiaBan"
+                                    <input type="number" class="form-control" placeholder="Giá bán" name="GiaBan" id="GiaBan"
                                            value="{{ old('GiaBan') }}">
                                 </div>
                             </div>
@@ -81,7 +81,7 @@
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
                                     <input type="text" class="form-control" placeholder="Ghi chú" name="GhiChu" id="GhiChu "
-                                           value="{{ old('GhiChu ') }}">
+                                           value="{{ old('GhiChu') }}">
                                 </div>
                             </div>
                             @if($errors->has('GhiChu'))
@@ -90,12 +90,14 @@
                                 </div>
                             @endif
                         </div>
-                        <div class="col-md-6 detail-form">
-                            <button style="float: right;" type="button" class="btn btn-xs btn-primary add">Thêm chi tiết</button>
-                            <label for="">Thêm chi tiết</label>
+                    </div>
+                    <div class="detail-form row">
+                        <div class="col-md-3">
+                            <button style="float: right;" type="button" class="btn btn-xs btn-primary add">Thêm</button>
+                            <label for="">Sản phẩm 1</label>
                             <div class="form-group">
                                 <select class="form-control select2" style="width: 100%;" name="Id_SanPham[]" id="mySelect">
-                                    <!-- <option value="">Chọn sản phẩm</option> -->
+                                    <option value="">Chọn sản phẩm</option>
                                     @foreach($product as $pro)
                                         <option value="{{ $pro->Id_SanPham }}" data-price="{{$pro->DonGia}}" data-name="{{$pro->TenSp}}">{{ $pro->TenSp }}</option>
                                     @endforeach
@@ -114,20 +116,92 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6"></div>
-                        <div class="col-sm-6">
-                            <table class="table table-bordered">
-                              <thead>
-                                <tr>
-                                  <th scope="col">Sản phẩm</th>
-                                  <th scope="col">Số lượng</th>
-                                  <th scope="col">Giá</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                               
-                              </tbody>
-                            </table>
+                        <div class="col-md-3">
+                            <label for="">Sản phẩm 2</label>
+                            <div class="form-group">
+                                <select class="form-control select2" style="width: 100%;" name="Id_SanPham[]" id="sp2">
+                                    <option value="">Chọn sản phẩm</option>
+                                    @foreach($product as $pro)
+                                        <option value="{{ $pro->Id_SanPham }}" data-price="{{$pro->DonGia}}" data-name="{{$pro->TenSp}}">{{ $pro->TenSp }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input type="number" class="form-control soluong1" placeholder="Số lượng" name="SoLuong[]">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input type="number" class="form-control dongia1" id="dongia1" placeholder="Đơn giá" name="DonGia[]">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="">Sản phẩm 3</label>
+                            <div class="form-group">
+                                <select class="form-control select2" style="width: 100%;" name="Id_SanPham[]" id="sp3">
+                                    <option value="">Chọn sản phẩm</option>
+                                    @foreach($product as $pro)
+                                        <option value="{{ $pro->Id_SanPham }}" data-price="{{$pro->DonGia}}" data-name="{{$pro->TenSp}}">{{ $pro->TenSp }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input type="number" class="form-control soluong2" placeholder="Số lượng" name="SoLuong[]">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input type="number" class="form-control dongia2" id="dongia2" placeholder="Đơn giá" name="DonGia[]">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="">Sản phẩm 4</label>
+                            <div class="form-group">
+                                <select class="form-control select2" style="width: 100%;" name="Id_SanPham[]" id="sp4">
+                                    <option value="">Chọn sản phẩm</option>
+                                    @foreach($product as $pro)
+                                        <option value="{{ $pro->Id_SanPham }}" data-price="{{$pro->DonGia}}" data-name="{{$pro->TenSp}}">{{ $pro->TenSp }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input type="number" class="form-control soluong3" placeholder="Số lượng" name="SoLuong[]">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input type="number" class="form-control dongia3" id="dongia3" placeholder="Đơn giá" name="DonGia[]">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6"></div>
+                    <div class="col-sm-6">
+                        <table class="table table-bordered">
+                          <thead>
+                            <tr>
+                              <th scope="col">Sản phẩm</th>
+                              <th scope="col">Số lượng</th>
+                              <th scope="col">Giá</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                           
+                          </tbody>
+                        </table>
+                        <div>
+                            Tổng tiền: <p class="total"></p>
                         </div>
                     </div>
                 </div>
@@ -153,7 +227,7 @@
             $('.select2').select2();
         })
 
-        // $(document).ready(function(){
+        $(document).ready(function(){
           var element ='<div class="form-group">'+
                                 '<select class="form-control select2" style="width: 100%;" name="Id_SanPham[]" id="mySelect">'+
                                     // '<option value="">Chọn sản phẩm</option>'+
@@ -181,20 +255,74 @@
             var e = document.getElementById("mySelect");
             var name = e.options[e.selectedIndex].text;
 
+            var soluong1 = $('.soluong1').val();
+            var dongia1 = $('.dongia1').val();
+            var e = document.getElementById("sp2");
+            var name1 = e.options[e.selectedIndex].text;
+
+            var soluong2 = $('.soluong2').val();
+            var dongia2 = $('.dongia2').val();
+            var e = document.getElementById("sp3");
+            var name2 = e.options[e.selectedIndex].text;
+
+            var soluong3 = $('.soluong3').val();
+            var dongia3 = $('.dongia3').val();
+            var e = document.getElementById("sp4");
+            var name3 = e.options[e.selectedIndex].text;
+
+            var total = Number(dongia)+ Number(dongia1) + Number(dongia2) +Number(dongia3);
+
             var tbody =  "<tr>" +
                             "<td id='sp'>"+ name +"</td>" +
                             "<td id='sl'>"+ soluong +"</td>" +
                             "<td id='gia'>"+ dongia +"</td>" +
                          "</tr>";   
 
-            $(".detail-form").append(element);
+            var tbody2 =  "<tr>" +
+                            "<td id='sp'>"+ name1 +"</td>" +
+                            "<td id='sl'>"+ soluong1 +"</td>" +
+                            "<td id='gia'>"+ dongia1 +"</td>" +
+                         "</tr>";   
+                         
+            var tbody3 =  "<tr>" +
+                            "<td id='sp'>"+ name2 +"</td>" +
+                            "<td id='sl'>"+ soluong2 +"</td>" +
+                            "<td id='gia'>"+ dongia2 +"</td>" +
+                         "</tr>";   
+
+            var tbody4 =  "<tr>" +
+                            "<td id='sp'>"+ name3 +"</td>" +
+                            "<td id='sl'>"+ soluong3 +"</td>" +
+                            "<td id='gia'>"+ dongia3 +"</td>" +
+                         "</tr>";    
+
+            $(".abc").append(element);
             $('tbody').append(tbody);
+            $('tbody').append(tbody2);
+            $('tbody').append(tbody3);
+            $('tbody').append(tbody4);
+            $('.total').append(total);
           })
 
           $('.detail-form #mySelect').on('change', function(){
             var option = $(this).find('option:selected');
             $('#dongia').val(option.data('price'));
           });
-        // });
+
+          $('.detail-form #sp2').on('change', function(){
+            var option1 = $(this).find('option:selected');
+            $('#dongia1').val(option1.data('price'));
+          });
+
+          $('.detail-form #sp3').on('change', function(){
+            var option2 = $(this).find('option:selected');
+            $('#dongia2').val(option2.data('price'));
+          });
+
+          $('.detail-form #sp4').on('change', function(){
+            var option3 = $(this).find('option:selected');
+            $('#dongia3').val(option3.data('price'));
+          });
+        });
     </script>
 @endsection
