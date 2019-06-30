@@ -258,7 +258,7 @@
             var e = document.getElementById("sp4");
             var name3 = e.options[e.selectedIndex].text;
 
-            var total = dongia+dongia1+dongia2+dongia3;
+            var total = Number(dongia)+ Number(dongia1) + Number(dongia2) +Number(dongia3);
 
             var tbody =  "<tr>" +
                             "<td id='sp'>"+ name +"</td>" +

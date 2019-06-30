@@ -185,6 +185,9 @@
                            
                           </tbody>
                         </table>
+                        <div>
+                            Tổng tiền: <p class="total"></p>
+                        </div>
                     </div>
                 </div>
                 <!-- /.box-body -->
@@ -252,6 +255,8 @@
             var e = document.getElementById("sp4");
             var name3 = e.options[e.selectedIndex].text;
 
+            var total = Number(dongia)+ Number(dongia1) + Number(dongia2) +Number(dongia3);
+
             var tbody =  "<tr>" +
                             "<td id='sp'>"+ name +"</td>" +
                             "<td id='sl'>"+ soluong +"</td>" +
@@ -281,6 +286,7 @@
             $('tbody').append(tbody2);
             $('tbody').append(tbody3);
             $('tbody').append(tbody4);
+            $('.total').append(total);
           })
 
           $('.detail-form #mySelect').on('change', function(){
