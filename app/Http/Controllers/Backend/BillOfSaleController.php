@@ -16,9 +16,10 @@ class BillOfSaleController extends BackendController
     {
         $hdb = DB::table('hoadonban')
                         ->join('nhanvien', 'hoadonban.Id_NhanVien', '=', 'nhanvien.Id_NhanVien')
+                        ->join('users', 'hoadonban.TenKhachHang', '=', 'users.id')
                         ->join('chitiethoadonban', 'hoadonban.Id_HoaDonBan', '=', 'chitiethoadonban.Id_HoaDonBan')
                         ->join('sanpham', 'chitiethoadonban.Id_SanPham', '=', 'sanpham.Id_SanPham')
-                        ->select('hoadonban.*', 'nhanvien.HoTen', 'chitiethoadonban.*', 'sanpham.TenSP')
+                        ->select('hoadonban.*', 'nhanvien.HoTen', 'chitiethoadonban.*', 'sanpham.TenSP', 'users.name')
                         ->orderBy('hoadonban.Id_HoaDonBan', 'desc')
                         ->groupby('hoadonban.Id_HoaDonBan')->distinct()
                         ->get();

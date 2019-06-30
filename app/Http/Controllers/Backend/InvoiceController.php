@@ -21,7 +21,7 @@ class InvoiceController extends BackendController
                         ->groupby('hoadonmua.Id_HoaDonMua')->distinct()
                         ->get();
         $columns = [
-            'ID', 'Tên nhà cung cấp', 'Ngày tạo', 'Tổng tiền', 'Trạng thái' , 'Hành động'
+            'ID', 'Tên nhà cung cấp', 'Ngày tạo', 'Tổng tiền' , 'Hành động'
         ];
         return view('backend.invoice.index', compact('hdm', 'columns'));
     }
@@ -31,6 +31,18 @@ class InvoiceController extends BackendController
         $ncc = \App\Models\NhaCungCap::all();
         $product = \App\Models\Product::all();
         return view('backend.invoice.add', compact('ncc', 'product'));
+    }
+
+    public function show($id)
+    {
+        $hdb1 = DB::table('hoadonmua')
+                        ->join('chitiethoadonmua', 'hoadonmua.Id_HoaDonMua', '=', 'chitiethoadonmua.Id_HoaDonMua')
+                        ->join('sanpham', 'chitiethoadonmua.Id_SanPham', '=', 'sanpham.Id_SanPham')
+                        ->select('hoadonmua.*', 'chitiethoadonmua.*', 'sanpham.TenSP')
+                        ->where('chitiethoadonmua.Id_HoaDonMua', $id)
+                        ->get();
+                        
+        return view('backend.invoice.view', compact('hdb1'));
     }
 
     public function store(Request $request)

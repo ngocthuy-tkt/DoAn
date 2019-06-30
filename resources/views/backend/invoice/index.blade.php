@@ -43,11 +43,6 @@
                                     <td>{{\Carbon\Carbon::parse($user->NgayTao)->format('d-m-Y')}}</td>
                                     <td>{{$user->TongTien}}</td>
                                     <td>
-                                        @if($user->TrangThai == 1)
-                                            Kích hoạt 
-                                        @endif        
-                                    </td>
-                                    <td>
                                         <!-- @if(Auth::guard('admin')->user()->quyen == 1)
                                             <a href="{{route('invoice.edit',['id' => $user->Id_HoaDonMua])}}"
                                                class="btn btn-action label label-success"><i
@@ -66,7 +61,8 @@
                                             </form>
                                         @endif
                                         @if(Auth::guard('admin')->user()->quyen == 1)   
-                                            <button type="button" class="btn btn-xs btn-primary show-modal" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" data-id="#HB-00{{ $user->Id_HoaDonMua }}" data-nameNV="{{ $user->TenNCC }}" data-soluong="{{ $user->SoLuong }}" data-dongia="{{ $user->DonGia }}" data-tensp="{{ $user->TenSP }}"><i class="fa fa-eye"></i></button>                
+                                           <!--  <button type="button" class="btn btn-xs btn-primary show-modal" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" data-id="#HB-00{{ $user->Id_HoaDonMua }}" data-nameNV="{{ $user->TenNCC }}" data-soluong="{{ $user->SoLuong }}" data-dongia="{{ $user->DonGia }}" data-tensp="{{ $user->TenSP }}"><i class="fa fa-eye"></i></button>      -->       
+                                           <a href="{{ route('invoice.show', ['id' =>$user->Id_HoaDonMua]) }}" class="btn btn-xs btn-primary"><i class="fa fa-eye"></i></a>       
                                         @endif 
                                     </td>
                                 </tr>
