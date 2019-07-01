@@ -30,7 +30,7 @@ class ProductRequest extends FormRequest
             // 'GiaKhuyenMai' => 'numeric|min:0',
             'SoLuong' => 'required|numeric|min:0',
             'Id_DanhMucSp' => 'required',
-            'MaSP' => 'required',
+            'MaSP' => 'required|unique:sanpham,MaSp,' . $this->get('Id_SanPham') . ',Id_SanPham',
             'AnhChinh' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
@@ -47,6 +47,7 @@ class ProductRequest extends FormRequest
             'SoLuong.numeric' => 'Số lượng phải là số',
             'Id_DanhMucSp.required' => 'Danh mục không được để trống',
             'MaSP.required' => 'Mã sản phẩm không được để trống',
+            'MaSP.unique' => 'Mã sản phẩm đã tồn tại',
             'AnhChinh.image' => 'File phải là ảnh',
             'AnhChinh.max' => 'Dung lượng file quá lớn',
         ];

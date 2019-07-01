@@ -284,7 +284,27 @@
                          "</tr>";    
 
             $(".abc").append(element);
-            $('tbody').append(tbody);
+            if(soluong.length === 0) {
+                return false;
+            } else {
+                $('tbody').append(tbody);
+            }
+            if(soluong1.length === 0) {
+                return false;
+            } else {
+                $('tbody').append(tbody2);
+            }
+            if(soluong2.length === 0) {
+                return false;
+            } else {
+                $('tbody').append(tbody3);
+            }
+            if(soluong3.length === 0) {
+                return false;
+            } else {
+                $('tbody').append(tbody4    );
+            }
+            
             $('tbody').append(tbody2);
             $('tbody').append(tbody3);
             $('tbody').append(tbody4);
