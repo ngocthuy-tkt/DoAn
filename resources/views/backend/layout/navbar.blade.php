@@ -59,7 +59,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="{{ route('phieunhap.index') }}"><i class="fa fa-circle-o"></i> Phiếu hàng</a></li>
-                    <li><a href="{{ route('inventory.index') }}"><i class="fa fa-circle-o"></i> Tồn kho</a></li>
+                    <li><a href="{{ route('inventory.index') }}"><i class="fa fa-circle-o"></i> Hàng lỗi</a></li>
                 </ul>
             </li>
             <li>

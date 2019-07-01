@@ -17,7 +17,7 @@ class InventoryController extends Controller
     				->orderBy('HangLoi.id', 'desc')
     				->get();
         $columns = [
-            'ID', 'Mã sản phẩm', 'Số lượng', 'Ghi chú'
+            'ID', 'Mã sản phẩm', 'Mã đơn hàng','Số lượng', 'Giá tiền', 'Ngày tạo','Ghi chú'
         ];
 
         return view('backend.inventory.index', compact('hangloi', 'columns'));
@@ -36,10 +36,16 @@ class InventoryController extends Controller
                 'Id_SanPham' => 'required',
                 'SoLuong' => 'required',
                 'GhiChu' => 'required',
+                'MaDonHang' => 'required',
+                'GiaTien' => 'required',
+                'NgayTao' => 'required',
             ],[
                 'Id_SanPham.required' => 'Bạn chưa chọn sản phẩm',
                 'SoLuong.required' => 'Bạn chưa nhập số lượng',
-                'GhiChu.required' => 'Bạn chưa ghi chú'
+                'GhiChu.required' => 'Bạn chưa ghi chú',
+                'MaDonHang.required' => 'Bạn chưa nhập mã đơn hàng',
+                'GiaTien.required' => 'Bạn chưa nhập giá tiền',
+                'NgayTao.required' => 'Bạn chưa nhập ngày tạo',
             ]
         );
 

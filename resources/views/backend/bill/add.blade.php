@@ -283,31 +283,34 @@
                             "<td id='gia'>"+ dongia3 +"</td>" +
                          "</tr>";    
 
-            $(".abc").append(element);
+            // $(".abc").append(element);
             if(soluong.length === 0) {
-                return false;
+               return false;
             } else {
                 $('tbody').append(tbody);
+                // $('.total').append(total);
             }
+
             if(soluong1.length === 0) {
-                return false;
+               return false;
             } else {
                 $('tbody').append(tbody2);
+                // $('.total').append(total);
             }
+
             if(soluong2.length === 0) {
-                return false;
+               return false;
             } else {
                 $('tbody').append(tbody3);
+                // $('.total').append(total);
             }
+
             if(soluong3.length === 0) {
-                return false;
+               return false;
             } else {
-                $('tbody').append(tbody4    );
+                $('tbody').append(tbody4);
+                // $('.total').append(total);
             }
-            
-            $('tbody').append(tbody2);
-            $('tbody').append(tbody3);
-            $('tbody').append(tbody4);
             $('.total').append(total);
           })
 

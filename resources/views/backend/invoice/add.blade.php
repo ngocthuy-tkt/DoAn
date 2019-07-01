@@ -54,30 +54,6 @@
                                     {!! $errors->first('NgayTao') !!}
                                 </div>
                             @endif
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                    <input type="date" class="form-control" placeholder="Ngày cập nhập" name="NgayCapNhap" id="NgayCapNhap"
-                                           value="{{ old('NgayCapNhap') }}">
-                                </div>
-                            </div>
-                            @if($errors->has('NgayCapNhap'))
-                                <div class="help-block text-red">
-                                    * {!! $errors->first('NgayCapNhap') !!}
-                                </div>
-                            @endif
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                    <input type="text" class="form-control" placeholder="Tổng tiền" name="TongTien" id="TongTien"
-                                           value="{{ old('TongTien') }}">
-                                </div>
-                            </div>
-                            @if($errors->has('TongTien'))
-                                <div class="help-block text-red">
-                                    * {!! $errors->first('TongTien') !!}
-                                </div>
-                            @endif
                         </div>
                         <div class="col-sm-3"></div>
                     </div>

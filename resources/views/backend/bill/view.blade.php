@@ -39,6 +39,9 @@
 				               <td>{{$hd->DonGia}}</td>
 				           </tr>
 				           @endforeach()
+                           <tr style="text-align: center;">
+                               <td colspan='3'>Tổng tiền : {{ $total }}</td>
+                           </tr>
 				          </tbody>
 				        </table>
                     </div>

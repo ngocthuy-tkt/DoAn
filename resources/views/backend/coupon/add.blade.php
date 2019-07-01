@@ -43,6 +43,20 @@
                             @endif
                             </div>
                             <div class="form-group">
+                                <label>Mã đơn hàng</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">@</span>
+                                    <input type="text" class="form-control" placeholder="Mã đơn hàng" name="MaDonHang"
+                                           id="MaDonHang" value="{{ old('MaDonHang') }}">
+                                </div>
+                            </div>
+                            @if($errors->has('MaDonHang'))
+                                <div class="help-block text-red">
+                                    {!! $errors->first('MaDonHang') !!}
+                                </div>
+                            @endif
+
+                            <div class="form-group">
                                 <label>Ngày tạo</label>
                                 <div class="input-group">
                                     <span class="input-group-addon">@</span>
@@ -55,31 +69,7 @@
                                     {!! $errors->first('NgayTao') !!}
                                 </div>
                             @endif
-                            <div class="form-group">
-                                <label>Ngày cập nhập</label>
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                    <input type="date" class="form-control" placeholder="Ngày cập nhập" name="NgayCapNhap" id="NgayCapNhap"
-                                           value="{{ old('NgayCapNhap') }}">
-                                </div>
-                            </div>
-                            @if($errors->has('NgayCapNhap'))
-                                <div class="help-block text-red">
-                                    * {!! $errors->first('NgayCapNhap') !!}
-                                </div>
-                            @endif
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                    <input type="number" class="form-control" placeholder="Giá bán" name="GiaBan" id="GiaBan"
-                                           value="{{ old('GiaBan') }}">
-                                </div>
-                            </div>
-                            @if($errors->has('GiaBan'))
-                                <div class="help-block text-red">
-                                    * {!! $errors->first('GiaBan') !!}
-                                </div>
-                            @endif
+                            
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
@@ -116,7 +106,7 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                    <input type="number" class="form-control dongia" id="dongia" placeholder="Đơn giá" name="DonGia[]">
+                                    <input type="number" class="form-control dongia" id="dongia" placeholder="Giá bán" name="DonGia[]">
                                 </div>
                             </div>
                         </div>
@@ -139,7 +129,7 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                    <input type="number" class="form-control dongia1" id="dongia1" placeholder="Đơn giá" name="DonGia[]">
+                                    <input type="number" class="form-control dongia1" id="dongia1" placeholder="Giá bán" name="DonGia[]">
                                 </div>
                             </div>
                         </div>
@@ -162,7 +152,7 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                    <input type="number" class="form-control dongia2" id="dongia2" placeholder="Đơn giá" name="DonGia[]">
+                                    <input type="number" class="form-control dongia2" id="dongia2" placeholder="Giá bán" name="DonGia[]">
                                 </div>
                             </div>
                         </div>
@@ -185,7 +175,7 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                    <input type="number" class="form-control dongia3" id="dongia3" placeholder="Đơn giá" name="DonGia[]">
+                                    <input type="number" class="form-control dongia3" id="dongia3" placeholder="Giá bán" name="DonGia[]">
                                 </div>
                             </div>
                         </div>
@@ -300,12 +290,16 @@
                             "<td id='gia'>"+ dongia3 +"</td>" +
                          "</tr>";    
 
-            $(".abc").append(element);
-            $('tbody').append(tbody);
-            $('tbody').append(tbody2);
-            $('tbody').append(tbody3);
-            $('tbody').append(tbody4);
-            $('.total').append(total);
+            // $(".abc").append(element);
+            if(soluong.length === 0 || soluong1.length === 0 || soluong2.length === 0 || soluong3.length === 0) {
+                return false;
+            } else {
+                $('tbody').append(tbody);
+                $('tbody').append(tbody2);
+                $('tbody').append(tbody3);
+                $('tbody').append(tbody4);
+                $('.total').append(total);
+            } 
           })
 
           $('.detail-form #mySelect').on('change', function(){

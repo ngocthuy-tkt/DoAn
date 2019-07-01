@@ -44,7 +44,10 @@
                                 <tr>
                                     <td>{{$item->id}}</td>
                                     <td>{{$item->MaSp}}</td>
+                                    <td>{{$item->MaDonHang}}</td>
                                     <td>{{$item->SoLuong}}</td>
+                                    <td>{{$item->GiaTien}}</td>
+                                    <td>{{\Carbon\Carbon::parse($item->NgayTao)->format('d-m-Y')}}</td>
                                     <td>{{$item->GhiChu}}</td>
                                    
                             @endforeach

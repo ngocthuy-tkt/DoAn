@@ -39,8 +39,14 @@ class BillOfSaleController extends BackendController
                         ->select('hoadonban.*', 'chitiethoadonban.*', 'sanpham.TenSP')
                         ->where('chitiethoadonban.Id_HoaDonBan', $id)
                         ->get();
+
+        $total = DB::table('chitiethoadonban')
+                        ->join('hoadonban', 'chitiethoadonban.Id_HoaDonBan', '=', 'hoadonban.Id_HoaDonBan')
+                        ->select('chitiethoadonban.DonGia')
+                        ->where('chitiethoadonban.Id_HoaDonBan', $id)
+                        ->sum('chitiethoadonban.DonGia');                      
                         
-        return view('backend.bill.view', compact('hdb1'));
+        return view('backend.bill.view', compact('hdb1', 'total'));
     }
 
     public function create()

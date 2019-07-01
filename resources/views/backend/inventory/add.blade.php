@@ -44,6 +44,18 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input type="text" class="form-control" placeholder="Mã đơn hàng" name="MaDonHang" id="MaDonHang"
+                                           value="{{ old('MaDonHang') }}">
+                                </div>
+                            </div>
+                            @if($errors->has('MaDonHang'))
+                                <div class="help-block text-red">
+                                    * {!! $errors->first('MaDonHang') !!}
+                                </div>
+                            @endif
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
                                     <input type="number" class="form-control" placeholder="Số lượng" name="SoLuong" id="SoLuong"
                                            value="{{ old('SoLuong') }}">
                                 </div>
@@ -51,6 +63,30 @@
                             @if($errors->has('SoLuong'))
                                 <div class="help-block text-red">
                                     * {!! $errors->first('SoLuong') !!}
+                                </div>
+                            @endif
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input type="number" class="form-control" placeholder="Giá tiền" name="GiaTien" id="GiaTien"
+                                           value="{{ old('GiaTien') }}">
+                                </div>
+                            </div>
+                            @if($errors->has('GiaTien'))
+                                <div class="help-block text-red">
+                                    * {!! $errors->first('GiaTien') !!}
+                                </div>
+                            @endif
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input type="date" class="form-control" placeholder="Ngày tạo" name="NgayTao" id="NgayTao"
+                                           value="{{ old('NgayTao') }}">
+                                </div>
+                            </div>
+                            @if($errors->has('NgayTao'))
+                                <div class="help-block text-red">
+                                    * {!! $errors->first('NgayTao') !!}
                                 </div>
                             @endif
                             <div class="form-group">

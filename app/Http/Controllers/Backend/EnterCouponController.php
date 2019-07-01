@@ -14,7 +14,7 @@ class EnterCouponController extends Controller
     public function index()
     {
     	$columns = [
-    		'ID', 'Tên khách hàng', 'Ngày tạo', 'Ngày cập nhập', 'Ghi chú','Hành động'
+    		'ID', 'Mã đơn hàng', 'Tên khách hàng', 'Ngày tạo', 'Ghi chú','Hành động'
     	];
     	$phieunhap = \DB::table('phieuhang')
                         ->join('users', 'users.id', '=', 'phieuhang.Id_Khachhang')
@@ -39,8 +39,14 @@ class EnterCouponController extends Controller
                         ->select('phieuhang.*', 'chitietphieuhang.*', 'sanpham.TenSP')
                         ->where('chitietphieuhang.Id_PhieuHang', $id)
                         ->get();
+
+        $total = DB::table('chitietphieuhang')
+                        ->join('phieuhang', 'chitietphieuhang.Id_PhieuHang', '=', 'phieuhang.id')
+                        ->select('chitietphieuhang.DonGia')
+                        ->where('chitietphieuhang.Id_PhieuHang', $id)
+                        ->sum('chitietphieuhang.DonGia');   
                         
-        return view('backend.coupon.view', compact('hdb1'));
+        return view('backend.coupon.view', compact('hdb1', 'total'));
     }
 
     public function store(Request $request)
@@ -49,15 +55,13 @@ class EnterCouponController extends Controller
             [
                 'Id_KhachHang' => 'required',
                 'NgayTao' => 'required',
-                'NgayCapNhap' => 'required',
-                'GiaBan'  => 'required',
-                "GhiChu" => 'required'
+                "GhiChu" => 'required',
+                "MaDonHang" => 'required'
             ],[
                 'Id_KhachHang.required' => 'Tên khách hàng không được để trống',
                 'NgayTao.required' => 'Ngày tạo không được để trống',
-                'NgayCapNhap.required' => 'Ngày cập nhập không được để trống',
-                'GiaBan.required' => 'Giá bán không được để trống',
-                'GhiChu.required' => 'Bạn chưa nhập ghi chú'
+                'GhiChu.required' => 'Bạn chưa nhập ghi chú',
+                'MaDonHang.required' => 'Bạn chưa nhập mã đơn hàng'
             ]
         );
 

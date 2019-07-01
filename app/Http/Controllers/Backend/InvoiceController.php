@@ -42,7 +42,13 @@ class InvoiceController extends BackendController
                         ->where('chitiethoadonmua.Id_HoaDonMua', $id)
                         ->get();
                         
-        return view('backend.invoice.view', compact('hdb1'));
+        $total = DB::table('chitiethoadonmua')
+                        ->join('hoadonmua', 'chitiethoadonmua.Id_HoaDonMua', '=', 'hoadonmua.Id_HoaDonMua')
+                        ->select('chitiethoadonmua.DonGia')
+                        ->where('chitiethoadonmua.Id_HoaDonMua', $id)
+                        ->sum('chitiethoadonmua.DonGia');        
+                        
+        return view('backend.invoice.view', compact('hdb1', 'total'));
     }
 
     public function store(Request $request)
@@ -50,14 +56,10 @@ class InvoiceController extends BackendController
         $this->validate($request,
             [
                 'Id_NhaCC' => 'required',
-                'NgayTao' => 'required',
-                'NgayCapNhap' => 'required',
-                'TongTien'  => 'required'
+                'NgayTao' => 'required'
             ],[
                 'Id_NhaCC.required' => 'Tên nhà cung cấp không được để trống',
-                'NgayTao.required' => 'Ngày tạo không được để trống',
-                'NgayCapNhap.required' => 'Ngày cập nhập không được để trống',
-                'TongTien.required' => 'Tổng tiền không được để trống'
+                'NgayTao.required' => 'Ngày tạo không được để trống'
             ]
         );
 
