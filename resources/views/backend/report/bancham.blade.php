@@ -169,15 +169,17 @@
 				                        <th>Tên sản phẩm</th>
 				                        <th style="width: 40px">Lượt xem</th>
 				                      </tr>
+				                      @php $i=1; @endphp
 				                      @foreach($pro as $res)
 				                      <tr>
-				                        <td>1.</td>
+				                        <td>{{ $i }}</td>
 				                        <td>{{ $res->MaSP }}</td>
 				                        <td>
 				                          {{ $res->TenSP }} 
 				                        </td>
 				                        <td><span class="badge bg-red">{{ $res->LuotXem }} </span></td>
 				                      </tr>
+				                      @php $i++; @endphp
 				                      @endforeach()
 				                    </tbody>
 				                  </table>

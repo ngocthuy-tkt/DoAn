@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Backend;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use DB;
+use Carbon\Carbon;
+
 class DashboardController extends BackendController
 {
     public function index()
@@ -20,11 +22,14 @@ class DashboardController extends BackendController
     public function banchay()
     {
       $result = DB::table('donhang')
-                    ->leftJoin('sanpham','donhang.Id_SanPham','=','sanpham.Id_SanPham')
-                   ->leftJoin('chitietdonhang','chitietdonhang.Id_DonHang','=','donhang.Id_DonHang')
-                   ->select('sanpham.TenSP', 'sanpham.MaSP', 'sanpham.LuotXem')
-                   ->groupBy('chitietdonhang.Id_SanPham')->havingRaw('COUNT(*) > 10')
-                   ->get();
+                  ->leftJoin('sanpham','donhang.Id_SanPham','=','sanpham.Id_SanPham')
+                  ->leftJoin('chitietdonhang','chitietdonhang.Id_DonHang','=','donhang.Id_DonHang')
+                  ->where('chitietdonhang.SoLuong', '>=', 10) 
+                  ->whereMonth('donhang.NgayTao','=',Carbon::today()->month)
+                  ->select('sanpham.TenSP', 'sanpham.MaSP', 'sanpham.LuotXem', 'chitietdonhang.*')
+                  // ->groupBy('chitietdonhang.Id_SanPham')
+                  // ->havingRaw('COUNT(*) > 10')
+                  ->get();//dd($result);
       return view('backend.report.banchay', compact('result'));
     }
 
@@ -33,8 +38,10 @@ class DashboardController extends BackendController
       $pro = DB::table('donhang')
                     ->leftJoin('sanpham','donhang.Id_SanPham','=','sanpham.Id_SanPham')
                    ->leftJoin('chitietdonhang','chitietdonhang.Id_DonHang','=','donhang.Id_DonHang')
+                   ->where('chitietdonhang.SoLuong', '<=', 3) 
+                   ->whereMonth('donhang.NgayTao','=',Carbon::today()->month)
                    ->select('sanpham.TenSP', 'sanpham.MaSP', 'sanpham.LuotXem')
-                   ->groupBy('chitietdonhang.Id_SanPham')->havingRaw('COUNT(*) > 3')
+                   // ->groupBy('chitietdonhang.Id_SanPham')->havingRaw('COUNT(*) < 3')
                    ->get();    
 
       return view('backend.report.bancham', compact('pro'));
