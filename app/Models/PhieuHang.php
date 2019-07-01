@@ -9,7 +9,7 @@ class PhieuHang extends Model
     protected $table = 'phieuhang';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'Id_NhaCC', 'NgayTao', 'NgayCapNhap', 'TongTien', 'TrangThai', 'GhiChu', 'GiaBan'
+        'Id_KhachHang', 'NgayTao', 'NgayCapNhap', 'TrangThai', 'GhiChu', 'GiaBan'
     ];
 
     public $timestamps = false;

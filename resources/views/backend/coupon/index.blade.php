@@ -46,14 +46,13 @@
                                     <td>{{$item->name}}</td>
                                     <td>{{\Carbon\Carbon::parse($item->NgayTao)->format('d-m-Y')}}</td>
                                     <td>{{\Carbon\Carbon::parse($item->NgayCapNhap)->format('d-m-Y')}}</td>
-                                    <td>{{$item->TongTien}}</td>
                                     <td>{{$item->GhiChu}}</td>
                                     <td>
-                                        @if(Auth::guard('admin')->user()->quyen == 1)
+                                        <!-- @if(Auth::guard('admin')->user()->quyen == 1)
                                             <a href="{{route('phieunhap.edit',['id' => $item->id])}}"
                                                class="btn btn-action label label-success"><i
                                                         class="fa fa-pencil"></i></a>
-                                        @endif
+                                        @endif -->
 
                                         @if(Auth::guard('admin')->user()->quyen == 1)
                                             <form action="{{ route('phieunhap.destroy', ['id' => $item->id]) }}"
@@ -65,6 +64,10 @@
                                                     <i class="fa fa-trash"></i>
                                                 </button>
                                             </form>
+                                        @endif
+
+                                        @if(Auth::guard('admin')->user()->quyen == 1)
+                                            <a href="{{ route('phieunhap.show', ['id' =>$item->id]) }}" class="btn btn-xs btn-primary"><i class="fa fa-eye"></i></a>
                                         @endif
                                     </td>
                                    

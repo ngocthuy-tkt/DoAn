@@ -26,6 +26,7 @@
                 </div>
                 <div class="box-body">
                     <div class="row">
+                       <div class="col-sm-3"></div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <select class="form-control select2" style="width: 100%;" name="TenKhachHang">
@@ -75,6 +76,7 @@
                                 </div>
                             @endif
                         </div>
+                       <div class="col-sm-3"></div>
                     </div>
                     <div class="detail-form row">
                         <div class="col-md-3">

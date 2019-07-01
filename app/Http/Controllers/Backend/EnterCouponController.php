@@ -7,13 +7,14 @@ use App\Http\Controllers\Controller;
 use App\Models\PhieuHang;
 use App\Models\Product;
 use App\Models\ChiTietPhieuHang;
+use DB;
 
 class EnterCouponController extends Controller
 {
     public function index()
     {
     	$columns = [
-    		'ID', 'Tên khách hàng', 'Ngày tạo', 'Ngày cập nhập', 'Tổng tiền', 'Ghi chú','Hành động'
+    		'ID', 'Tên khách hàng', 'Ngày tạo', 'Ngày cập nhập', 'Ghi chú','Hành động'
     	];
     	$phieunhap = \DB::table('phieuhang')
                         ->join('users', 'users.id', '=', 'phieuhang.Id_Khachhang')
@@ -28,6 +29,18 @@ class EnterCouponController extends Controller
         $ncc = \App\Models\User::all();
         $product = \App\Models\Product::all();
     	return view('backend.coupon.add', compact('ncc', 'product'));
+    }
+
+    public function show($id)
+    {
+        $hdb1 = DB::table('phieuhang')
+                        ->join('chitietphieuhang', 'phieuhang.id', '=', 'chitietphieuhang.Id_PhieuHang')
+                        ->join('sanpham', 'chitietphieuhang.Id_SanPham', '=', 'sanpham.Id_SanPham')
+                        ->select('phieuhang.*', 'chitietphieuhang.*', 'sanpham.TenSP')
+                        ->where('chitietphieuhang.Id_PhieuHang', $id)
+                        ->get();
+                        
+        return view('backend.coupon.view', compact('hdb1'));
     }
 
     public function store(Request $request)

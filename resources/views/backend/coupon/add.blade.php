@@ -26,6 +26,7 @@
                 </div>
                 <div class="box-body">
                     <div class="row">
+                        <div class="col-sm-3"></div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Khách hàng</label>
@@ -42,6 +43,7 @@
                             @endif
                             </div>
                             <div class="form-group">
+                                <label>Ngày tạo</label>
                                 <div class="input-group">
                                     <span class="input-group-addon">@</span>
                                     <input type="date" class="form-control" placeholder="Ngày tạo" name="NgayTao"
@@ -54,6 +56,7 @@
                                 </div>
                             @endif
                             <div class="form-group">
+                                <label>Ngày cập nhập</label>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
                                     <input type="date" class="form-control" placeholder="Ngày cập nhập" name="NgayCapNhap" id="NgayCapNhap"
@@ -90,6 +93,7 @@
                                 </div>
                             @endif
                         </div>
+                        <div class="col-sm-3"></div>
                     </div>
                     <div class="detail-form row">
                         <div class="col-md-3">
