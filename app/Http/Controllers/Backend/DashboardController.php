@@ -21,28 +21,27 @@ class DashboardController extends BackendController
 
     public function banchay()
     {
-      $result = DB::table('donhang')
-                  ->leftJoin('sanpham','donhang.Id_SanPham','=','sanpham.Id_SanPham')
-                  ->leftJoin('chitietdonhang','chitietdonhang.Id_DonHang','=','donhang.Id_DonHang')
-                  ->where('chitietdonhang.SoLuong', '>=', 10) 
-                  ->whereMonth('donhang.NgayTao','=',Carbon::today()->month)
-                  ->select('sanpham.TenSP', 'sanpham.MaSP', 'sanpham.LuotXem', 'chitietdonhang.*')
-                  // ->groupBy('chitietdonhang.Id_SanPham')
-                  // ->havingRaw('COUNT(*) > 10')
-                  ->get();//dd($result);
+      $result = DB::table('chitietdonhang')
+                   ->leftJoin('sanpham','chitietdonhang.Id_SanPham','=','sanpham.Id_SanPham')
+                   ->leftJoin('donhang','chitietdonhang.Id_DonHang','=','donhang.Id_DonHang')
+                   ->where('chitietdonhang.SoLuong', '>=', 10) 
+                   // ->whereMonth('donhang.NgayTao','=',Carbon::today()->month)
+                   ->select('sanpham.TenSP', 'sanpham.MaSP', 'sanpham.LuotXem')
+                   // ->groupBy('chitietdonhang.Id_SanPham')->havingRaw('COUNT(*) < 3')
+                   ->get();
       return view('backend.report.banchay', compact('result'));
     }
 
     public function bancham()
     {
-      $pro = DB::table('donhang')
-                    ->leftJoin('sanpham','donhang.Id_SanPham','=','sanpham.Id_SanPham')
-                   ->leftJoin('chitietdonhang','chitietdonhang.Id_DonHang','=','donhang.Id_DonHang')
+      $pro = DB::table('chitietdonhang')
+                   ->leftJoin('sanpham','chitietdonhang.Id_SanPham','=','sanpham.Id_SanPham')
+                   ->leftJoin('donhang','chitietdonhang.Id_DonHang','=','donhang.Id_DonHang')
                    ->where('chitietdonhang.SoLuong', '<=', 3) 
-                   ->whereMonth('donhang.NgayTao','=',Carbon::today()->month)
+                   // ->whereMonth('donhang.NgayTao','=',Carbon::today()->month)
                    ->select('sanpham.TenSP', 'sanpham.MaSP', 'sanpham.LuotXem')
                    // ->groupBy('chitietdonhang.Id_SanPham')->havingRaw('COUNT(*) < 3')
-                   ->get();    
+                   ->get();
 
       return view('backend.report.bancham', compact('pro'));
     }
