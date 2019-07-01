@@ -12,7 +12,7 @@ class DashboardController extends BackendController
     public function index()
     {
         $customer = \App\Models\User::count();
-        $order = \App\Models\Order::whereMonth('donhang.NgayTao','=',Carbon::today()->month)->count();
+        $order = \App\Models\Order::whereMonth('NgayTao', '=', date('m'))->count();
         $total = \App\Models\Order::where('TrangThai', '=', 2)->sum('TongTien');
         $user = \App\Models\NhanVien::count();
 
