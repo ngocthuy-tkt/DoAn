@@ -43,8 +43,8 @@
                                     <td>#HB-00{{$user->Id_HoaDonBan}}</td>
                                     <td>{{$user->HoTen}}</td>
                                     <td>{{$user->name}}</td>
-                                    <td>{{$user->Sdt}}</td>
-                                    <td>{{$user->DiaChi}}</td>
+                                    <td>{{$user->phone}}</td>
+                                    <td>{{$user->address}}</td>
                                     <td>{{\Carbon\Carbon::parse($user->NgayTao)->format('d-m-Y')}}</td>
                                     <td>
                                         <!-- @if(Auth::guard('admin')->user()->quyen == 1)

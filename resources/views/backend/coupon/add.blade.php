@@ -291,15 +291,32 @@
                          "</tr>";    
 
             // $(".abc").append(element);
-            if(soluong.length === 0 || soluong1.length === 0 || soluong2.length === 0 || soluong3.length === 0) {
-                return false;
+            if(soluong.length === 0) {
+               alert('Bạn chưa nhập đủ thông tin'); 
+               return false;
             } else {
                 $('tbody').append(tbody);
+            }
+
+            $('.total').append(total);
+
+            if(soluong1.length === 0) {
+               return false;
+            } else {
                 $('tbody').append(tbody2);
+            }
+
+            if(soluong2.length === 0) {
+               return false;
+            } else {
                 $('tbody').append(tbody3);
+            }
+
+            if(soluong3.length === 0) {
+               return false;
+            } else {
                 $('tbody').append(tbody4);
-                $('.total').append(total);
-            } 
+            }
           })
 
           $('.detail-form #mySelect').on('change', function(){

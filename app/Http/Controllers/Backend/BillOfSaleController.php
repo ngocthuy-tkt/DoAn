@@ -19,7 +19,7 @@ class BillOfSaleController extends BackendController
                         ->join('users', 'hoadonban.TenKhachHang', '=', 'users.id')
                         ->join('chitiethoadonban', 'hoadonban.Id_HoaDonBan', '=', 'chitiethoadonban.Id_HoaDonBan')
                         ->join('sanpham', 'chitiethoadonban.Id_SanPham', '=', 'sanpham.Id_SanPham')
-                        ->select('hoadonban.*', 'nhanvien.HoTen', 'chitiethoadonban.*', 'sanpham.TenSP', 'users.name')
+                        ->select('hoadonban.*', 'nhanvien.HoTen', 'chitiethoadonban.*', 'sanpham.TenSP', 'users.name', 'users.phone', 'users.address')
                         ->orderBy('hoadonban.Id_HoaDonBan', 'desc')
                         ->groupby('hoadonban.Id_HoaDonBan')->distinct()
                         ->get();
@@ -61,13 +61,9 @@ class BillOfSaleController extends BackendController
         $this->validate($request,
             [
                 'TenKhachHang' => 'required',
-                'Sdt' => 'required',
-                'DiaChi' => 'required',
                 'GhiChu'  => 'required'
             ],[
                 'TenKhachHang.required' => 'Tên khách hàng không được để trống',
-                'Sdt.required' => 'Số điện thoại không được để trống',
-                'DiaChi.required' => 'Địa chỉ không được để trống',
                 'GhiChu.required' => 'Ghi chú không được để trống'
             ]
         );
@@ -78,8 +74,6 @@ class BillOfSaleController extends BackendController
             'NgayTao' => date('Y-m-d',time()),
             'Id_NhanVien' => Auth::guard('admin')->user()->Id_NhanVien,
             'TenKhachHang' => $request->TenKhachHang,
-            'Sdt' => $request->Sdt,
-            'DiaChi' => $request->DiaChi,
             'GhiChu' => $request->GhiChu
         ];
         
