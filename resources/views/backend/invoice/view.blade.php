@@ -34,7 +34,7 @@
 				          <tbody>
 				            @foreach($hdb1 as $hd)
 				           <tr>
-				               <td>{{$hd->TenSP}}</td>
+				               <td>{{$hd->Id_SanPham}}</td>
 				               <td>{{$hd->SoLuong}}</td>
 				               <td>{{$hd->DonGia}}</td>
 				           </tr>

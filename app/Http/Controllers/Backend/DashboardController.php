@@ -55,4 +55,22 @@ class DashboardController extends BackendController
                   
       return view('backend.report.hanghet', compact('pro'));
     }
+
+    public function baocao()
+    {
+        $baocao = DB::table('phieuhang')
+                        ->whereMonth('phieuhang.NgayTao', '=', date('m'))
+                        ->get();
+        return view('backend.report.phieuhang', compact('baocao'));
+    }
+
+    public function baocaohangloi()
+    {
+      $baocao = DB::table('hangloi')
+                        ->join('sanpham', 'hangloi.Id_SanPham', '=', 'sanpham.Id_SanPham')
+                        ->select('hangloi.*', 'sanpham.TenSP')
+                        ->whereMonth('hangloi.NgayTao', '=', date('m'))
+                        ->get();
+        return view('backend.report.hangloi', compact('baocao'));
+    }
 }

@@ -12,14 +12,27 @@ class OrderController extends BackendController
 {
     public function index()
     {
-        $orders = Order::where('TrangThai', '=', 0)
-                        ->orwhere('TrangThai', '=', 1)
-                        ->get();
         $columns = [
             'ID', 'Mã đơn hàng','Tên khách hàng', 'Số điện thoại', 'Địa chỉ', 'Tổng tiền', 'Ghi chú', 'Phương thức', 'Ship','Trạng thái' , 'Hành động'
         ];
-        $orderSucc = DB::table('donhang')->where('TrangThai', '=' , 2)->get();
-        $orderCan = DB::table('donhang')->where('TrangThai', '=' , -1)->get();
+
+        $orders =DB::table('donhang')
+                        ->join('sanpham', 'donhang.Id_SanPham', '=', 'sanpham.Id_SanPham')
+                        ->join('chitietdonhang', 'donhang.Id_DonHang', '=', 'chitietdonhang.Id_DonHang')
+                        ->where('donhang.TrangThai', '=', 0)
+                        ->orwhere('donhang.TrangThai', '=', 1)
+                        ->select('donhang.*', 'sanpham.TenSp', 'chitietdonhang.SoLuong')
+                        ->get();
+        
+        $orderSucc = DB::table('donhang')->where('donhang.TrangThai', '=' , 2)
+                                        ->join('sanpham', 'donhang.Id_SanPham', '=', 'sanpham.Id_SanPham')
+                                        ->join('chitietdonhang', 'donhang.Id_DonHang', '=', 'chitietdonhang.Id_DonHang')
+                                        ->select('donhang.*', 'sanpham.TenSp', 'chitietdonhang.SoLuong')
+                                        ->get();
+        $orderCan = DB::table('donhang')->where('donhang.TrangThai', '=' , -1)
+                                        ->join('sanpham', 'donhang.Id_SanPham', '=', 'sanpham.Id_SanPham')
+                                        ->join('chitietdonhang', 'donhang.Id_DonHang', '=', 'chitietdonhang.Id_DonHang')
+                                        ->select('donhang.*', 'sanpham.TenSp', 'chitietdonhang.SoLuong')->get();
         return view('backend.order.index', compact('orders', 'columns', 'orderSucc', 'orderCan'));
     }
 

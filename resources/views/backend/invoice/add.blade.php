@@ -62,12 +62,10 @@
                             <button style="float: right;" type="button" class="btn btn-xs btn-primary add">Thêm</button>
                             <label for="">Sản phẩm 1</label>
                             <div class="form-group">
-                                <select class="form-control select2" style="width: 100%;" name="Id_SanPham[]" id="mySelect">
-                                    <option value="">Chọn sản phẩm</option>
-                                    @foreach($product as $pro)
-                                        <option value="{{ $pro->Id_SanPham }}" data-price="{{$pro->DonGia}}" data-name="{{$pro->TenSp}}">{{ $pro->TenSp }}</option>
-                                    @endforeach
-                                </select>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input type="text" class="form-control id_sp1" placeholder="Tên sản phẩm" name="Id_SanPham[]">
+                                </div>
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
@@ -85,12 +83,10 @@
                         <div class="col-md-3">
                             <label for="">Sản phẩm 2</label>
                             <div class="form-group">
-                                <select class="form-control select2" style="width: 100%;" name="Id_SanPham[]" id="sp2">
-                                    <option value="">Chọn sản phẩm</option>
-                                    @foreach($product as $pro)
-                                        <option value="{{ $pro->Id_SanPham }}" data-price="{{$pro->DonGia}}" data-name="{{$pro->TenSp}}">{{ $pro->TenSp }}</option>
-                                    @endforeach
-                                </select>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input type="text" class="form-control id_sp2" placeholder="Tên sản phẩm" name="Id_SanPham[]">
+                                </div>
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
@@ -108,12 +104,10 @@
                         <div class="col-md-3">
                             <label for="">Sản phẩm 3</label>
                             <div class="form-group">
-                                <select class="form-control select2" style="width: 100%;" name="Id_SanPham[]" id="sp3">
-                                    <option value="">Chọn sản phẩm</option>
-                                    @foreach($product as $pro)
-                                        <option value="{{ $pro->Id_SanPham }}" data-price="{{$pro->DonGia}}" data-name="{{$pro->TenSp}}">{{ $pro->TenSp }}</option>
-                                    @endforeach
-                                </select>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input type="text" class="form-control id_sp3" placeholder="Tên sản phẩm" name="Id_SanPham[]">
+                                </div>
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
@@ -131,12 +125,10 @@
                         <div class="col-md-3">
                             <label for="">Sản phẩm 4</label>
                             <div class="form-group">
-                                <select class="form-control select2" style="width: 100%;" name="Id_SanPham[]" id="sp4">
-                                    <option value="">Chọn sản phẩm</option>
-                                    @foreach($product as $pro)
-                                        <option value="{{ $pro->Id_SanPham }}" data-price="{{$pro->DonGia}}" data-name="{{$pro->TenSp}}">{{ $pro->TenSp }}</option>
-                                    @endforeach
-                                </select>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input type="text" class="form-control id_sp4" placeholder="Tên sản phẩm" name="Id_SanPham[]">
+                                </div>
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
@@ -199,23 +191,23 @@
           $(".add").click(function(){
             var soluong = $('.soluong').val();
             var dongia = $('.dongia').val();
-            var e = document.getElementById("mySelect");
-            var name = e.options[e.selectedIndex].text;
+            // var e = document.getElementById("mySelect");
+            var name = $('.id_sp1').val();
 
             var soluong1 = $('.soluong1').val();
             var dongia1 = $('.dongia1').val();
-            var e = document.getElementById("sp2");
-            var name1 = e.options[e.selectedIndex].text;
+            // var e = document.getElementById("sp2");
+            var name1 = $('.id_sp2').val();
 
             var soluong2 = $('.soluong2').val();
             var dongia2 = $('.dongia2').val();
-            var e = document.getElementById("sp3");
-            var name2 = e.options[e.selectedIndex].text;
+            // var e = document.getElementById("sp3");
+            var name2 = $('.id_sp3').val();
 
             var soluong3 = $('.soluong3').val();
             var dongia3 = $('.dongia3').val();
-            var e = document.getElementById("sp4");
-            var name3 = e.options[e.selectedIndex].text;
+            // var e = document.getElementById("sp4");
+            var name3 = $('.id_sp4').val();
 
             var total = Number(dongia)+ Number(dongia1) + Number(dongia2) +Number(dongia3);
 

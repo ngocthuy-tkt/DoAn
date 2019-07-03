@@ -31,9 +31,11 @@
 								<td id="LuotXem"> Lượt Xem </td>
 								<td>{{ $product->LuotXem }}</td>
 							</tr>
+							@if($product->GiaKhuyenMai != 0)
 							<tr>
 								<td colspan="2"><label id="khuyenmai">{{ discount($product->DonGia,$product->GiaKhuyenMai) }} OFF</label></td>
 							</tr>
+							@endif
 							<tr>
 								<td colspan="2" id="gia">
 								@if($product->GiaKhuyenMai != 0)

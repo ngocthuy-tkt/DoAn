@@ -20,6 +20,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/san-pham-ban-chay', 'Backend\DashboardController@banchay')->name('banchay');
     Route::get('/san-pham-ban-cham', 'Backend\DashboardController@bancham')->name('bancham');
     Route::get('/hang-sap-het-trong-kho', 'Backend\DashboardController@hanghet')->name('hanghet');
+    Route::get('/phieunhap/bao-cao', 'Backend\DashboardController@baocao')->name('baocaophieuhang');
+    Route::get('/inventory/bao-cao', 'Backend\DashboardController@baocaohangloi')->name('baocaohangloi');
 
     Route::resource('administration', 'Backend\AdminController', ['only' => ['index', 'create', 'store', 'edit', 'update', 'destroy']]);
     Route::resource('users', 'Backend\UserController', ['only' => ['index', 'create', 'store', 'edit', 'update', 'destroy']]);
@@ -34,7 +36,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('bill', 'Backend\BillOfSaleController', ['only' => ['index', 'create', 'store', 'show']]);
     Route::resource('inventory', 'Backend\InventoryController', ['only' => ['index', 'create', 'store']]);
     Route::resource('phieunhap', 'Backend\EnterCouponController');
-
+    
 });
 
 

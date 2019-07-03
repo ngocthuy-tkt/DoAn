@@ -73,6 +73,8 @@
                     <li><a href="{{ route('banchay') }}"><i class="fa fa-circle-o"></i> Sản phẩm bán chạy</a></li>
                     <li><a href="{{ route('bancham') }}"><i class="fa fa-circle-o"></i> Sản phẩm bán chậm</a></li>
                     <li><a href="{{ route('hanghet') }}"><i class="fa fa-circle-o"></i> Hàng sắp hết trong kho</a></li>
+                    <li><a href="{{ route('baocaophieuhang') }}"><i class="fa fa-circle-o"></i> Phiếu hàng</a></li>
+                    <li><a href="{{ route('baocaohangloi') }}"><i class="fa fa-circle-o"></i> Hàng lỗi</a></li>
                 </ul>
             </li>
         </ul>

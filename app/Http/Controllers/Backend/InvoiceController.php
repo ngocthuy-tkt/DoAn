@@ -15,13 +15,12 @@ class InvoiceController extends BackendController
         $hdm = DB::table('hoadonmua')
                         ->join('nhacungcap', 'hoadonmua.Id_NhaCC', '=', 'nhacungcap.Id_NCC')
                         ->join('chitiethoadonmua', 'hoadonmua.Id_HoaDonMua', '=', 'chitiethoadonmua.Id_HoaDonMua')
-                        ->join('sanpham', 'chitiethoadonmua.Id_SanPham', '=', 'sanpham.Id_SanPham')
-                        ->select('hoadonmua.*', 'nhacungcap.TenNCC', 'chitiethoadonmua.*', 'sanpham.TenSP')
+                        ->select('hoadonmua.*', 'nhacungcap.TenNCC', 'chitiethoadonmua.*')
                         ->orderBy('hoadonmua.Id_HoaDonMua', 'desc')
                         ->groupby('hoadonmua.Id_HoaDonMua')->distinct()
                         ->get();
         $columns = [
-            'ID', 'Tên nhà cung cấp', 'Ngày tạo', 'Tổng tiền' , 'Hành động'
+            'ID', 'Tên nhà cung cấp', 'Ngày tạo', 'Hành động'
         ];
         return view('backend.invoice.index', compact('hdm', 'columns'));
     }
@@ -29,16 +28,15 @@ class InvoiceController extends BackendController
     public function create()
     {
         $ncc = \App\Models\NhaCungCap::all();
-        $product = \App\Models\Product::all();
-        return view('backend.invoice.add', compact('ncc', 'product'));
+        // $product = \App\Models\Product::all();
+        return view('backend.invoice.add', compact('ncc'));
     }
 
     public function show($id)
     {
         $hdb1 = DB::table('hoadonmua')
                         ->join('chitiethoadonmua', 'hoadonmua.Id_HoaDonMua', '=', 'chitiethoadonmua.Id_HoaDonMua')
-                        ->join('sanpham', 'chitiethoadonmua.Id_SanPham', '=', 'sanpham.Id_SanPham')
-                        ->select('hoadonmua.*', 'chitiethoadonmua.*', 'sanpham.TenSP')
+                        ->select('hoadonmua.*', 'chitiethoadonmua.*')
                         ->where('chitiethoadonmua.Id_HoaDonMua', $id)
                         ->get();
                         

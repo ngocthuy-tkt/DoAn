@@ -83,7 +83,7 @@
                                                                 class="fa fa-pencil"></i></a>
                                             @endif  
                                             @if(Auth::guard('admin')->user()->quyen == 1)   
-                                                <button type="button" class="btn btn-xs btn-primary show-modal" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" data-id="#OD-00{{ $item->Id_DonHang }}" data-name="{{ $item->TenNguoiNhan }}" data-sdt="{{ $item->Sdt }}" data-diachi="{{ $item->DiaChi }}" data-money="{{ $item->TongTien }}" data-note="{{ $item->GhiChu }}"><i class="fa fa-eye"></i></button>                
+                                                <button type="button" class="btn btn-xs btn-primary show-modal" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" data-id="#OD-00{{ $item->Id_DonHang }}" data-name="{{ $item->TenNguoiNhan }}" data-sdt="{{ $item->Sdt }}" data-diachi="{{ $item->DiaChi }}" data-money="{{ $item->TongTien }}" data-note="{{ $item->GhiChu }}" data-tensp="{{ $item->TenSp }}" data-size="{{ $item->size }}" data-qty="{{ $item->SoLuong }}"><i class="fa fa-eye"></i></button>                
                                             @endif 
                                             </td>
                                     @endforeach
@@ -144,7 +144,7 @@
                                                                 class="fa fa-pencil"></i></a>
                                             @endif  
                                             @if(Auth::guard('admin')->user()->quyen == 1)   
-                                                <button type="button" class="btn btn-xs btn-primary show-modal" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" data-id="#OD-00{{ $item->Id_DonHang }}" data-name="{{ $item->TenNguoiNhan }}" data-sdt="{{ $item->Sdt }}" data-diachi="{{ $item->DiaChi }}" data-money="{{ $item->TongTien }}" data-note="{{ $item->GhiChu }}"><i class="fa fa-eye"></i></button>                
+                                                <button type="button" class="btn btn-xs btn-primary show-modal" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" data-id="#OD-00{{ $item->Id_DonHang }}" data-name="{{ $item->TenNguoiNhan }}" data-sdt="{{ $item->Sdt }}" data-diachi="{{ $item->DiaChi }}" data-money="{{ $item->TongTien }}" data-note="{{ $item->GhiChu }}" data-tensp="{{ $item->TenSp }}" data-size="{{ $item->size }}" data-qty="{{ $item->SoLuong }}"><i class="fa fa-eye"></i></button>                
                                             @endif 
                                             </td>
                                     @endforeach
@@ -203,7 +203,7 @@
                                                         class="fa fa-pencil"></i></a>
                                     @endif  
                                     @if(Auth::guard('admin')->user()->quyen == 1)   
-                                        <button type="button" class="btn btn-xs btn-primary show-modal" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" data-id="#OD-00{{ $item->Id_DonHang }}" data-name="{{ $item->TenNguoiNhan }}" data-sdt="{{ $item->Sdt }}" data-diachi="{{ $item->DiaChi }}" data-money="{{ $item->TongTien }}" data-note="{{ $item->GhiChu }}"><i class="fa fa-eye"></i></button>                
+                                        <button type="button" class="btn btn-xs btn-primary show-modal" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" data-id="#OD-00{{ $item->Id_DonHang }}" data-name="{{ $item->TenNguoiNhan }}" data-sdt="{{ $item->Sdt }}" data-diachi="{{ $item->DiaChi }}" data-money="{{ $item->TongTien }}" data-note="{{ $item->GhiChu }}" data-tensp="{{ $item->TenSp }}" data-size="{{ $item->size }}" data-qty="{{ $item->SoLuong }}"><i class="fa fa-eye"></i></button>                
                                     @endif  
                                     </td>
                             @endforeach
@@ -255,6 +255,18 @@
             <input type="text" class="form-control" id="diachi">
           </div>
           <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Tên sản phẩm:</label>
+            <input type="text" class="form-control" id="TenSP">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Số lượng:</label>
+            <input type="text" class="form-control" id="SoLuong">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Size:</label>
+            <input type="text" class="form-control" id="size">
+          </div>
+          <div class="form-group">
             <label for="recipient-name" class="col-form-label">Tổng tiền:</label>
             <input type="text" class="form-control" id="money">
           </div>
@@ -300,6 +312,9 @@
             $('#name').val($(this).data('name'));
             $('#sdt').val($(this).data('sdt'));
             $('#diachi').val($(this).data('diachi'));
+            $('#TenSP').val($(this).data('tensp'));
+            $('#SoLuong').val($(this).data('qty'));
+            $('#size').val($(this).data('size'));
             $('#money').val($(this).data('money'));
             $('#note').val($(this).data('note'));
             $('#showModal').modal('show');
