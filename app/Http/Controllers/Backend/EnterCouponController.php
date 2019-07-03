@@ -83,16 +83,19 @@ class EnterCouponController extends Controller
                 ];
 
                 if ($ph = ChiTietPhieuHang::create($data)) {
-                    $id = $ph->Id_SanPham;
-                    $Sp = Product::find($id);
-                    $data1 = [
-                        'SoLuong' => ($Sp->SoLuong)+($ph->SoLuong)
-                    ];
+                    try {
+                        $id = $ph->Id_SanPham;
+                        $Sp = Product::find($id);
+                        $data1 = [
+                            'SoLuong' => ($Sp->SoLuong) + ($ph->SoLuong)
+                        ];
 
-                    $Sp->update($data1);
+                        $Sp->update($data1);
+                    } catch(\Exception $e) {
+                        return redirect()->back()->with('success','Thêm mới phiếu hàng thành công');
+                    }
                 }
             }
-            return redirect()->back()->with('success','Thêm mới phiếu hàng thành công');
         }else{
             return redirect()->back()->with('error','Thêm mới phiếu hàng thất bại, vui lòng thử lại');
         }
