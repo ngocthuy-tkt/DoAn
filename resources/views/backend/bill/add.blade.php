@@ -192,28 +192,6 @@
             //Initialize Select2 Elements
             $('.select2').select2();
 
-            var element ='<div class="col-md-6">'+'<div class="form-group">'+
-                                '<select class="form-control select2" style="width: 100%;" name="Id_SanPham[]" id="mySelect1">'+
-                                    '<option value="">Chọn sản phẩm</option>'+
-                                    '@foreach($product as $pro)'+
-                                        '<option value="{{ $pro->Id_SanPham }}" data-price="{{$pro->DonGia}}" data-name="{{$pro->TenSp}}">{{ $pro->TenSp }}</option>'+
-                                    '@endforeach'+
-                                '</select>'+
-                            '</div>'+
-                            '<div class="form-group">'+
-                                '<div class="input-group">'+
-                                    '<span class="input-group-addon"><i class="fa fa-user"></i></span>'+
-                                    '<input type="number" class="form-control soluong" placeholder="Số lượng" name="SoLuong[]">'+
-                                '</div>'+
-                            '</div>'+
-                            '<div class="form-group">'+
-                               '<div class="input-group">'+
-                                    '<span class="input-group-addon"><i class="fa fa-user"></i></span>'+
-                                    '<input type="number" class="form-control dongia" placeholder="Đơn giá" id="dongia1" name="DonGia[]">'+
-                                '</div>'+
-                            '</div>'+
-                            '</div>';  
-
           $(".add").click(function(){
             var soluong = $('.soluong').val();
             var dongia = $('.dongia').val();
@@ -261,36 +239,46 @@
                             "<td id='gia'>"+ dongia3 +"</td>" +
                          "</tr>";    
 
-            // $(".abc").append(element);
-            if(soluong.length === 0) {
-               alert('Bạn chưa nhập đủ thông tin'); 
-               // return false;
-               if (soluong.length !== 0) {alert('ok');
-                return false;
-               }
-               return false;
-            } else {
-                $('tbody').append(tbody);
-            }
+            var contents = {},duplicates = false;
 
-            $('.total').append(total);
-
-            if(soluong1.length === 0) {
-               return false;
+            $("table td").each(function() {
+                var tdContent = $(this).text();
+                if (contents[tdContent]) {
+                    duplicates = true;
+                    return false;
+                }
+                contents[tdContent] = true;
+            });    
+            
+            if (duplicates){
+               alert("Sản phẩm đã tồn tại.");
             } else {
-                $('tbody').append(tbody2);
-            }
+                if(soluong.length === 0) {
+                   alert('Bạn chưa nhập đủ thông tin'); 
+                   return false;
+                } else {
+                    $('tbody').append(tbody);
+                }
 
-            if(soluong2.length === 0) {
-               return false;
-            } else {
-                $('tbody').append(tbody3);
-            }
+                $('.total').append(total);
 
-            if(soluong3.length === 0) {
-               return false;
-            } else {
-                $('tbody').append(tbody4);
+                if(soluong1.length === 0) {
+                   return false;
+                } else {
+                    $('tbody').append(tbody2);
+                }
+
+                if(soluong2.length === 0) {
+                   return false;
+                } else {
+                    $('tbody').append(tbody3);
+                }
+
+                if(soluong3.length === 0) {
+                   return false;
+                } else {
+                    $('tbody').append(tbody4);
+                }
             }
             
           })
