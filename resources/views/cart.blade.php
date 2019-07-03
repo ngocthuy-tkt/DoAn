@@ -36,7 +36,7 @@
                             </div>
                         </td>
                         <td> {{ $item->name }} </td>
-                        <td> {{$item->subtotal}} </td>
+                        <td> {{$item->price}} </td>
                         <td>
                             <select class="quantity" data-id="{{ $item->rowId }}">
                                 @for($i=1; $i<=100; $i++)
