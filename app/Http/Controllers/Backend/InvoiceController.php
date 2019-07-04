@@ -78,7 +78,14 @@ class InvoiceController extends BackendController
                     'DonGia' => $request->DonGia[$key]
                 ];
 
-                ChiTietHoaDonMua::create($data);
+                if($detail = ChiTietHoaDonMua::create($data)) {
+                    $id = $detail->Id_SanPham;
+                    $Sp = Product::find($id);
+                    $data1 = [
+                        'SoLuong' => ($Sp->SoLuong)-($detail->SoLuong)
+                    ];
+                    $Sp->update($data1);
+                } 
             }
             return redirect()->back()->with('success','Thêm mới hóa đơn mua thành công');
         }else{
