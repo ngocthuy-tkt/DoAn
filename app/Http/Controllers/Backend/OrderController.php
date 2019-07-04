@@ -22,18 +22,33 @@ class OrderController extends BackendController
                         ->where('donhang.TrangThai', '=', 0)
                         ->orwhere('donhang.TrangThai', '=', 1)
                         ->select('donhang.*', 'sanpham.TenSp', 'chitietdonhang.SoLuong')
+                        ->groupby('donhang.Id_DonHang')->distinct()
                         ->get();
         
         $orderSucc = DB::table('donhang')->where('donhang.TrangThai', '=' , 2)
                                         ->join('sanpham', 'donhang.Id_SanPham', '=', 'sanpham.Id_SanPham')
                                         ->join('chitietdonhang', 'donhang.Id_DonHang', '=', 'chitietdonhang.Id_DonHang')
                                         ->select('donhang.*', 'sanpham.TenSp', 'chitietdonhang.SoLuong')
+                                        ->groupby('donhang.Id_DonHang')->distinct()
                                         ->get();
         $orderCan = DB::table('donhang')->where('donhang.TrangThai', '=' , -1)
                                         ->join('sanpham', 'donhang.Id_SanPham', '=', 'sanpham.Id_SanPham')
                                         ->join('chitietdonhang', 'donhang.Id_DonHang', '=', 'chitietdonhang.Id_DonHang')
-                                        ->select('donhang.*', 'sanpham.TenSp', 'chitietdonhang.SoLuong')->get();
+                                        ->select('donhang.*', 'sanpham.TenSp', 'chitietdonhang.SoLuong')
+                                        ->groupby('donhang.Id_DonHang')->distinct()
+                                        ->get();
         return view('backend.order.index', compact('orders', 'columns', 'orderSucc', 'orderCan'));
+    }
+
+    public function show($id)
+    {
+        $orders =DB::table('donhang')
+                        ->join('chitietdonhang', 'donhang.Id_DonHang', '=', 'chitietdonhang.Id_DonHang')
+                        ->join('sanpham', 'chitietdonhang.Id_SanPham', '=', 'sanpham.Id_SanPham')
+                        ->where('chitietdonhang.Id_DonHang', '=', $id)
+                        ->select('donhang.*', 'chitietdonhang.SoLuong', 'chitietdonhang.DonGia', 'chitietdonhang.TenSP')
+                        ->get();//dd($orders);
+        return view('backend.order.view', compact('orders'));
     }
 
     public function edit($id)

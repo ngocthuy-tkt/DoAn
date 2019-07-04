@@ -83,7 +83,9 @@
                                                                 class="fa fa-pencil"></i></a>
                                             @endif  
                                             @if(Auth::guard('admin')->user()->quyen == 1)   
-                                                <button type="button" class="btn btn-xs btn-primary show-modal" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" data-id="#OD-00{{ $item->Id_DonHang }}" data-name="{{ $item->TenNguoiNhan }}" data-sdt="{{ $item->Sdt }}" data-diachi="{{ $item->DiaChi }}" data-money="{{ $item->TongTien }}" data-note="{{ $item->GhiChu }}" data-tensp="{{ $item->TenSp }}" data-size="{{ $item->size }}" data-qty="{{ $item->SoLuong }}"><i class="fa fa-eye"></i></button>                
+                                                <!-- <button type="button" class="btn btn-xs btn-primary show-modal" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" data-id="#OD-00{{ $item->Id_DonHang }}" data-name="{{ $item->TenNguoiNhan }}" data-sdt="{{ $item->Sdt }}" data-diachi="{{ $item->DiaChi }}" data-money="{{ $item->TongTien }}" data-note="{{ $item->GhiChu }}" data-tensp="{{ $item->TenSp }}" data-size="{{ $item->size }}" data-qty="{{ $item->SoLuong }}"><i class="fa fa-eye"></i></button> -->
+
+                                                <a href="{{ route('order.show', ['id' =>$item->Id_DonHang]) }}" class="btn btn-xs btn-primary"><i class="fa fa-eye"></i></a>                
                                             @endif 
                                             </td>
                                     @endforeach
@@ -144,7 +146,10 @@
                                                                 class="fa fa-pencil"></i></a>
                                             @endif  
                                             @if(Auth::guard('admin')->user()->quyen == 1)   
-                                                <button type="button" class="btn btn-xs btn-primary show-modal" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" data-id="#OD-00{{ $item->Id_DonHang }}" data-name="{{ $item->TenNguoiNhan }}" data-sdt="{{ $item->Sdt }}" data-diachi="{{ $item->DiaChi }}" data-money="{{ $item->TongTien }}" data-note="{{ $item->GhiChu }}" data-tensp="{{ $item->TenSp }}" data-size="{{ $item->size }}" data-qty="{{ $item->SoLuong }}"><i class="fa fa-eye"></i></button>                
+                                                <!-- <button type="button" class="btn btn-xs btn-primary show-modal" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" data-id="#OD-00{{ $item->Id_DonHang }}" data-name="{{ $item->TenNguoiNhan }}" data-sdt="{{ $item->Sdt }}" data-diachi="{{ $item->DiaChi }}" data-money="{{ $item->TongTien }}" data-note="{{ $item->GhiChu }}" data-tensp="{{ $item->TenSp }}" data-size="{{ $item->size }}" data-qty="{{ $item->SoLuong }}"><i class="fa fa-eye"></i></button> -->
+
+                                                <a href="{{ route('order.show', ['id' =>$item->Id_DonHang]) }}" class="btn btn-xs btn-primary"><i class="fa fa-eye"></i></a>
+
                                             @endif 
                                             </td>
                                     @endforeach
@@ -203,7 +208,8 @@
                                                         class="fa fa-pencil"></i></a>
                                     @endif  
                                     @if(Auth::guard('admin')->user()->quyen == 1)   
-                                        <button type="button" class="btn btn-xs btn-primary show-modal" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" data-id="#OD-00{{ $item->Id_DonHang }}" data-name="{{ $item->TenNguoiNhan }}" data-sdt="{{ $item->Sdt }}" data-diachi="{{ $item->DiaChi }}" data-money="{{ $item->TongTien }}" data-note="{{ $item->GhiChu }}" data-tensp="{{ $item->TenSp }}" data-size="{{ $item->size }}" data-qty="{{ $item->SoLuong }}"><i class="fa fa-eye"></i></button>                
+                                        <!-- <button type="button" class="btn btn-xs btn-primary show-modal" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" data-id="#OD-00{{ $item->Id_DonHang }}" data-name="{{ $item->TenNguoiNhan }}" data-sdt="{{ $item->Sdt }}" data-diachi="{{ $item->DiaChi }}" data-money="{{ $item->TongTien }}" data-note="{{ $item->GhiChu }}" data-tensp="{{ $item->TenSp }}" data-size="{{ $item->size }}" data-qty="{{ $item->SoLuong }}"><i class="fa fa-eye"></i></button>     -->
+                                        <a href="{{ route('order.show', ['id' =>$item->Id_DonHang]) }}" class="btn btn-xs btn-primary"><i class="fa fa-eye"></i></a>            
                                     @endif  
                                     </td>
                             @endforeach
