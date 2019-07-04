@@ -48,11 +48,6 @@
                                     <input type="text" class="form-control" placeholder="Ghi chú" name="GhiChu" value="{{ old('GhiChu') }}">
                                 </div>
                             </div>
-                            @if($errors->has('GhiChu'))
-                                <div class="help-block text-red">
-                                    * {!! $errors->first('GhiChu') !!}
-                                </div>
-                            @endif
                         </div>
                        <div class="col-sm-3"></div>
                     </div>

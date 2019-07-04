@@ -61,10 +61,8 @@ class BillOfSaleController extends BackendController
         $this->validate($request,
             [
                 'TenKhachHang' => 'required',
-                'GhiChu'  => 'required'
             ],[
-                'TenKhachHang.required' => 'Tên khách hàng không được để trống',
-                'GhiChu.required' => 'Ghi chú không được để trống'
+                'TenKhachHang.required' => 'Tên khách hàng không được để trống'
             ]
         );
 
